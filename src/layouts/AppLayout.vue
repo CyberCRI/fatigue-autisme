@@ -9,9 +9,13 @@
       <a href="#" @click="$router.push('/logout')">Se déconnecter</a>
     </v-app-bar>
     <v-main>
-      <v-container fluid class="main-container">
-        <router-view></router-view>
-      </v-container>
+      <v-row justify="center">
+        <v-col md="10">
+          <v-container fluid class="main-container grey lighten-4">
+            <router-view></router-view>
+          </v-container>
+        </v-col>
+      </v-row>
     </v-main>
     <v-footer color="grey lighten-4" app>
       <v-row>
@@ -67,5 +71,8 @@ export default {
 }
 .logo-udp {
   height: 65px !important;
+}
+.main-container{
+  max-width: 1000px;
 }
 </style>
