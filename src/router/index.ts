@@ -11,6 +11,14 @@ import Forgot from "../views/Forgot.vue";
 import FicheRenseignement from "../views/FicheRenseignement.vue";
 import Questionnaire from "../views/Questionnaire.vue";
 
+import HomeChild from "../views/Home/HomeChild.vue";
+import SurveyChildIntro from "../components/Survey/Child/Intro.vue";
+import SurveyChildPartA from "../components/Survey/Child/PartA.vue";
+import SurveyChildPartB from "../components/Survey/Child/PartB.vue";
+import SurveyChildPartC from "../components/Survey/Child/PartC.vue";
+import SurveyChildPartD from "../components/Survey/Child/PartD.vue";
+import SurveyChildPartE from "../components/Survey/Child/PartE.vue";
+
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -86,6 +94,62 @@ const routes: Array<RouteConfig> = [
       requiresAuth: true
     }
   },
+  {
+    path: "/path",
+    name: "Path",
+    component: HomeChild,
+    meta: {
+      guest: true
+    }
+  },
+  {
+    path: "/enfants/questionnaire/intro",
+    name: "Questionnaire-Enfants-Intro",
+    component: SurveyChildIntro,
+    meta: {
+      guest: true
+    }
+  },
+  {
+    path: "/enfants/questionnaire/partA",
+    name: "Questionnaire-Enfants-PartA",
+    component: SurveyChildPartA,
+    meta: {
+      guest: true
+    }
+  },
+  {
+    path: "/enfants/questionnaire/partB",
+    name: "Questionnaire-Enfants-PartB",
+    component: SurveyChildPartB,
+    meta: {
+      guest: true
+    }
+  },
+  {
+    path: "/enfants/questionnaire/partC",
+    name: "Questionnaire-Enfants-PartC",
+    component: SurveyChildPartC,
+    meta: {
+      guest: true
+    }
+  },
+  {
+    path: "/enfants/questionnaire/partD",
+    name: "Questionnaire-Enfants-PartD",
+    component: SurveyChildPartD,
+    meta: {
+      guest: true
+    }
+  },
+  {
+    path: "/enfants/questionnaire/partE",
+    name: "Questionnaire-Enfants-PartE",
+    component: SurveyChildPartE,
+    meta: {
+      guest: true
+    }
+  }
 ];
 
 const router = new VueRouter({

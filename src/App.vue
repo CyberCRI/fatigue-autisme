@@ -9,17 +9,17 @@ import AppLayout from "./layouts/AppLayout";
 import SimpleLayout from "./layouts/SimpleLayout";
 import Authorize from "@/mixins/Authorize.ts";
 
-import axios from "axios";
+// import axios from "axios";
 
-axios.get(
-  process.env.VUE_APP_ROOT_API + "/")
-  .then(response => {
-    console.log('success')
-    console.log(response)
-  })
-  .catch(error => {
-            console.log(error);
-          });
+// axios.get(
+//   process.env.VUE_APP_ROOT_API + "/")
+//   .then(response => {
+//     console.log('success')
+//     console.log(response)
+//   })
+//   .catch(error => {
+//             console.log(error);
+//           });
 
 
 export default {

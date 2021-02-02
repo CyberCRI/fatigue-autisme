@@ -1,0 +1,348 @@
+<template>
+  <section>
+    <Header :title="`A. La fatigue mentale au quotidien`" :valueProgress="percentageCompletion" />
+
+    <br>
+    <br>
+    <br>
+    <v-card class="pa-md-4 mb-4">
+      <v-row class="ma-5" sm="12">
+        <h3>
+          A.1 Pouvez-vous estimer l’intensité de votre fatigue mentale dans les
+          situations suivantes :
+        </h3>
+      </v-row>
+
+      <Indications :items="ratingLabels1" />
+
+      <!-- RADIO BUTTONS -->
+      <v-row justify="center" v-for="q in questionsA1" :key="q.question">
+        <v-col sm="10">
+          <v-row align="center">
+            <v-col sm="6"
+              ><span v-html="q.question"></span></v-col
+            >
+            <v-col sm="6">
+              <v-radio-group v-model="$data[q.model]" row>
+                <v-radio
+                  v-for="i in valuesA1"
+                  :key="i"
+                  :label="i"
+                  :value="i"
+                ></v-radio>
+              </v-radio-group>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+
+      <!-- SLIDERS -->
+      <!-- <v-row justify="center">
+                <v-col sm="6">
+                    En moyenne, sur la <b>dernière</b> semaine scolaire :
+                </v-col>
+                <v-col sm="4">
+                    <v-slider
+                        v-model="answers.A1a"
+                        :tick-labels="['1', '2', '3', '4', '5']"
+                        :max="4"
+                        step="1"
+                    ></v-slider>
+                </v-col>
+            </v-row>
+            <v-row justify="center">
+                <v-col sm="6">
+                    Au cours du <b>dernier</b> week-end :
+                </v-col>
+                <v-col sm="4">
+                    <v-slider
+                        v-model="answers.A1b"
+                        :tick-labels="['1', '2', '3', '4', '5']"
+                        :max="4"
+                        step="1"
+                    ></v-slider>
+                </v-col>
+            </v-row>
+            <v-row justify="center">
+                <v-col sm="6">
+                    Lorsque vous êtes en vacances :
+                </v-col>
+                <v-col sm="4">
+                    <v-slider
+                        v-model="answers.A1c"
+                        :tick-labels="['1', '2', '3', '4', '5']"
+                        :max="4"
+                        step="1"
+                    ></v-slider>
+                </v-col>
+            </v-row>
+            <v-row justify="center">
+                <v-col sm="6">
+                    Au moment précis où vous complétez ce questionnaire
+                </v-col>
+                <v-col sm="4">
+                    <v-slider
+                        v-model="answers.A1d"
+                        :tick-labels="['1', '2', '3', '4', '5']"
+                        :max="4"
+                        step="1"
+                    ></v-slider>
+                </v-col>
+            </v-row> -->
+      <section id="tired" v-if="areYouTired">
+        <v-row justify="center">
+          <v-col sm="6">
+            <div class="rounded-lg text-center green lighten-4 pa-4">
+              Si vous vous sentez actuellement très fatigué.e, n’hésitez pas à
+              compléter ce questionnaire en plusieurs fois.
+            </div>
+          </v-col>
+        </v-row>
+      </section>
+
+      <section id="A11" v-if="relevantA11">
+        <v-row class="ma-8" sm="12" v-if="relevantA11">
+          <h4>
+            A.1.1 Pouvez-vous évaluer, à l’aide de la jauge, l’intensité de
+            cette fatigue mentale :
+          </h4>
+        </v-row>
+
+        <v-row justify="center">
+          <v-col sm="4">
+            Durant la journée où vous avez été le / la plus fatigué.e la semaine
+            passée
+          </v-col>
+          <v-col sm="6">
+            <v-slider
+              v-model="A11"
+              thumb-label="always"
+              min="0"
+              max="100"
+            >
+              <template v-slot:prepend> Aucune fatigue </template>
+              <template v-slot:append>
+                Aussi fatigué.e qu’il est possible de l’être
+              </template>
+            </v-slider>
+          </v-col>
+        </v-row>
+      </section>
+
+      <v-divider class="ma-4"></v-divider>
+
+      <v-row class="ma-5" sm="12">
+        <h3>
+          A.2 Diriez-vous que la fatigue cognitive est plus importante depuis
+          que vous êtes entré.e au lycée ?
+        </h3>
+      </v-row>
+      <v-row justify="center">
+        <v-col sm="10">
+          <v-radio-group v-model="A2">
+            <v-radio label="Non" value="Non"></v-radio>
+            <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
+            <v-radio label="Oui, beaucoup" value="Oui, beaucoup"></v-radio>
+            <v-radio label="Je ne sais pas" value="Je ne sais pas"></v-radio>
+          </v-radio-group>
+        </v-col>
+      </v-row>
+
+      <v-divider class="ma-4"></v-divider>
+
+      <v-row class="ma-5" sm="12">
+        <h3>
+          A.3 <u>Lorsque vous vivez des périodes de fatigue mentale</u>, à quel
+          point les situations suivantes vous demandent-elles
+          <u>plus d’efforts que d’habitude</u> :
+        </h3>
+      </v-row>
+
+      <Indications :items="ratingLabels2" />
+
+      <!-- RADIO BUTTONS -->
+      <v-row justify="center" v-for="q in questionsA3" :key="q.question">
+        <v-col sm="10">
+          <v-row align="center">
+            <v-col sm="7"
+              >{{ q.question }}</v-col
+            >
+            <v-col sm="5">
+              <v-radio-group v-model="$data[q.model]" row>
+                <v-radio
+                  v-for="i in valuesA3"
+                  :key="i"
+                  :label="i"
+                  :value="i"
+                ></v-radio>
+              </v-radio-group>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+
+      <v-divider class="ma-4"></v-divider>
+
+      <v-row class="ma-5" sm="12">
+        <h3>
+          A.4 De façon générale, avez-vous le sentiment de devoir fournir
+          davantage d’efforts que les autres jeunes de votre âge dans
+          <u>certaines</u> situations de la vie quotidienne ?
+        </h3>
+      </v-row>
+      <v-row justify="center">
+        <v-col sm="10">
+          <v-radio-group v-model="A4">
+            <v-radio label="Non" value="Non"></v-radio>
+            <v-radio label="Oui" value="Oui"></v-radio>
+            <v-radio label="Je ne sais pas" value="Je ne sais pas"></v-radio>
+          </v-radio-group>
+        </v-col>
+      </v-row>
+
+      <section id="A41" v-if="relevantA41">
+        <v-row class="ma-5" sm="12">
+          <h4>A.4.1 Si oui, souhaitez-vous préciser :</h4>
+        </v-row>
+        <v-row justify="center">
+          <v-col sm="10">
+            <v-textarea
+              v-model="A41"
+              name="context"
+              filled
+              label=""
+              auto-grow
+            ></v-textarea>
+          </v-col>
+        </v-row>
+      </section>
+
+      <v-row justify="center">
+        <v-btn
+          class="btn primary bouton ma-4"
+          @click="$router.push('/enfants/questionnaire/partB')"
+        >
+          Enregistrer et terminer plus tard
+        </v-btn>
+        <v-btn
+          class="btn primary bouton ma-4"
+          @click="$router.push('/enfants/questionnaire/partB')"
+        >
+          Accéder à la partie B
+        </v-btn>
+      </v-row>
+    </v-card>
+    <!-- </v-expansion-panel-content> -->
+  </section>
+</template>
+
+<script>
+import Indications from "../../Indications.vue";
+import Header from '../Header.vue';
+export default {
+  name: "SurveyChildPartA",
+  data() {
+    return {
+      A1a: "",
+      A1b: "",
+      A1c: "",
+      A1d: "",
+      A11: 0,
+      A2: "",
+      A3a: "",
+      A3b: "",
+      A3c: "",
+      A3d: "",
+      A3e: "",
+      A3f: "",
+      A3g: "",
+      A3h: "",
+      A3i: "",
+      A3j: "",
+      A3k: "",
+      A3l: "",
+      A4: "",
+      A41: "",
+      ratingLabels1: [
+        "1- Inexistante",
+        "2- Minime ou peu importante",
+        "3- Moyennement importante",
+        "4- Importante",
+        "5- Extrêmement importante",
+      ],
+      ratingLabels2: [
+        "1- Cela ne me demande pas plus d’efforts que d’habitude",
+        "2- Cela me demande plus d’efforts que d’habitude",
+        "3- Cela me demande trop d’efforts, au point que je ne peux pas le faire",
+        "n/a- Cela ne me concerne pas ou je ne parviens pas à évaluer la situation",
+      ],
+      valuesA1: ['1', '2', '3', '4', '5'],
+      valuesA3: ['1', '2', '3', 'n/a'],
+      questionsA1: [
+                    {question: "En moyenne, sur la <b>dernière</b> semaine scolaire :", model: "A1a"},
+                    {question: "Au cours du <b>dernier</b> week-end :", model: "A1b"},
+                    {question: "Lorsque vous êtes en vacances :", model: "A1c"},
+                    {question: "Au moment précis où vous complétez ce questionnaire :", model: "A1d"}
+                  ],
+      questionsA3: [
+                    {question: "Vous préparer pour la journée (déjeuner, se laver, faire son sac, etc.)", model: "A3a"},
+                    {question: "Prendre les transports en commun / faire le trajet jusqu’au lycée", model: "A3b"},
+                    {question: "Suivre une journée de cours (compréhension, participation, attention)", model: "A3c"},
+                    {question: "Interagir avec les élèves du lycée (incluant les travaux de groupe)", model: "A3d"},
+                    {question: "Interagir avec les enseignant.e.s et autres adultes du lycée", model: "A3e"},
+                    {question: "Faire vos devoirs une fois de retour à la maison", model: "A3f"},
+                    {question: "Participer à la vie de famille (repas, discussion, jeux, tâches ménagères, etc.)", model: "A3g"},
+                    {question: "Vous investir dans vos activités extrascolaires (sport, musique, club ou association, etc.)", model: "A3h"},
+                    {question: "Vous consacrer à vos passions", model: "A3i"},
+                    {question: "Voir et échanger avec vos amis", model: "A3j"},
+                    {question: "Vous repérer au niveau spatial (représentation mentale des lieux) et temporel (situer les événements les uns par rapport aux autres, avoir la notion du temps qui passe, etc.", model: "A3k"},
+                    {question: "Vous exprimer (articuler, trouver vos mots, vous faire comprendre, etc.)", model: "A3l"}
+                  ]
+    };
+  },
+  computed: {
+    relevantA11() {
+      return this.A1a > 1;
+    },
+    relevantA41() {
+      return this.A4 === "Oui";
+    },
+    areYouTired() {
+      return this.A1d >= 2;
+    },
+    completions() {
+      console.log(this.A3a)
+      return {
+        A1a: this.A1a != "",
+        A1b: this.A1b != "",
+        A1c: this.A1c != "",
+        A1d: this.A1d != "",
+        A2: this.A2 != "",
+        A3a: this.A3a != "",
+        A3b: this.A3b != "",
+        A3c: this.A3d != "",
+        A3d: this.A3d != "",
+        A3e: this.A3e != "",
+        A3f: this.A3f != "",
+        A3g: this.A3g != "",
+        A3h: this.A3h != "",
+        A3i: this.A3i != "",
+        A3j: this.A3j != "",
+        A3k: this.A3k != "",
+        A3l: this.A3l != "",
+        A4: this.A4 != "",
+      };
+    },
+    percentageCompletion() {
+      const size = Object.keys(this.completions).length;
+      const areOk = Object.values(this.completions).filter((a) => a);
+      console.log(areOk);
+      return parseInt((areOk.length / size) * 100.0);
+    },
+  },
+  components: {
+    Indications,
+    Header
+  },
+};
+</script>
