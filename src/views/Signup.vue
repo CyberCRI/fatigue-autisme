@@ -7,7 +7,6 @@
           <v-col cols="12" sm="8" md="4">
             <v-alert v-if="errorMessage" type="error">
               {{ errorMessage }}
-              <!-- Une erreur s'est produite -->
             </v-alert>
             <v-alert v-if="success" type="success">
               Votre compte a bien été créé
@@ -22,10 +21,17 @@
               <v-row class="center">
                 <h2 class="titre">Créer un compte</h2>
               </v-row>
+              <v-row align="center" justify="center">
+                <v-col sm="4">Je suis: </v-col>
+                <v-col sm="4"><v-select
+                  :items="['Un parent', 'Un.e lycéen.ne']"
+                  v-model="whoAmI"
+                ></v-select></v-col>
+              </v-row>
               <v-card-text>
                 <v-form>
                   <v-text-field
-                    label="Email"
+                    label="Adresse e-mail"
                     name="email"
                     prepend-icon="mdi-email"
                     type="text"
@@ -37,7 +43,7 @@
                   />
                   <v-text-field
                     id="password"
-                    label="Password"
+                    label="Mot de passe"
                     name="password"
                     prepend-icon="mdi-lock"
                     type="password"
@@ -48,7 +54,7 @@
                     @blur="$v.password.$touch()"
                   />
                   <v-text-field
-                    label="Verify Password"
+                    label="Vérification du mot de passe"
                     name="verifyPassword"
                     prepend-icon="mdi-lock"
                     type="password"
@@ -58,21 +64,18 @@
                     @input="$v.verifyPassword.$touch()"
                     @blur="$v.verifyPassword.$touch()"
                   />
-                  <v-row>
-                    <v-col class="col-6">
-                      <v-checkbox
-                        label="En tant que Lycéen.ne"
-                        v-model="enfant"
-                      ></v-checkbox>
-                    </v-col>
-                    <v-col class="col-6" v-if="this.enfant">
-                      <v-text-field
-                        label="Identifiant du parent"
-                        v-model="parentId"
-                      >
-                      </v-text-field>
-                    </v-col>
-                  </v-row>
+                  <v-text-field
+                    v-if="!this.isParent"
+                    label="Identifiant du parent"
+                    name="parentId"
+                    prepend-icon="mdi-border-color"
+                    type="text"
+                    v-model="parentId"
+                    required
+                    :error-messages="parentIdErrors"
+                    @input="$v.parentId.$touch()"
+                    @blur="$v.parentId.$touch()"
+                  />
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -93,19 +96,18 @@
 <script>
 import axios from "axios";
 import { validationMixin } from "vuelidate";
-import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
+import { required, email, minLength, sameAs, requiredIf } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
       errorMessage: '',
-      // error: false,
       success: false,
       isLoading: false,
       email: "",
       password: "",
       verifyPassword: "",
-      enfant: false,
-      parentId: ""
+      parentId: "",
+      whoAmI: "Un parent"
     };
   },
   mixins: [validationMixin],
@@ -122,7 +124,13 @@ export default {
       required,
       minLength: minLength(8),
       sameAs: sameAs("password")
+    },
+    parentId: {
+      required: requiredIf(function () {
+        return !this.isParent;
+      })
     }
+
   },
   methods: {
     setLayout(layout) {
@@ -132,7 +140,10 @@ export default {
       this.$router.go(-1);
     },
     signUp() {
+      
+      this.errorMessage = '';
       this.$v.$touch();
+      console.log(this.$v);
       if (!this.$v.$anyError) {
         this.isLoading = true;
         console.log(process.env);
@@ -142,7 +153,7 @@ export default {
             {
               email: this.email,
               password: this.password,
-              isChild: this.enfant,
+              isChild: !this.isParent,
               parentId: this.parentId
             },
             {
@@ -152,7 +163,6 @@ export default {
             }
           )
           .then(response => {
-            this.errorMessage = '';
             this.isLoading = false;
             this.success = true;
           })
@@ -165,6 +175,9 @@ export default {
     }
   },
   computed: {
+    isParent() {
+      return this.whoAmI === 'Un parent';
+    },
     logoCri() {
       return require("@/assets/logo-cri.png");
     },
@@ -177,26 +190,33 @@ export default {
     emailErrors() {
       const errors = [];
       if (!this.$v.email.$dirty) return errors;
-      !this.$v.email.email && errors.push("Must be valid e-mail");
-      !this.$v.email.required && errors.push("E-mail is required");
+      !this.$v.email.email && errors.push("Ceci n'est pas une adresse e-mail valide.");
+      !this.$v.email.required && errors.push("Veuillez renseigner votre adresse e-mail.");
       return errors;
     },
     passwordErrors() {
       const errors = [];
       if (!this.$v.password.$dirty) return errors;
       !this.$v.password.minLength &&
-        errors.push("Password must be at least 8 characters long");
-      !this.$v.password.required && errors.push("Password is required.");
+        errors.push("Le mot de passe doit avoir au moins 8 caractères.");
+      !this.$v.password.required && errors.push("Veuillez entrer un mot de passe.");
       return errors;
     },
     verifyPasswordErrors() {
       const errors = [];
       if (!this.$v.verifyPassword.$dirty) return errors;
       !this.$v.verifyPassword.minLength &&
-        errors.push("Verify password must be at least 8 characters long");
+        errors.push("Le mot de passe doit avoir au moins 8 caractères.");
       !this.$v.verifyPassword.required &&
-        errors.push("Verify password is required.");
-      !this.$v.verifyPassword.sameAs && errors.push("Must be same as password");
+        errors.push("Veuillez recopier votre mot de passe.");
+      !this.$v.verifyPassword.sameAs && errors.push("Les deux mots de passe doivent être identiques.");
+      return errors;
+    },
+    parentIdErrors() {
+      const errors = [];
+      if (!this.$v.parentId.$dirty) return errors;
+      !this.$v.parentId.required &&
+        errors.push("Veuillez renseigner l'identifiant de votre parent.");
       return errors;
     }
   },
