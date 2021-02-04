@@ -153,7 +153,7 @@ export default {
     }
   },
   created() {
-    if (this.$store.state.auth.user.consent == "false" || !this.$store.state.auth.user.consent) {
+    if (!this.$store.getters.consent) {
       this.$router.push({ path: "/consentement" });
     } else {
       this.initialize();

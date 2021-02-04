@@ -168,21 +168,23 @@ export default new Vuex.Store({
     isAuthorized: state => state.auth.authorized,
     // isLoggedIn: state => state.auth.loggedIn,
     isAuthenticated(state) {
-      console.log('store getter isAuthenticated')
       if (state.auth.user) {
         return state.auth.user.token;
       }
       return false;
     },
     isParent(state) {
-      const user = JSON.parse(localStorage.getItem('user'));
-      console.log(user)
-      if (user) {
-        console.log('yes')
-        console.log( state.auth.user)
-        return user.isParent;
+      console.log(state.auth.user)
+      if (state.auth.user) {
+        return state.auth.user.isParent;
       }
-      return false;
+      return true;
+    },
+    consent(state) {
+      if (state.auth.user) {
+        return state.auth.user.consent;
+      }
+      return true;
     }
   }
 });

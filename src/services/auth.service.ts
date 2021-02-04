@@ -17,16 +17,17 @@ class AuthService {
                     const storageUser = {
                         token: response.data.token,
                         consent: response.data.user.consent,
-                        isParent: response.data.user.consent,
+                        isParent: response.data.user.isParent,
                         parentId: response.data.user.parentId,
                         email: response.data.user.email,
                         userId: response.data.user._id
                     };
-                    console.log('there is a token');
                     console.log('adding user in storage');
+                    console.log(storageUser);
                     console.log(JSON.stringify(storageUser));
                     localStorage.setItem('user', JSON.stringify(storageUser));
                     console.log(localStorage)
+                    return storageUser;
                 }
                 return response.data;
             })
