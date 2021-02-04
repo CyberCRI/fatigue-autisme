@@ -19,7 +19,8 @@ class AuthService {
                         consent: response.data.user.consent,
                         isParent: response.data.user.consent,
                         parentId: response.data.user.parentId,
-                        email: response.data.user.email
+                        email: response.data.user.email,
+                        userId: response.data.user._id
                     };
                     console.log('there is a token');
                     console.log('adding user in storage');

@@ -291,7 +291,7 @@ export default {
             {
               headers: {
                 "content-type": "application/json",
-                Authorization: "Bearer " + this.$store.state.token
+                Authorization: "Bearer " + this.$store.state.auth.user.token
               }
             }
           )

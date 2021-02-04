@@ -830,7 +830,7 @@ export default {
             {
               headers: {
                 "content-type": "application/json",
-                Authorization: "Bearer " + this.$store.state.token
+                Authorization: "Bearer " + this.$store.state.auth.user.token
               }
             }
           )
@@ -1025,8 +1025,7 @@ export default {
       return progression;
     },
     identifiant() {
-      const str = this.$store.state.userId;
-      return str.substring(str.length - 8, str.length);
+      return this.$store.state.auth.user.parentId;
     }
   }
 };

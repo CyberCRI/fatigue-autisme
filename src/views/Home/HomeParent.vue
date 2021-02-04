@@ -111,11 +111,11 @@ export default {
         .get(
           process.env.VUE_APP_ROOT_API +
             "/renseignement/" +
-            this.$store.state.userId,
+            this.$store.state.auth.user.userId,
           {
             headers: {
               "content-type": "application/json",
-              Authorization: "Bearer " + this.$store.state.token
+              Authorization: "Bearer " + this.$store.state.auth.user.token
             }
           }
         )
@@ -127,11 +127,11 @@ export default {
             .get(
               process.env.VUE_APP_ROOT_API +
                 "/questionnaire/" +
-                this.$store.state.userId,
+                this.$store.state.auth.user.userId,
               {
                 headers: {
                   "content-type": "application/json",
-                  Authorization: "Bearer " + this.$store.state.token
+                  Authorization: "Bearer " + this.$store.state.auth.user.token
                 }
               }
             )
