@@ -23,132 +23,137 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/",
-    name: "Home",
+    path: '/',
+    name: 'root',
+    component: Home
+  },
+  {
+    path: "/accueil",
+    name: "home",
     component: Home,
-    meta: {
-      requiresAuth: true
-    }
+    // meta: {
+    //   requiresAuth: true
+    // }
   },
   {
     path: "/consentement",
     name: "Consentement",
     component: Consentement,
-    meta: {
-      requiresAuth: true
-    }
+    // meta: {
+    //   requiresAuth: true
+    // }
   },
   {
     path: "/authorization",
     name: "Authorization",
     component: Authorization,
-    meta: {
-      guest: true
-    }
+    // meta: {
+    //   guest: true
+    // }
   },
   {
     path: "/login",
     name: "Login",
     component: Login,
-    meta: {
-      guest: true
-    }
+    // meta: {
+    //   guest: true
+    // }
   },
   {
     path: "/signup",
     name: "Signup",
     component: Signup,
-    meta: {
-      guest: true
-    }
+    // meta: {
+    //   guest: true
+    // }
   },
   {
     path: "/logout",
     name: "Logout",
     component: Logout,
-    meta: {
-      requiresAuth: true
-    }
+    // meta: {
+    //   requiresAuth: true
+    // }
   },
   {
     path: "/forgot",
     name: "Forgot",
     component: Forgot,
-    meta: {
-      guest: true
-    }
+    // meta: {
+    //   guest: true
+    // }
   },
   {
     path: "/ficherenseignement",
     name: "ficherenseignement",
     component: FicheRenseignement,
-    meta: {
-      requiresAuth: true
-    }
+    // meta: {
+    //   requiresAuth: true
+    // }
   },
   {
     path: "/questionnaire",
     name: "questionnaire",
     component: Questionnaire,
-    meta: {
-      requiresAuth: true
-    }
+    // meta: {
+    //   requiresAuth: true
+    // }
   },
   {
     path: "/path",
     name: "Path",
     component: HomeChild,
-    meta: {
-      guest: true
-    }
+    // meta: {
+    //   guest: true
+    // }
   },
   {
     path: "/enfants/questionnaire/intro",
     name: "Questionnaire-Enfants-Intro",
     component: SurveyChildIntro,
-    meta: {
-      guest: true
-    }
+    // meta: {
+    //   guest: true
+    // }
   },
   {
     path: "/enfants/questionnaire/partA",
     name: "Questionnaire-Enfants-PartA",
     component: SurveyChildPartA,
-    meta: {
-      guest: true
-    }
+    // meta: {
+    //   guest: true
+    // }
   },
   {
     path: "/enfants/questionnaire/partB",
     name: "Questionnaire-Enfants-PartB",
     component: SurveyChildPartB,
-    meta: {
-      guest: true
-    }
+    // meta: {
+    //   guest: true
+    // }
   },
   {
     path: "/enfants/questionnaire/partC",
     name: "Questionnaire-Enfants-PartC",
     component: SurveyChildPartC,
-    meta: {
-      guest: true
-    }
+    // meta: {
+    //   guest: true
+    // }
   },
   {
     path: "/enfants/questionnaire/partD",
     name: "Questionnaire-Enfants-PartD",
     component: SurveyChildPartD,
-    meta: {
-      guest: true
-    }
+    // meta: {
+    //   guest: true
+    // }
   },
   {
     path: "/enfants/questionnaire/partE",
     name: "Questionnaire-Enfants-PartE",
     component: SurveyChildPartE,
-    meta: {
-      guest: true
-    }
+    // meta: {
+    //   guest: true
+    // }
   }
 ];
 
@@ -159,19 +164,41 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  window.scrollTo(0, 0);
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.getters.isAuthenticated) {
-      next({
-        name: "Login",
-        params: { nextUrl: to.fullPath }
-      });
-    } else {
-      next();
+
+  const isAuthorized = store.getters.isAuthorized;
+  if (to.path === '/authorization') {
+    next();
+  } else {
+    if (!isAuthorized) {
+      next('/authorization');
     }
+  }
+  const publicPages = ['/login', '/signup', '/forgot'];
+  const authRequired = !publicPages.includes(to.path);
+  // const isLoggedIn = store.getters.isLoggedIn;
+  const isAuthenticated = store.getters.isAuthenticated;
+  // const LoggedIn = localStorage.getItem('loggedIn');
+
+  if (authRequired && !isAuthenticated) {
+    next('/login');
   } else {
     next();
   }
+  
+
+  // window.scrollTo(0, 0);
+  // if (to.matched.some(record => record.meta.requiresAuth)) {
+  //   if (!store.getters.isAuthenticated) {
+  //     next({
+  //       name: "Login",
+  //       params: { nextUrl: to.fullPath }
+  //     });
+  //   } else {
+  //     next();
+  //   }
+  // } else {
+  //   next();
+  // }
 });
 
 export default router;

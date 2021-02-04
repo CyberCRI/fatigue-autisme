@@ -150,13 +150,13 @@ export default {
           .patch(
             process.env.VUE_APP_ROOT_API + "/users",
             {
-              id: this.$store.state.userId,
+              // id: this.$store.state.auth.user.userId,
               consent: true
             },
             {
               headers: {
                 "content-type": "application/json",
-                Authorization: "Bearer " + this.$store.state.token
+                Authorization: "Bearer " + this.$store.state.auth.user.token
               }
             }
           )

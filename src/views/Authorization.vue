@@ -18,7 +18,7 @@
                 <h1 class="titre">Étude sur la fatigabilité cognitive dans l’autisme</h1>
               </v-row>
               <v-card-text>
-                <v-form>
+                <v-form v-on:submit.prevent="authorize">
                   <v-text-field
                     label="Code Authorization"
                     name="authorizationCode"
@@ -49,7 +49,7 @@
 
 <script>
 import { validationMixin } from "vuelidate";
-import { required, email, minLength } from "vuelidate/lib/validators";
+import { required } from "vuelidate/lib/validators";
 export default {
   components: { },
   data() {
@@ -66,13 +66,22 @@ export default {
   },
   methods: {
     authorize() {
-      this.error = "";
-      if(this.authorizationCode === "3189") {
-        this.$store.commit("AUTHORIZE", this.authorizationCode);
-        this.$router.push("/login");
-      } else {
-        this.error = "Code incorrect";
-      }
+      this.$store.dispatch('authorize', this.authorizationCode).then(
+        () => {
+          this.$router.push('/login');
+        },
+        () => {
+          this.error = "Code incorrect";
+        }
+      );
+      // }
+      // this.error = "";
+      // if(this.authorizationCode === "3189") {
+      //   this.$store.commit("AUTHORIZE", this.authorizationCode);
+      //   this.$router.push("/login");
+      // } else {
+      //   this.error = "Code incorrect";
+      // }
     },
     setLayout(layout) {
       this.$store.commit("SET_LAYOUT", layout);

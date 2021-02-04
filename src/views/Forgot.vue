@@ -100,13 +100,15 @@ export default {
           )
           .then(response => {
             this.isLoading = false;
-            const data = {
-              token: response.data.token,
-              email: response.data.user.email,
-              userId: response.data.user._id,
-              consent: response.data.user.consent
-            };
-            this.$store.commit("LOGIN_SUCCESS", data);
+            // const data = {
+            //   token: response.data.token,
+            //   email: response.data.user.email,
+            //   userId: response.data.user._id,
+            //   consent: response.data.user.consent,
+            //   isParent: response.data.user.isParent,
+            //   parentId: response.data.parentId
+            // };
+            this.$store.commit("LOGIN_SUCCESS", response.data);
             this.setLayout("app-layout");
             this.$router.push({ path: "/" });
           })

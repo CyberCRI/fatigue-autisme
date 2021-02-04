@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 import { validationMixin } from "vuelidate";
 import { required, email, minLength } from "vuelidate/lib/validators";
 export default {
@@ -110,35 +110,51 @@ export default {
       this.$v.$touch();
       if (!this.$v.$anyError) {
         this.isLoading = true;
-        axios
-          .post(
-            process.env.VUE_APP_ROOT_API + "/users/login",
-            {
-              email: this.email,
-              password: this.password,
-            },
-            {
-              headers: {
-                "content-type": "application/json",
-              },
-            }
-          )
-          .then((response) => {
-            this.isLoading = false;
-            const data = {
-              token: response.data.token,
-              email: response.data.user.email,
-              userId: response.data.user._id,
-              consent: response.data.user.consent,
-            };
-            this.$store.commit("LOGIN_SUCCESS", data);
+
+        this.$store.dispatch('login', {
+          email: this.email,
+          password: this.password
+        }).then(
+          () => {
             this.setLayout("app-layout");
-            this.$router.push({ path: "/" });
-          })
-          .catch((error) => {
+            this.$router.push('/accueil');
+          },
+          error => {
             this.isLoading = false;
-            this.error = error.response.data;
-          });
+            this.error = error;
+
+          }
+        );
+
+        // axios
+        //   .post(
+        //     process.env.VUE_APP_ROOT_API + "/users/login",
+        //     {
+        //       email: this.email,
+        //       password: this.password,
+        //     },
+        //     {
+        //       headers: {
+        //         "content-type": "application/json",
+        //       },
+        //     }
+        //   )
+        //   .then((response) => {
+        //     this.isLoading = false;
+        //     // const data = {
+        //     //   token: response.data.token,
+        //     //   email: response.data.user.email,
+        //     //   userId: response.data.user._id,
+        //     //   consent: response.data.user.consent,
+        //     // };
+        //     this.$store.commit("LOGIN_SUCCESS", response.data);
+        //     this.setLayout("app-layout");
+        //     this.$router.push({ path: "/accueil" });
+        //   })
+        //   .catch((error) => {
+        //     this.isLoading = false;
+        //     this.error = error.response.data;
+        //   });
       }
     },
   },
