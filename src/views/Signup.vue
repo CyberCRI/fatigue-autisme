@@ -5,8 +5,9 @@
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
-            <v-alert v-if="error" type="error">
-              Une erreur s'est produite
+            <v-alert v-if="errorMessage" type="error">
+              {{ errorMessage }}
+              <!-- Une erreur s'est produite -->
             </v-alert>
             <v-alert v-if="success" type="success">
               Votre compte a bien été créé
@@ -96,7 +97,8 @@ import { required, email, minLength, sameAs } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
-      error: false,
+      errorMessage: '',
+      // error: false,
       success: false,
       isLoading: false,
       email: "",
@@ -139,7 +141,9 @@ export default {
             process.env.VUE_APP_ROOT_API + "/users",
             {
               email: this.email,
-              password: this.password
+              password: this.password,
+              isChild: this.enfant,
+              parentId: this.parentId
             },
             {
               headers: {
@@ -148,12 +152,14 @@ export default {
             }
           )
           .then(response => {
+            this.errorMessage = '';
             this.isLoading = false;
             this.success = true;
           })
           .catch(error => {
+            this.errorMessage = error.response.data.message || "Une erreur s'est produite";
             this.isLoading = false;
-            this.error = true;
+            this.success = false;
           });
       }
     }
