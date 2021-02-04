@@ -16,14 +16,17 @@
                 <img :src="logoUdp" class="logo-udp" />
               </v-row>
               <v-row class="center">
-                <h1 class="titre">Étude sur la fatigabilité cognitive dans l’autisme</h1>
+                <h1>Étude sur la fatigabilité cognitive dans l’autisme</h1>
+              </v-row>
+              <v-row class="center">
+                <h2 class="titre">Se connecter</h2>
               </v-row>
               <v-card-text>
                 <v-form>
                   <v-text-field
-                    label="Email"
+                    label="Adresse e-mail"
                     name="email"
-                    prepend-icon="mdi-account"
+                    prepend-icon="mdi-email"
                     type="text"
                     v-model="email"
                     required
@@ -32,7 +35,7 @@
                   />
                   <v-text-field
                     id="password"
-                    label="Password"
+                    label="Mot de passe"
                     name="password"
                     prepend-icon="mdi-lock"
                     type="password"
@@ -43,17 +46,26 @@
                     @blur="$v.password.$touch()"
                   />
                 </v-form>
-                <br>
-                <span><a @click="$router.push({path: '/forgot'})">Mot de passe oublié?</a></span>
+                <br />
+                <span
+                  ><a @click="$router.push({ path: '/forgot' })"
+                    >Mot de passe oublié?</a
+                  ></span
+                >
               </v-card-text>
               <v-card-actions>
-                <v-btn @click.prevent="signUp" color="primary"
-                  >Creer un compte</v-btn
-                >
-                <v-spacer />
-                <v-btn @click.prevent="login" color="primary"
-                  >Se connecter</v-btn
-                >
+                <v-row class="center">
+                  <v-col xs="12" md="6">
+                    <v-btn @click.prevent="signUp" color="primary"
+                      >Créer un compte</v-btn
+                    >
+                  </v-col>
+                  <v-col xs="12" md="6">
+                    <v-btn @click.prevent="login" color="success"
+                      >Se connecter</v-btn
+                    >
+                  </v-col>
+                </v-row>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -73,19 +85,19 @@ export default {
       error: "",
       isLoading: false,
       email: "",
-      password: ""
+      password: "",
     };
   },
   mixins: [validationMixin],
   validations: {
     email: {
       required,
-      email
+      email,
     },
     password: {
       required,
-      minLength: minLength(8)
-    }
+      minLength: minLength(8),
+    },
   },
   methods: {
     setLayout(layout) {
@@ -103,32 +115,32 @@ export default {
             process.env.VUE_APP_ROOT_API + "/users/login",
             {
               email: this.email,
-              password: this.password
+              password: this.password,
             },
             {
               headers: {
-                "content-type": "application/json"
-              }
+                "content-type": "application/json",
+              },
             }
           )
-          .then(response => {
+          .then((response) => {
             this.isLoading = false;
             const data = {
               token: response.data.token,
               email: response.data.user.email,
               userId: response.data.user._id,
-              consent: response.data.user.consent
+              consent: response.data.user.consent,
             };
             this.$store.commit("LOGIN_SUCCESS", data);
             this.setLayout("app-layout");
             this.$router.push({ path: "/" });
           })
-          .catch(error => {
+          .catch((error) => {
             this.isLoading = false;
             this.error = error.response.data;
           });
       }
-    }
+    },
   },
   computed: {
     logoCri() {
@@ -143,8 +155,10 @@ export default {
     emailErrors() {
       const errors = [];
       if (!this.$v.email.$dirty) return errors;
-      !this.$v.email.email && errors.push("Doit être une adresse email valide");
-      !this.$v.email.required && errors.push("E-mail requis");
+      !this.$v.email.email &&
+        errors.push("Ceci n'est pas une adresse e-mail valide.");
+      !this.$v.email.required &&
+        errors.push("Veuillez renseigner votre adresse e-mail.");
       return errors;
     },
     passwordErrors() {
@@ -152,13 +166,14 @@ export default {
       if (!this.$v.password.$dirty) return errors;
       !this.$v.password.minLength &&
         errors.push("Doit contenir qu moins 8 caractères");
-      !this.$v.password.required && errors.push("Mot de passe requis.");
+      !this.$v.password.required &&
+        errors.push("Veuillez entrer un mot de passe.");
       return errors;
-    }
+    },
   },
   mounted() {
     this.setLayout("simple-layout");
-  }
+  },
 };
 </script>
 
@@ -178,7 +193,7 @@ export default {
 .titre {
   text-align: center;
   margin: 50px auto;
-  font-size: 40px;
+  font-size: 30px;
 }
 .center {
   text-align: center;

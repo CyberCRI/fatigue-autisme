@@ -4,7 +4,7 @@
     <v-main>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
-          <v-col cols="12" sm="8" md="4">
+          <v-col cols="12" xs="12" sm="8" md="4">
             <v-alert v-if="errorMessage" type="error">
               {{ errorMessage }}
             </v-alert>
@@ -22,8 +22,8 @@
                 <h2 class="titre">Créer un compte</h2>
               </v-row>
               <v-row align="center" justify="center">
-                <v-col sm="4">Je suis: </v-col>
-                <v-col sm="4"><v-select
+                <v-col sm="3">Je suis: </v-col>
+                <v-col sm="6"><v-select
                   :items="['Un parent', 'Un.e lycéen.ne']"
                   v-model="whoAmI"
                 ></v-select></v-col>
@@ -81,7 +81,7 @@
               <v-card-actions>
                 <v-btn @click.prevent="login" color="primary">Retour</v-btn>
                 <v-spacer />
-                <v-btn @click.prevent="signUp" color="primary"
+                <v-btn @click.prevent="signUp" color="success"
                   >Créer un compte</v-btn
                 >
               </v-card-actions>
