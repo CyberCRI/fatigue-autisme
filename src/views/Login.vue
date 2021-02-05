@@ -5,8 +5,8 @@
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
-            <v-alert v-if="error !== ''" type="error">
-              {{ error }}
+            <v-alert v-if="errorMessage" type="error">
+              {{ errorMessage }}
             </v-alert>
             <br />
             <v-card class="elevation-12">
@@ -82,7 +82,7 @@ import { required, email, minLength } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
-      error: "",
+      errorMessage: '',
       isLoading: false,
       email: "",
       password: "",
@@ -107,6 +107,7 @@ export default {
       this.$router.push({ path: "/signup" });
     },
     login() {
+      this.errorMessage = '';
       this.$v.$touch();
       if (!this.$v.$anyError) {
         this.isLoading = true;
@@ -120,8 +121,8 @@ export default {
             this.$router.push('/accueil');
           },
           error => {
+            this.errorMessage = error.response.data.message || "Une erreur s'est produite";
             this.isLoading = false;
-            this.error = error;
 
           }
         );
