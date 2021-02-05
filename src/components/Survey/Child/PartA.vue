@@ -8,7 +8,7 @@
     <v-card class="pa-md-4 mb-4">
       <v-row class="ma-5" sm="12">
         <h3>
-          A.1 Pouvez-vous estimer l’intensité de votre fatigue mentale dans les
+          1. Pouvez-vous estimer l’intensité de votre fatigue mentale dans les
           situations suivantes :
         </h3>
       </v-row>
@@ -103,7 +103,7 @@
       <section id="A11" v-if="relevantA11">
         <v-row class="ma-8" sm="12" v-if="relevantA11">
           <h4>
-            A.1.1 Pouvez-vous évaluer, à l’aide de la jauge, l’intensité de
+            1.1 Pouvez-vous évaluer, à l’aide de la jauge, l’intensité de
             cette fatigue mentale :
           </h4>
         </v-row>
@@ -133,7 +133,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          A.2 Diriez-vous que la fatigue cognitive est plus importante depuis
+          2. Diriez-vous que la fatigue cognitive est plus importante depuis
           que vous êtes entré.e au lycée ?
         </h3>
       </v-row>
@@ -152,7 +152,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          A.3 <u>Lorsque vous vivez des périodes de fatigue mentale</u>, à quel
+          3. <u>Lorsque vous vivez des périodes de fatigue mentale</u>, à quel
           point les situations suivantes vous demandent-elles
           <u>plus d’efforts que d’habitude</u> :
         </h3>
@@ -185,7 +185,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          A.4 De façon générale, avez-vous le sentiment de devoir fournir
+          4. De façon générale, avez-vous le sentiment de devoir fournir
           davantage d’efforts que les autres jeunes de votre âge dans
           <u>certaines</u> situations de la vie quotidienne ?
         </h3>
@@ -202,7 +202,7 @@
 
       <section id="A41" v-if="relevantA41">
         <v-row class="ma-5" sm="12">
-          <h4>A.4.1 Si oui, souhaitez-vous préciser :</h4>
+          <h4>4.1 Si oui, souhaitez-vous préciser :</h4>
         </v-row>
         <v-row justify="center">
           <v-col sm="10">

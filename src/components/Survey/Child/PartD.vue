@@ -11,7 +11,7 @@
     <v-card class="pa-md-4 mb-4">
       <v-row class="ma-5" sm="12">
         <h3>
-          D.1 Lors de périodes de fatigue cognitive importante, avez-vous
+          1. Lors de périodes de fatigue cognitive importante, avez-vous
           l’impression de « perdre » temporairement certaines de vos capacités,
           compétences ou habiletés :
         </h3>
@@ -29,7 +29,7 @@
 
       <section v-if="relevantD11">
         <v-row class="ma-5" sm="12">
-          <h4>D.1.1 Souhaitez-vous préciser :</h4>
+          <h4>1.1 Souhaitez-vous préciser :</h4>
         </v-row>
         <v-row justify="center">
           <v-col sm="10">
@@ -48,7 +48,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          D.2 Lors de périodes de fatigue cognitive importante, avez-vous
+          2. Lors de périodes de fatigue cognitive importante, avez-vous
           constaté des changements au niveau de votre mémoire :
         </h3>
       </v-row>
@@ -65,7 +65,7 @@
 
       <section v-if="relevantD21">
         <v-row class="ma-5" sm="12">
-          <h4>D.2.1 Souhaitez-vous préciser :</h4>
+          <h4>2.1 Souhaitez-vous préciser :</h4>
         </v-row>
         <v-row justify="center">
           <v-col sm="10">
@@ -84,7 +84,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          D.3 <u>Lors de périodes de fatigue mentale importante</u>, pouvez-vous
+          3. <u>Lors de périodes de fatigue mentale importante</u>, pouvez-vous
           estimer à quel point les activités ou situations scolaires suivantes
           vous demandent <u>plus d’efforts que d’habitude</u> :
         </h3>
@@ -114,7 +114,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          D.4 Lors des périodes de fatigue mentale importante, avez-vous
+          4. Lors des périodes de fatigue mentale importante, avez-vous
           constaté des changements au niveau de votre attention, lors de tâches
           ou d’activités <u>non scolaires</u> :
         </h3>
@@ -132,7 +132,7 @@
 
       <section v-if="relevantD41">
       <v-row class="ma-5" sm="12">
-        <h4>D.4.1 Souhaitez-vous préciser :</h4>
+        <h4>4.1 Souhaitez-vous préciser :</h4>
       </v-row>
       <v-row justify="center">
           <v-col sm="10">
@@ -152,7 +152,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          D.5 Lors de périodes de fatigue importante, avez-vous l’impression
+          5. Lors de périodes de fatigue importante, avez-vous l’impression
           d’être plus lent.e pour réaliser différentes tâches du quotidien,
           qu’elles soient scolaires ou non :
         </h3>
@@ -172,7 +172,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          D.6 <u>Lors de périodes de fatigue importante</u>, avez-vous constaté des
+          6. <u>Lors de périodes de fatigue importante</u>, avez-vous constaté des
           changements au niveau de votre gestion des émotions :
         </h3>
       </v-row>

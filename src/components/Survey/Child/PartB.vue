@@ -10,7 +10,7 @@
     <br />
     <v-card class="pa-md-4 mb-4">
       <v-row class="ma-5" sm="12">
-        <h3>B.1 Comment décririez-vous votre emploi du temps :</h3>
+        <h3>1. Comment décririez-vous votre emploi du temps :</h3>
       </v-row>
 
       <Indications :items="ratingLabels1" />
@@ -37,7 +37,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          B.2 Parmi ces 12 propositions, pouvez-vous classer les
+          2. Parmi ces 12 propositions, pouvez-vous classer les
           <u>5 plus fatigantes</u>, de 1 (la plus fatigante de toute) à 5 :
         </h3>
       </v-row>
@@ -84,7 +84,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          B.3 À l’heure actuelle, il y-a-t-il une ou plusieurs conséquences de
+          3. À l’heure actuelle, il y-a-t-il une ou plusieurs conséquences de
           la fatigue cognitive qui vous paraissent particulièrement difficiles à
           supporter ?
         </h3>

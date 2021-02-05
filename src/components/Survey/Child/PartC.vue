@@ -11,7 +11,7 @@
     <v-card class="pa-md-4 mb-4">
       <v-row class="ma-5" sm="12">
         <h3>
-          C.1 Lorsque vous vivez des périodes de fatigue mentale, diriez-vous
+          1. Lorsque vous vivez des périodes de fatigue mentale, diriez-vous
           que cela a des répercussions sur votre état physique :
         </h3>
       </v-row>
@@ -28,7 +28,7 @@
       <section v-if="relevantC11">
         <v-row class="ma-5" sm="12">
           <h4>
-            C.1.1 Pouvez-vous préciser de quelle(s) façon(s) la fatigue
+            1.1 Pouvez-vous préciser de quelle(s) façon(s) la fatigue
             cognitive impacte votre état physique :
           </h4>
         </v-row>
@@ -89,7 +89,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          C.2 Pouvez-vous évaluer, à l’aide de la jauge, la gêne liée aux
+          2. Pouvez-vous évaluer, à l’aide de la jauge, la gêne liée aux
           différents stimuli sensoriels, en temps normal et lors des périodes de
           fatigue cognitive :
         </h3>
@@ -161,7 +161,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          C.3 Lors de périodes de fatigue mentale, avez-vous constaté des
+          3. Lors de périodes de fatigue mentale, avez-vous constaté des
           changements au niveau du sommeil :
         </h3>
       </v-row>
@@ -227,7 +227,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          C.4 <u>Lors de périodes de fatigue mentale importante</u>, avez-vous
+          4. <u>Lors de périodes de fatigue mentale importante</u>, avez-vous
           constaté des variations de cette fatigue
           <u>en fonction de l’heure</u> de la journée :
         </h3>
@@ -244,7 +244,7 @@
       <section v-if="relevantC41">
         <v-row class="ma-5" sm="12">
           <h4>
-            C.4.1 À quel moment de la journée vous sentez-vous généralement le
+            4.1 À quel moment de la journée vous sentez-vous généralement le
             plus en forme :
           </h4>
         </v-row>
@@ -278,7 +278,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          C.5 <u>Lors de périodes de fatigue cognitive importante</u>, faire une
+          5. <u>Lors de périodes de fatigue cognitive importante</u>, faire une
           sieste ou vous octroyer un temps de repos vous permet-il de récupérer
           de l’énergie :
         </h3>
@@ -311,7 +311,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          C.6 Vous arrive-t-il de consommer des aliments, des boissons ou des
+          6. Vous arrive-t-il de consommer des aliments, des boissons ou des
           médicaments (sur ordonnance ou hors ordonnance) pour avoir davantage
           d’énergie :
         </h3>
@@ -346,7 +346,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          C.7 Identifier les signaux physiques et psychologiques de fatigue que
+          7. Identifier les signaux physiques et psychologiques de fatigue que
           vous envoie votre corps, cela vous paraît :
         </h3>
       </v-row>

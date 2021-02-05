@@ -11,7 +11,7 @@
     <v-card class="pa-md-4 mb-4">
       <v-row class="ma-5" sm="12">
         <h3>
-          E.1 À l’heure actuelle, diriez-vous que la fatigue cognitive constitue
+          1. À l’heure actuelle, diriez-vous que la fatigue cognitive constitue
           un motif d’inquiétude pour vous, concernant les aspects suivants :
         </h3>
       </v-row>
@@ -101,7 +101,7 @@ ressources nécessaires pour affronter une situation particulière
       <v-divider class="ma-4"></v-divider>
       <v-row class="ma-5" sm="12">
         <h3>
-          E.2 Il y a-t-il des aides ou soutiens particuliers qui vous
+          2. Il y a-t-il des aides ou soutiens particuliers qui vous
           paraitraient utiles et dont vous aimeriez nous faire part (dont vous
           avez déjà connaissance ou qui vous semblent manquer) ?
         </h3>
@@ -121,7 +121,7 @@ ressources nécessaires pour affronter une situation particulière
       <v-divider class="ma-4"></v-divider>
       <v-row class="ma-5" sm="12">
         <h3>
-          E.3 Souhaiteriez-vous ajouter certains éléments concernant votre
+          3. Souhaiteriez-vous ajouter certains éléments concernant votre
           expérience de la fatigue cognitive ?
         </h3>
       </v-row>
