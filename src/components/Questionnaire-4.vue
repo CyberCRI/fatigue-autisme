@@ -173,7 +173,7 @@ export default {
             {
               id: 4,
               content: this.questionnaire4,
-              userId: this.$store.state.userId
+              userId: this.$store.state.auth.user.userId
             },
             {
               headers: {

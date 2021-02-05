@@ -11,19 +11,16 @@ class UserService {
         );
     }
 
-    sendConsent() {
+    sendConsent(userId) {
         console.log('user service sendConsent')
         return axios
           .patch(
             process.env.VUE_APP_ROOT_API + "/users",
             {
-              // id: this.$store.state.auth.user.userId,
+              id: userId,
               consent: true
             },{
                 headers: authHeader()
-            })
-            .then(response => {
-                console.log(response);
             });
     }
 

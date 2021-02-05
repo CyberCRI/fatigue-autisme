@@ -286,7 +286,7 @@ export default {
             {
               id: 2,
               content: this.questionnaire2,
-              userId: this.$store.state.userId
+              userId: this.$store.state.auth.user.userId
             },
             {
               headers: {

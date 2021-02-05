@@ -18,6 +18,8 @@ class AuthService {
                         userId: response.data.user._id
                     };
                     localStorage.setItem('user', JSON.stringify(storageUser));
+                    console.log('storageUser:')
+                    console.log(storageUser)
                     
                     if (!storageUser.isParent && response.data.questionnaire) {
                         localStorage.setItem('childQuestionnaire', JSON.stringify(response.data.questionnaire));

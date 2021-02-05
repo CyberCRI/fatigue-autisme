@@ -712,7 +712,7 @@ export default {
             process.env.VUE_APP_ROOT_API + "/questionnaire",
             {
               content: this.questionnaire1,
-              userId: this.$store.state.userId
+              userId: this.$store.state.auth.user.userId
             },
             {
               headers: {

@@ -160,7 +160,7 @@ export default {
             {
               id: 6,
               content: this.questionnaire6,
-              userId: this.$store.state.userId
+              userId: this.$store.state.auth.user.userId
             },
             {
               headers: {

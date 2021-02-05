@@ -123,7 +123,7 @@ export default {
           {
             id: 5,
             content: this.questionnaire5,
-            userId: this.$store.state.userId
+            userId: this.$store.state.auth.user.userId
           },
           {
             headers: {

@@ -180,8 +180,15 @@ export default new Vuex.Store({
     },
     sendConsent({ commit }) {
       console.log('store action send consent');
-      UserService.sendConsent();
-      commit('consent', true);
+      return UserService.sendConsent(this.state.auth.user.userId).then(
+        () => {
+          commit('consent', true);
+          return Promise.resolve();
+        },
+        error => {
+          return Promise.reject(error);
+        }
+      );
     }
   },
   modules: {},
