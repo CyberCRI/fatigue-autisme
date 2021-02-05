@@ -110,12 +110,31 @@
 
         <v-row justify="center">
           <v-col sm="4">
-            Durant la journée où vous avez été le / la plus fatigué.e la semaine
-            passée
+            Durant la journée où vous avez été <b>le / la plus</b> fatigué.e <b>la semaine
+            passée</b>
           </v-col>
           <v-col sm="6">
             <v-slider
-              v-model="A11"
+              v-model="A11a"
+              thumb-label="always"
+              min="0"
+              max="100"
+            >
+              <template v-slot:prepend> Aucune fatigue </template>
+              <template v-slot:append>
+                Aussi fatigué.e qu’il est possible de l’être
+              </template>
+            </v-slider>
+          </v-col>
+        </v-row>
+        <v-row justify="center">
+          <v-col sm="4">
+            Durant la journée où vous avez été <b>le / la moins</b> fatigué.e <b>la semaine
+            passée</b>
+          </v-col>
+          <v-col sm="6">
+            <v-slider
+              v-model="A11b"
               thumb-label="always"
               min="0"
               max="100"
@@ -248,7 +267,8 @@ export default {
       A1b: "",
       A1c: "",
       A1d: "",
-      A11: 0,
+      A11a: 0,
+      A11b: 0,
       A2: "",
       A3a: "",
       A3b: "",
@@ -303,7 +323,7 @@ export default {
   },
   computed: {
     relevantA11() {
-      return this.A1a > 1;
+      return this.A1a > 1 || this.A1b > 1 || this.A1d > 1;
     },
     relevantA41() {
       return this.A4 === "Oui";
@@ -346,6 +366,9 @@ export default {
         A1b: this.A1b,
         A1c: this.A1c,
         A1d: this.A1d,
+
+        A11a: this.A11a,
+        A11b: this.A11b,
         
         A2: this.A2,
         A3a: this.A3a,
@@ -383,6 +406,8 @@ export default {
     this.A1b = this.$store.state.childQuestionnaire.A1b || ''
     this.A1c = this.$store.state.childQuestionnaire.A1c || ''
     this.A1d = this.$store.state.childQuestionnaire.A1d || ''
+    this.A11a = this.$store.state.childQuestionnaire.A11a || ''
+    this.A11b = this.$store.state.childQuestionnaire.A11b || ''
     this.A2 = this.$store.state.childQuestionnaire.A2 || ''
     this.A3a = this.$store.state.childQuestionnaire.A3a || ''
     this.A3b = this.$store.state.childQuestionnaire.A3b || ''
