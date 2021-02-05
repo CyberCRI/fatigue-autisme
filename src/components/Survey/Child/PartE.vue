@@ -207,6 +207,7 @@ export default {
   },
   mounted() {
     console.log('part E mounted')
+    window.scrollTo(0, 0);
     this.E1a = this.$store.state.childQuestionnaire.E1a || ''
     this.E1b = this.$store.state.childQuestionnaire.E1b || ''
     this.E1c = this.$store.state.childQuestionnaire.E1c || ''

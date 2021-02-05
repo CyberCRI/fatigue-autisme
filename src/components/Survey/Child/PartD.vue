@@ -84,9 +84,9 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          3. <u>Lors de périodes de fatigue mentale importante</u>, pouvez-vous
+          3. <strong :class="this.$store.state.settings.accentTextClass">Lors de périodes de fatigue mentale importante</strong>, pouvez-vous
           estimer à quel point les activités ou situations scolaires suivantes
-          vous demandent <u>plus d’efforts que d’habitude</u> :
+          vous demandent <strong :class="this.$store.state.settings.accentTextClass">plus d’efforts que d’habitude</strong> :
         </h3>
       </v-row>
 
@@ -116,7 +116,7 @@
         <h3>
           4. Lors des périodes de fatigue mentale importante, avez-vous
           constaté des changements au niveau de votre attention, lors de tâches
-          ou d’activités <u>non scolaires</u> :
+          ou d’activités <strong :class="this.$store.state.settings.accentTextClass">non scolaires</strong> :
         </h3>
       </v-row>
 
@@ -172,7 +172,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          6. <u>Lors de périodes de fatigue importante</u>, avez-vous constaté des
+          6. <strong :class="this.$store.state.settings.accentTextClass">Lors de périodes de fatigue importante</strong>, avez-vous constaté des
           changements au niveau de votre gestion des émotions :
         </h3>
       </v-row>
@@ -379,6 +379,7 @@ export default {
   },
   mounted() {
     console.log('part D mounted')
+    window.scrollTo(0, 0);
     this.D1 = this.$store.state.childQuestionnaire.D1 || ''
     console.log('TODO');
   }

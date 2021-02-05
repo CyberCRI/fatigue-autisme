@@ -38,7 +38,7 @@
       <v-row class="ma-5" sm="12">
         <h3>
           2. Parmi ces 12 propositions, pouvez-vous classer les
-          <u>5 plus fatigantes</u>, de 1 (la plus fatigante de toute) à 5 :
+          <strong :class="this.$store.state.settings.accentTextClass">5 plus fatigantes</strong>, de 1 (la plus fatigante de toute) à 5 :
         </h3>
       </v-row>
 
@@ -270,6 +270,7 @@ export default {
   },
   mounted() {
     console.log('part B mounted')
+    window.scrollTo(0, 0);
     this.B1a = this.$store.state.childQuestionnaire.B1a || ''
     this.B1b = this.$store.state.childQuestionnaire.B1b || ''
     this.B1c = this.$store.state.childQuestionnaire.B1c || ''

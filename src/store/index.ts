@@ -7,6 +7,9 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    settings: {
+      accentTextClass: `primary--text text--darken-2`
+    },
     auth: {
       authorized: localStorage.getItem("authorized") === 'true' || false,
       loggedIn: false,

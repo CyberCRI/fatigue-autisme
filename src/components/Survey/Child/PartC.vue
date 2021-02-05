@@ -227,9 +227,9 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          4. <u>Lors de périodes de fatigue mentale importante</u>, avez-vous
+          4. <strong :class="this.$store.state.settings.accentTextClass">Lors de périodes de fatigue mentale importante</strong>, avez-vous
           constaté des variations de cette fatigue
-          <u>en fonction de l’heure</u> de la journée :
+          <strong :class="this.$store.state.settings.accentTextClass">en fonction de l’heure</strong> de la journée :
         </h3>
       </v-row>
       <v-row justify="center">
@@ -278,7 +278,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          5. <u>Lors de périodes de fatigue cognitive importante</u>, faire une
+          5. <strong :class="this.$store.state.settings.accentTextClass">Lors de périodes de fatigue cognitive importante</strong>, faire une
           sieste ou vous octroyer un temps de repos vous permet-il de récupérer
           de l’énergie :
         </h3>
@@ -627,6 +627,7 @@ export default {
   },
   mounted() {
     console.log('part C mounted')
+    window.scrollTo(0, 0);
     this.C1 = this.$store.state.childQuestionnaire.C1 || ''
     console.log('TODO');
   }

@@ -110,8 +110,8 @@
 
         <v-row justify="center">
           <v-col sm="4">
-            Durant la journée où vous avez été <b>le / la plus</b> fatigué.e <b>la semaine
-            passée</b>
+            Durant la journée où vous avez été <strong :class="this.$store.state.settings.accentTextClass">le / la plus</strong> fatigué.e <strong :class="this.$store.state.settings.accentTextClass">la semaine
+            passée</strong>
           </v-col>
           <v-col sm="6">
             <v-slider
@@ -129,8 +129,8 @@
         </v-row>
         <v-row justify="center">
           <v-col sm="4">
-            Durant la journée où vous avez été <b>le / la moins</b> fatigué.e <b>la semaine
-            passée</b>
+            Durant la journée où vous avez été <strong :class="this.$store.state.settings.accentTextClass">le / la moins</strong> fatigué.e <strong :class="this.$store.state.settings.accentTextClass">la semaine
+            passée</strong>
           </v-col>
           <v-col sm="6">
             <v-slider
@@ -171,9 +171,9 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          3. <u>Lorsque vous vivez des périodes de fatigue mentale</u>, à quel
+          3. <strong :class="this.$store.state.settings.accentTextClass">Lorsque vous vivez des périodes de fatigue mentale</strong>, à quel
           point les situations suivantes vous demandent-elles
-          <u>plus d’efforts que d’habitude</u> :
+          <strong :class="this.$store.state.settings.accentTextClass">plus d’efforts que d’habitude</strong> :
         </h3>
       </v-row>
 
@@ -206,7 +206,7 @@
         <h3>
           4. De façon générale, avez-vous le sentiment de devoir fournir
           davantage d’efforts que les autres jeunes de votre âge dans
-          <u>certaines</u> situations de la vie quotidienne ?
+          <strong :class="this.$store.state.settings.accentTextClass">certaines</strong> situations de la vie quotidienne ?
         </h3>
       </v-row>
       <v-row justify="center">
@@ -300,10 +300,10 @@ export default {
       valuesA1: ['1', '2', '3', '4', '5'],
       valuesA3: ['1', '2', '3', 'n/a'],
       questionsA1: [
-                    {question: "En moyenne, sur la <b>dernière</b> semaine scolaire :", model: "A1a"},
-                    {question: "Au cours du <b>dernier</b> week-end :", model: "A1b"},
-                    {question: "Lorsque vous êtes en vacances :", model: "A1c"},
-                    {question: "Au moment précis où vous complétez ce questionnaire :", model: "A1d"}
+                    {question: `En moyenne, sur la <strong class="${this.$store.state.settings.accentTextClass}">dernière</strong> semaine scolaire :`, model: "A1a"},
+                    {question: `Au cours du <strong class="${this.$store.state.settings.accentTextClass}">dernier</strong> week-end :`, model: "A1b"},
+                    {question: `Lorsque vous êtes en vacances :`, model: "A1c"},
+                    {question: `Au moment précis où vous complétez ce questionnaire :`, model: "A1d"}
                   ],
       questionsA3: [
                     {question: "Vous préparer pour la journée (déjeuner, se laver, faire son sac, etc.)", model: "A3a"},
@@ -402,6 +402,7 @@ export default {
   },
   mounted() {
     console.log('part A mounted')
+    window.scrollTo(0, 0);
     this.A1a = this.$store.state.childQuestionnaire.A1a || ''
     this.A1b = this.$store.state.childQuestionnaire.A1b || ''
     this.A1c = this.$store.state.childQuestionnaire.A1c || ''
