@@ -26,6 +26,11 @@ class AuthService {
                     console.log(storageUser);
                     console.log(JSON.stringify(storageUser));
                     localStorage.setItem('user', JSON.stringify(storageUser));
+                    
+                    if (!storageUser.isParent && response.data.questionnaire) {
+                        console.log('adding questionnaire in storage');
+                        localStorage.setItem('childQuestionnaire', JSON.stringify(response.data.questionnaire));
+                    }
                     console.log(localStorage)
                     return storageUser;
                 }
