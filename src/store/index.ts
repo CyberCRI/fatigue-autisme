@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import AuthService from '../services/auth.service';
+import UserService from '../services/user.service';
 
 Vue.use(Vuex);
 
@@ -11,6 +12,8 @@ export default new Vuex.Store({
       loggedIn: false,
       user: JSON.parse(localStorage.getItem('user')) || null
     },
+    // childQuestionnaire: JSON.parse(localStorage.getItem('childQuestionnaire')) || null,
+    childQuestionnaire: JSON.parse(localStorage.getItem("childQuestionnaire")) || {},
     layout: "app-layout",
     // authorizationCode: localStorage.getItem("authorizationCode") || "",
     // userId: localStorage.getItem("userId") || "",
@@ -158,7 +161,10 @@ export default new Vuex.Store({
       console.log('store action logout');
       AuthService.logout();
       commit('logout');
-
+    },
+    saveChildQuestionnaire({ state }) {
+      console.log('store action save child questionnaire');
+      UserService.saveChildQuestionnaire(state.auth.user.userId, state.childQuestionnaire);
     }
   },
   modules: {},

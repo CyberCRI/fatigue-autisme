@@ -220,7 +220,7 @@
       <v-row justify="center">
         <v-btn
           class="btn primary bouton ma-4"
-          @click="$router.push('/enfants/questionnaire/partB')"
+          @click="save"
         >
           Enregistrer et terminer plus tard
         </v-btn>
@@ -239,6 +239,7 @@
 <script>
 import Indications from "../../Indications.vue";
 import Header from '../Header.vue';
+import { mapActions } from 'vuex'
 export default {
   name: "SurveyChildPartA",
   data() {
@@ -339,6 +340,14 @@ export default {
       console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
+  },
+  methods: {
+    ...mapActions([
+      'saveChildQuestionnaire'
+    ]),
+    save() {
+      this.saveChildQuestionnaire()
+    }
   },
   components: {
     Indications,
