@@ -346,6 +346,22 @@ export default {
         A1b: this.A1b,
         A1c: this.A1c,
         A1d: this.A1d,
+        
+        A2: this.A2,
+        A3a: this.A3a,
+        A3b: this.A3b,
+        A3c: this.A3c,
+        A3d: this.A3d,
+        A3e: this.A3e,
+        A3f: this.A3f,
+        A3g: this.A3g,
+        A3h: this.A3h,
+        A3i: this.A3i,
+        A3j: this.A3j,
+        A3k: this.A3k,
+        A3l: this.A3l,
+
+        A4: this.A4,
       }
     }
   },
@@ -367,6 +383,20 @@ export default {
     this.A1b = this.$store.state.childQuestionnaire.A1b || ''
     this.A1c = this.$store.state.childQuestionnaire.A1c || ''
     this.A1d = this.$store.state.childQuestionnaire.A1d || ''
+    this.A2 = this.$store.state.childQuestionnaire.A2 || ''
+    this.A3a = this.$store.state.childQuestionnaire.A3a || ''
+    this.A3b = this.$store.state.childQuestionnaire.A3b || ''
+    this.A3c = this.$store.state.childQuestionnaire.A3c || ''
+    this.A3d = this.$store.state.childQuestionnaire.A3d || ''
+    this.A3e = this.$store.state.childQuestionnaire.A3e || ''
+    this.A3f = this.$store.state.childQuestionnaire.A3f || ''
+    this.A3g = this.$store.state.childQuestionnaire.A3g || ''
+    this.A3h = this.$store.state.childQuestionnaire.A3h || ''
+    this.A3i = this.$store.state.childQuestionnaire.A3i || ''
+    this.A3j = this.$store.state.childQuestionnaire.A3j || ''
+    this.A3k = this.$store.state.childQuestionnaire.A3k || ''
+    this.A3l = this.$store.state.childQuestionnaire.A3l || ''
+    this.A4 = this.$store.state.childQuestionnaire.A4 || ''
   }
 };
 </script>

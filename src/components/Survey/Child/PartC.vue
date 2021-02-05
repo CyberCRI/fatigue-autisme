@@ -395,8 +395,9 @@
 <script>
 import Indications from "../../Indications.vue";
 import Header from "../Header.vue";
+import { mapActions } from 'vuex'
 export default {
-  name: "SurveyChildPartA",
+  name: "SurveyChildPartC",
   data() {
     return {
       C1: "",
@@ -605,11 +606,27 @@ export default {
       console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
+    answers() {
+      return {
+        C1: this.C1
+      }
+    }
+  },
+  methods: {
+    ...mapActions([
+      'saveChildQuestionnaire'
+    ]),
+    save() {
+      this.saveChildQuestionnaire(this.answers)
+    }
   },
   components: {
     Indications,
     Header,
   },
+  mounted() {
+    console.log('part C mounted')
+    this.C1 = this.$store.state.childQuestionnaire.C1 || ''
 };
 </script>
 

@@ -129,6 +129,7 @@
 <script>
 import Indications from "../../Indications.vue";
 import Header from "../Header.vue";
+import { mapActions } from 'vuex'
 export default {
   name: "SurveyChildPartB",
   data() {
@@ -195,23 +196,6 @@ export default {
     };
   },
   computed: {
-    // answersB2() {
-    //   return [this.B2a,
-    //   this.B2b,
-    //   this.B2c,
-    //   this.B2d,
-    //   this.B2e,
-    //   this.B2f,
-    //   this.B2g,
-    //   this.B2h,
-    //   this.B2i,
-    //   this.B2j,
-    //   this.B2k,
-    //   this.B2l]
-    // },
-    // availableB2() {
-    //   return this.answersB2.filter(i => i === '');
-    // },
     availableB2() {
       return this.optionsB2
         .filter((op) => op.rank === "")
@@ -236,8 +220,33 @@ export default {
       const areOk = Object.values(this.completions).filter((a) => a);
       return parseInt((areOk.length / size) * 100.0);
     },
+    answers() {
+      return {
+        B1a: this.B1a,
+        B1b: this.B1b,
+        B1c: this.B1c,
+        B1d: this.B1d,
+        B2a: this.B2a,
+        B2b: this.B2b,
+        B2c: this.B2c,
+        B2d: this.B2d,
+        B2e: this.B2e,
+        B2f: this.B2f,
+        B2g: this.B2g,
+        B2h: this.B2h,
+        B2i: this.B2i,
+        B2j: this.B2j,
+        B2k: this.B2k,
+        B2l: this.B2l,
+        B3: this.B3,
+
+      }
+    }
   },
   methods: {
+    ...mapActions([
+      'saveChildQuestionnaire'
+    ]),
     getRankB2(rank) {
       const res = this.optionsB2.filter((it) => it.rank === rank);
       if (res.length === 1) {
@@ -251,10 +260,33 @@ export default {
     removeB2(rank) {
       this.optionsB2.filter((it) => it.rank === rank)[0].rank = "";
     },
+    save() {
+      this.saveChildQuestionnaire(this.answers)
+    }
   },
   components: {
     Indications,
     Header,
   },
+  mounted() {
+    console.log('part B mounted')
+    this.B1a = this.$store.state.childQuestionnaire.B1a || ''
+    this.B1b = this.$store.state.childQuestionnaire.B1b || ''
+    this.B1c = this.$store.state.childQuestionnaire.B1c || ''
+    this.B1d = this.$store.state.childQuestionnaire.B1d || ''
+    this.B2a = this.$store.state.childQuestionnaire.B2a || ''
+    this.B2b = this.$store.state.childQuestionnaire.B2b || ''
+    this.B2c = this.$store.state.childQuestionnaire.B2c || ''
+    this.B2d = this.$store.state.childQuestionnaire.B2d || ''
+    this.B2e = this.$store.state.childQuestionnaire.B2e || ''
+    this.B2f = this.$store.state.childQuestionnaire.B2f || ''
+    this.B2g = this.$store.state.childQuestionnaire.B2g || ''
+    this.B2h = this.$store.state.childQuestionnaire.B2h || ''
+    this.B2i = this.$store.state.childQuestionnaire.B2i || ''
+    this.B2j = this.$store.state.childQuestionnaire.B2j || ''
+    this.B2k = this.$store.state.childQuestionnaire.B2k || ''
+    this.B2l = this.$store.state.childQuestionnaire.B2l || ''
+    this.B3 = this.$store.state.childQuestionnaire.B3 || ''
+  }
 };
 </script>
