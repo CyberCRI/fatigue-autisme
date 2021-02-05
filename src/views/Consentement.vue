@@ -143,32 +143,45 @@ export default {
   },
   methods: {
     save() {
+      console.log('send consentement')
       this.$v.$touch();
       if (!this.$v.$anyError) {
         this.isLoading = true;
-        axios
-          .patch(
-            process.env.VUE_APP_ROOT_API + "/users",
-            {
-              // id: this.$store.state.auth.user.userId,
-              consent: true
-            },
-            {
-              headers: {
-                "content-type": "application/json",
-                Authorization: "Bearer " + this.$store.state.auth.user.token
-              }
+        console.log('validate ok')
+        this.$store.dispatch('sendConsent')
+          .then(
+            () => {
+              this.isLoading = false;
+              this.$router.push({ path: "/" });
             }
-          )
-          .then(response => {
-            this.isLoading = false;
-            this.$store.commit("CONSENT")
-            this.$router.push({ path: "/" });
-          })
-          .catch(error => {
+          ).catch(error => {
             this.isLoading = false;
             this.error = true;
           });
+        // axios
+        //   .patch(
+        //     process.env.VUE_APP_ROOT_API + "/users",
+        //     {
+        //       // id: this.$store.state.auth.user.userId,
+        //       consent: true
+        //     },
+        //     {
+        //       headers: {
+        //         "content-type": "application/json",
+        //         Authorization: "Bearer " + this.$store.state.auth.user.token
+        //       }
+        //     }
+        //   )
+        //   .then(response => {
+
+        //     this.isLoading = false;
+        //     this.$store.commit("CONSENT")
+        //     this.$router.push({ path: "/" });
+        //   })
+        //   .catch(error => {
+        //     this.isLoading = false;
+        //     this.error = true;
+        //   });
       }
     }
   },
