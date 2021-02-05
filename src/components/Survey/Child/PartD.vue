@@ -219,6 +219,7 @@
 <script>
 import Indications from "../../Indications.vue";
 import Header from "../Header.vue";
+import { mapActions } from 'vuex'
 export default {
   name: "SurveyChildPartD",
   data() {
@@ -357,10 +358,29 @@ export default {
       console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
+    answers() {
+      console.log('TODO');
+      return {
+        D1: this.D1
+      }
+    }
+  },
+  methods: {
+    ...mapActions([
+      'saveChildQuestionnaire'
+    ]),
+    save() {
+      this.saveChildQuestionnaire(this.answers)
+    }
   },
   components: {
     Indications,
     Header,
   },
+  mounted() {
+    console.log('part D mounted')
+    this.D1 = this.$store.state.childQuestionnaire.D1 || ''
+    console.log('TODO');
+  }
 };
 </script>

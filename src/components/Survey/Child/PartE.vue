@@ -144,6 +144,7 @@ ressources nécessaires pour affronter une situation particulière
 <script>
 import Indications from "../../Indications.vue";
 import Header from "../Header.vue";
+import { mapActions } from 'vuex'
 export default {
   name: "SurveyChildPartE",
   data() {
@@ -180,10 +181,38 @@ export default {
       console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
+    answers() {
+      console.log('TODO');
+      return {
+        E1a: this.E1a,
+        E1b: this.E1b,
+        E1c: this.E1c,
+        E1d: this.E1d,
+        E2: this.E2,
+        E3: this.E3,
+      }
+    }
+  },
+  methods: {
+    ...mapActions([
+      'saveChildQuestionnaire'
+    ]),
+    save() {
+      this.saveChildQuestionnaire(this.answers)
+    }
   },
   components: {
     Indications,
     Header,
   },
+  mounted() {
+    console.log('part E mounted')
+    this.E1a = this.$store.state.childQuestionnaire.E1a || ''
+    this.E1b = this.$store.state.childQuestionnaire.E1b || ''
+    this.E1c = this.$store.state.childQuestionnaire.E1c || ''
+    this.E1d = this.$store.state.childQuestionnaire.E1d || ''
+    this.E2 = this.$store.state.childQuestionnaire.E2 || ''
+    this.E3 = this.$store.state.childQuestionnaire.E3 || ''
+  }
 };
 </script>

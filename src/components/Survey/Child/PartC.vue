@@ -607,6 +607,7 @@ export default {
       return parseInt((areOk.length / size) * 100.0);
     },
     answers() {
+      console.log('TODO');
       return {
         C1: this.C1
       }
@@ -627,6 +628,8 @@ export default {
   mounted() {
     console.log('part C mounted')
     this.C1 = this.$store.state.childQuestionnaire.C1 || ''
+    console.log('TODO');
+  }
 };
 </script>
 
