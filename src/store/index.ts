@@ -56,6 +56,10 @@ export default new Vuex.Store({
       }
       localStorage.setItem('childQuestionnaire', JSON.stringify(state.childQuestionnaire));
     },
+    consent(state) {
+      state.auth.user.consent = true;
+      localStorage.setItem('user', JSON.stringify(state.auth.user));
+    },
     SET_LAYOUT(state, payload) {
       state.layout = payload;
       return state;
@@ -173,6 +177,11 @@ export default new Vuex.Store({
       console.log('store action save child questionnaire');
       commit('questionnaire', answers);
       UserService.saveChildQuestionnaire(state.auth.user.userId, state.childQuestionnaire);
+    },
+    sendConsent({ commit }) {
+      console.log('store action send consent');
+      UserService.sendConsent();
+      commit('consent', true);
     }
   },
   modules: {},
