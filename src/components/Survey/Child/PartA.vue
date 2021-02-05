@@ -340,18 +340,33 @@ export default {
       console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
+    answers() {
+      return {
+        A1a: this.A1a,
+        A1b: this.A1b,
+        A1c: this.A1c,
+        A1d: this.A1d,
+      }
+    }
   },
   methods: {
     ...mapActions([
       'saveChildQuestionnaire'
     ]),
     save() {
-      this.saveChildQuestionnaire()
+      this.saveChildQuestionnaire(this.answers)
     }
   },
   components: {
     Indications,
     Header
   },
+  mounted() {
+    console.log('part A mounted')
+    this.A1a = this.$store.state.childQuestionnaire.A1a || ''
+    this.A1b = this.$store.state.childQuestionnaire.A1b || ''
+    this.A1c = this.$store.state.childQuestionnaire.A1c || ''
+    this.A1d = this.$store.state.childQuestionnaire.A1d || ''
+  }
 };
 </script>

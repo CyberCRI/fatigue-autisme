@@ -49,6 +49,13 @@ export default new Vuex.Store({
       state.auth.loggedIn = false;
       state.auth.user = null;
     },
+    questionnaire(state, answers) {
+      console.log('mutation questionnaire')
+      for (const key in answers) {
+        state.childQuestionnaire[key] = answers[key];
+      }
+      localStorage.setItem('childQuestionnaire', JSON.stringify(state.childQuestionnaire));
+    },
     SET_LAYOUT(state, payload) {
       state.layout = payload;
       return state;
@@ -162,8 +169,9 @@ export default new Vuex.Store({
       AuthService.logout();
       commit('logout');
     },
-    saveChildQuestionnaire({ state }) {
+    saveChildQuestionnaire({ state, commit }, answers) {
       console.log('store action save child questionnaire');
+      commit('questionnaire', answers);
       UserService.saveChildQuestionnaire(state.auth.user.userId, state.childQuestionnaire);
     }
   },
