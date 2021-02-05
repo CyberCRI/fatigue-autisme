@@ -2,17 +2,12 @@ import axios from 'axios';
 
 class AuthService {
     login(user) {
-        console.log('AuthService login');
-        console.log('user:');
-        console.log(user);
         return axios
             .post(process.env.VUE_APP_ROOT_API + "/users/login", {
                 email: user.email,
                 password: user.password,
             })
             .then(response => {
-                console.log('response');
-                console.log(response);
                 if (response.data.token) {
                     const storageUser = {
                         token: response.data.token,
@@ -22,16 +17,11 @@ class AuthService {
                         email: response.data.user.email,
                         userId: response.data.user._id
                     };
-                    console.log('adding user in storage');
-                    console.log(storageUser);
-                    console.log(JSON.stringify(storageUser));
                     localStorage.setItem('user', JSON.stringify(storageUser));
                     
                     if (!storageUser.isParent && response.data.questionnaire) {
-                        console.log('adding questionnaire in storage');
                         localStorage.setItem('childQuestionnaire', JSON.stringify(response.data.questionnaire));
                     }
-                    console.log(localStorage)
                     return storageUser;
                 }
                 return response.data;
@@ -39,13 +29,10 @@ class AuthService {
     }
 
     logout() {
-        console.log('AuthService logout')
-        console.log('remove user from storage')
         localStorage.removeItem('user');
     }
 
     signup(user) {
-        console.log('AuthService signup')
         return axios
             .put(process.env.VUE_APP_ROOT_API + "/users", {
                 email: user.email,

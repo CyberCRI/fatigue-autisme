@@ -11,6 +11,22 @@ class UserService {
         );
     }
 
+    sendConsent() {
+        console.log('user service sendConsent')
+        return axios
+          .patch(
+            process.env.VUE_APP_ROOT_API + "/users",
+            {
+              // id: this.$store.state.auth.user.userId,
+              consent: true
+            },{
+                headers: authHeader()
+            })
+            .then(response => {
+                console.log(response);
+            });
+    }
+
     saveChildQuestionnaire(userId, content) {
         console.log('user service saveChildQuestionnaire')
         console.log("userId: " + userId)
