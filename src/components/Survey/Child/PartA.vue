@@ -223,17 +223,7 @@
         <v-row class="ma-5" sm="12">
           <h4>4.1 Si oui, souhaitez-vous préciser :</h4>
         </v-row>
-        <v-row justify="center">
-          <v-col sm="10">
-            <v-textarea
-              v-model="A41"
-              name="context"
-              filled
-              label=""
-              auto-grow
-            ></v-textarea>
-          </v-col>
-        </v-row>
+        <TextArea v-model="A41" />
       </section>
 
       <v-row justify="center">
@@ -258,6 +248,7 @@
 <script>
 import Indications from "../../Indications.vue";
 import Header from '../Header.vue';
+import TextArea from '../TextArea.vue';
 import { mapActions } from 'vuex'
 export default {
   name: "SurveyChildPartA",
@@ -352,6 +343,7 @@ export default {
         A3k: this.A3k != "",
         A3l: this.A3l != "",
         A4: this.A4 != "",
+        A41: this.A41 != "",
       };
     },
     percentageCompletion() {
@@ -385,6 +377,7 @@ export default {
         A3l: this.A3l,
 
         A4: this.A4,
+        A41: this.A41,
       }
     }
   },
@@ -398,7 +391,8 @@ export default {
   },
   components: {
     Indications,
-    Header
+    Header,
+    TextArea
   },
   mounted() {
     console.log('part A mounted')
@@ -423,6 +417,7 @@ export default {
     this.A3k = this.$store.state.childQuestionnaire.A3k || ''
     this.A3l = this.$store.state.childQuestionnaire.A3l || ''
     this.A4 = this.$store.state.childQuestionnaire.A4 || ''
+    this.A41 = this.$store.state.childQuestionnaire.A41 || ''
   }
 };
 </script>

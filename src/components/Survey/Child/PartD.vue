@@ -31,17 +31,7 @@
         <v-row class="ma-5" sm="12">
           <h4>1.1 Souhaitez-vous préciser :</h4>
         </v-row>
-        <v-row justify="center">
-          <v-col sm="10">
-            <v-textarea
-              v-model="D11"
-              name="context"
-              filled
-              label=""
-              auto-grow
-            ></v-textarea>
-          </v-col>
-        </v-row>
+        <TextArea v-model="D11" />
       </section>
 
       <v-divider class="ma-4"></v-divider>
@@ -67,17 +57,8 @@
         <v-row class="ma-5" sm="12">
           <h4>2.1 Souhaitez-vous préciser :</h4>
         </v-row>
-        <v-row justify="center">
-          <v-col sm="10">
-            <v-textarea
-              v-model="D21"
-              name="context"
-              filled
-              label=""
-              auto-grow
-            ></v-textarea>
-          </v-col>
-        </v-row>
+        
+        <TextArea v-model="D21" />
       </section>
 
       <v-divider class="ma-4"></v-divider>
@@ -131,20 +112,10 @@
       </v-row>
 
       <section v-if="relevantD41">
-      <v-row class="ma-5" sm="12">
-        <h4>4.1 Souhaitez-vous préciser :</h4>
-      </v-row>
-      <v-row justify="center">
-          <v-col sm="10">
-            <v-textarea
-              v-model="D41"
-              name="context"
-              filled
-              label=""
-              auto-grow
-            ></v-textarea>
-          </v-col>
+        <v-row class="ma-5" sm="12">
+          <h4>4.1 Souhaitez-vous préciser :</h4>
         </v-row>
+        <TextArea v-model="D41" />
       </section>
 
 
@@ -219,6 +190,7 @@
 <script>
 import Indications from "../../Indications.vue";
 import Header from "../Header.vue";
+import TextArea from "../TextArea.vue";
 import { mapActions } from 'vuex'
 export default {
   name: "SurveyChildPartD",
@@ -376,6 +348,7 @@ export default {
   components: {
     Indications,
     Header,
+    TextArea
   },
   mounted() {
     console.log('part D mounted')

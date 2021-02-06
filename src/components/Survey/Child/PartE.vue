@@ -106,17 +106,7 @@ ressources nécessaires pour affronter une situation particulière
           avez déjà connaissance ou qui vous semblent manquer) ?
         </h3>
       </v-row>
-      <v-row justify="center">
-          <v-col sm="10">
-            <v-textarea
-              v-model="E2"
-              name="context"
-              filled
-              label=""
-              auto-grow
-            ></v-textarea>
-          </v-col>
-        </v-row>
+      <TextArea v-model="E2" />
 
       <v-divider class="ma-4"></v-divider>
       <v-row class="ma-5" sm="12">
@@ -125,17 +115,7 @@ ressources nécessaires pour affronter une situation particulière
           expérience de la fatigue cognitive ?
         </h3>
       </v-row>
-      <v-row justify="center">
-          <v-col sm="10">
-            <v-textarea
-              v-model="E3"
-              name="context"
-              filled
-              label=""
-              auto-grow
-            ></v-textarea>
-          </v-col>
-        </v-row>
+      <TextArea v-model="E3" />
     </v-card>
   </section>
 </template>
@@ -144,6 +124,7 @@ ressources nécessaires pour affronter une situation particulière
 <script>
 import Indications from "../../Indications.vue";
 import Header from "../Header.vue";
+import TextArea from "../TextArea.vue";
 import { mapActions } from 'vuex'
 export default {
   name: "SurveyChildPartE",
@@ -204,6 +185,7 @@ export default {
   components: {
     Indications,
     Header,
+    TextArea
   },
   mounted() {
     console.log('part E mounted')

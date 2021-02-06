@@ -96,17 +96,7 @@
         ]"
       />
 
-      <v-row justify="center">
-        <v-col sm="10">
-          <v-textarea
-            v-model="B3"
-            name="context"
-            filled
-            label=""
-            auto-grow
-          ></v-textarea>
-        </v-col>
-      </v-row>
+      <TextArea v-model="B3" />
 
       <v-row justify="center">
         <v-btn
@@ -129,6 +119,7 @@
 <script>
 import Indications from "../../Indications.vue";
 import Header from "../Header.vue";
+import TextArea from "../TextArea.vue";
 import { mapActions } from 'vuex'
 export default {
   name: "SurveyChildPartB",
@@ -267,6 +258,7 @@ export default {
   components: {
     Indications,
     Header,
+    TextArea
   },
   mounted() {
     console.log('part B mounted')

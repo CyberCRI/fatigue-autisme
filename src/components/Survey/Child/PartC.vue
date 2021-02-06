@@ -329,17 +329,7 @@
         <v-row class="ma-5" sm="12">
           <h4>C.6.1 Pouvez-vous préciser :</h4>
         </v-row>
-        <v-row justify="center">
-          <v-col sm="10">
-            <v-textarea
-              v-model="C61"
-              name="context"
-              filled
-              label=""
-              auto-grow
-            ></v-textarea>
-          </v-col>
-        </v-row>
+        <TextArea v-model="C61" />
       </section>
 
       <v-divider class="ma-4"></v-divider>
@@ -395,6 +385,7 @@
 <script>
 import Indications from "../../Indications.vue";
 import Header from "../Header.vue";
+import TextArea from "../TextArea.vue";
 import { mapActions } from 'vuex'
 export default {
   name: "SurveyChildPartC",
@@ -624,6 +615,7 @@ export default {
   components: {
     Indications,
     Header,
+    TextArea
   },
   mounted() {
     console.log('part C mounted')
