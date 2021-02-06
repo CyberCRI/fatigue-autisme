@@ -67,6 +67,39 @@
                   </v-col>
                 </v-row>
               </v-card-actions>
+              
+              <!-- TODO: remove this -->
+              <v-row class="center">
+                <v-col md="12">
+                  <v-dialog v-model="dialog" persistent max-width="290">
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn color="primary" dark v-bind="attrs" v-on="on">
+                        Tester le questionnaire enfant
+                      </v-btn>
+                    </template>
+                    <v-card>
+                      <v-card-title class="headline">
+                        Code d'accès?
+                      </v-card-title>
+                      <!-- <v-row class="center"> -->
+                        <v-col sm="3" align="center">
+                          <v-text-field v-model="accessCode"></v-text-field>
+                        </v-col>
+                      <!-- </v-row> -->
+
+                      <v-card-actions>
+                        <v-btn
+                          color="green darken-1"
+                          text
+                          @click.prevent="fakeLogin"
+                        >
+                          Accéder
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
+                </v-col>
+              </v-row>
             </v-card>
           </v-col>
         </v-row>
@@ -82,10 +115,12 @@ import { required, email, minLength } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
-      errorMessage: '',
+      errorMessage: "",
       isLoading: false,
       email: "",
       password: "",
+      dialog: false,
+      accessCode: "",
     };
   },
   mixins: [validationMixin],
@@ -100,6 +135,27 @@ export default {
     },
   },
   methods: {
+    //TODO: remove this
+    fakeLogin() {
+      const tentativeCode = this.accessCode;
+
+      this.accessCode = '';
+      this.dialog = false;
+
+      if (tentativeCode === '8520') {
+        this.$store
+          .dispatch("fakeLogin")
+          .then(
+            () => {
+              this.setLayout("app-layout");
+              this.$router.push("/accueil");
+            },
+            error => {
+              console.log('error')
+            }
+          )
+      }
+    },
     setLayout(layout) {
       this.$store.commit("SET_LAYOUT", layout);
     },
@@ -107,25 +163,27 @@ export default {
       this.$router.push({ path: "/signup" });
     },
     login() {
-      this.errorMessage = '';
+      this.errorMessage = "";
       this.$v.$touch();
       if (!this.$v.$anyError) {
         this.isLoading = true;
 
-        this.$store.dispatch('login', {
-          email: this.email,
-          password: this.password
-        }).then(
-          () => {
-            this.setLayout("app-layout");
-            this.$router.push('/accueil');
-          },
-          error => {
-            this.errorMessage = error.response.data.message || "Une erreur s'est produite";
-            this.isLoading = false;
-
-          }
-        );
+        this.$store
+          .dispatch("login", {
+            email: this.email,
+            password: this.password,
+          })
+          .then(
+            () => {
+              this.setLayout("app-layout");
+              this.$router.push("/accueil");
+            },
+            (error) => {
+              this.errorMessage =
+                error.response.data.message || "Une erreur s'est produite";
+              this.isLoading = false;
+            }
+          );
 
         // axios
         //   .post(

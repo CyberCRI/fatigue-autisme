@@ -13,7 +13,9 @@ export default new Vuex.Store({
     auth: {
       authorized: localStorage.getItem("authorized") === 'true' || false,
       loggedIn: false,
-      user: JSON.parse(localStorage.getItem('user')) || null
+      user: JSON.parse(localStorage.getItem('user')) || null,
+      //TODO: remove this
+      fakeLoggedIn: JSON.parse(localStorage.getItem('fakedLoggedIn')) === 'true' || false
     },
     // childQuestionnaire: JSON.parse(localStorage.getItem('childQuestionnaire')) || null,
     childQuestionnaire: JSON.parse(localStorage.getItem("childQuestionnaire")) || {},
@@ -36,6 +38,11 @@ export default new Vuex.Store({
     questionnaire6: JSON.parse(localStorage.getItem("questionnaire6")) || {}
   },
   mutations: {
+    fakeLogin(state, fakeUser) {
+      state.auth.fakeLoggedIn = true
+      state.auth.user = fakeUser
+      localStorage.setItem("fakedLoggedIn", "true");
+    },
     authorize(state) {
       state.auth.authorized = true;
       localStorage.setItem("authorized", "true");
@@ -158,6 +165,20 @@ export default new Vuex.Store({
         return Promise.reject();
       }
     },
+    //TODO: remove this
+    fakeLogin({ commit }) {
+      console.log('store action fake login')
+      const fakeUser = {
+        consent: true,
+        isParent: false,
+        parentId: '0000000',
+      };
+      localStorage.setItem('user', JSON.stringify(fakeUser));
+
+      commit('fakeLogin', fakeUser);
+      return Promise.resolve();
+
+    },
     login({ commit }, user) {
       console.log('store action login')
       return AuthService.login(user).then(
@@ -201,6 +222,12 @@ export default new Vuex.Store({
     isAuthorized: state => state.auth.authorized,
     // isLoggedIn: state => state.auth.loggedIn,
     isAuthenticated(state) {
+
+      //TODO: remove this
+      if (state.auth.fakeLoggedIn) {
+        return true;
+      }
+
       if (state.auth.user) {
         return state.auth.user.token;
       }
