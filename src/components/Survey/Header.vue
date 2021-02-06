@@ -7,10 +7,10 @@
               <v-progress-circular
                 :rotate="360"
                 :size="40"
-                :width="5"
+                :width="3"
                 :value="valueProgress"
                 color="teal"
-                >{{ valueProgress }}
+                >{{ `${valueProgress}%` }}
               </v-progress-circular>
         </v-row>
       </v-card>
