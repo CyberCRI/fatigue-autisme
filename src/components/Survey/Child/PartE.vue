@@ -38,14 +38,22 @@
         </v-col>
       </v-row>
       <v-row justify="center" align="center" class="mb-8">
-        <v-col sm="3">
-          Votre confiance en vos capacités
-        </v-col>
-        <v-col sm="4">
-          <div class="rounded-lg text-center green lighten-4 pa-4 text-caption">
-              « confiance »: Évaluation réaliste et ponctuelle des
-ressources nécessaires pour affronter une situation particulière
-            </div>
+        <v-col sm="7">
+          Votre confiance en vos capacités<v-tooltip
+          bottom
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              icon
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
+            </v-btn>
+          </template>
+          <span>« confiance »: Évaluation réaliste et ponctuelle des
+ressources nécessaires pour affronter une situation particulière</span>
+        </v-tooltip>
         </v-col>
         <v-col sm="4">
           <v-radio-group v-model="E1b" row>
@@ -59,17 +67,25 @@ ressources nécessaires pour affronter une situation particulière
         </v-col>
       </v-row>
       <v-row justify="center" align="center" class="mb-8">
-        <v-col sm="3">
-          Votre estime de vous
-        </v-col>
-        <v-col sm="4">
-          <div class="rounded-lg text-center green lighten-4 pa-4 text-caption">
-              « estime de soi »: Perception et auto-évaluation de ses points
+        <v-col sm="7">
+          Votre estime de vous<v-tooltip
+          bottom
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              icon
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
+            </v-btn>
+          </template>
+          <span>« estime de soi »: Perception et auto-évaluation de ses points
               forts et de ses points faibles quand on les compare à nos
-              valeur
-            </div>
-              
+              valeur</span>
+        </v-tooltip>
         </v-col>
+        
         <v-col sm="4">
           <v-radio-group v-model="E1c" row>
                 <v-radio
