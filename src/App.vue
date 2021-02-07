@@ -27,4 +27,8 @@ export default {
   height: 75px !important;
 }
 
+p {
+  text-align: justify;
+  text-justify: auto;
+}
 </style>
