@@ -73,9 +73,9 @@
 
       <Indications :items="ratingLabelsD3" />
 
-      <v-row justify="center" v-for="q in questionsD3" :key="q.question">
+      <v-row justify="center" >
         <v-col sm="10">
-          <v-row align="center">
+          <v-row align="center" v-for="q in questionsD3" :key="q.question">
             <v-col sm="6"><span v-html="q.question"></span></v-col>
             <v-col sm="6">
               <v-radio-group v-model="$data[q.model]" row>

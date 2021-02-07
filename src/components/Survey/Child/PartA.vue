@@ -16,9 +16,9 @@
       <Indications :items="ratingLabels1" />
 
       <!-- RADIO BUTTONS -->
-      <v-row justify="center" v-for="q in questionsA1" :key="q.question">
+      <v-row justify="center" >
         <v-col sm="10">
-          <v-row align="center">
+          <v-row align="center" v-for="q in questionsA1" :key="q.question">
             <v-col sm="6"
               ><span v-html="q.question"></span></v-col
             >
@@ -180,9 +180,9 @@
       <Indications :items="ratingLabels2" />
 
       <!-- RADIO BUTTONS -->
-      <v-row justify="center" v-for="q in questionsA3" :key="q.question">
+      <v-row justify="center" >
         <v-col sm="10">
-          <v-row align="center">
+          <v-row align="center" v-for="q in questionsA3" :key="q.question">
             <v-col sm="7"
               >{{ q.question }}</v-col
             >

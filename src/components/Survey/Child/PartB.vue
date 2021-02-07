@@ -15,9 +15,9 @@
 
       <Indications :items="ratingLabels1" />
 
-      <v-row justify="center" v-for="q in questionsB1" :key="q.question">
+      <v-row justify="center">
         <v-col sm="10">
-          <v-row align="center">
+          <v-row align="center" v-for="q in questionsB1" :key="q.question">
             <v-col sm="7"><span v-html="q.question"></span></v-col>
             <v-col sm="5">
               <v-radio-group v-model="$data[q.model]" row>

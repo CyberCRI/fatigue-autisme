@@ -19,7 +19,7 @@
       <Indications :items="ratingLabelsE1" />
 
 
-      <v-row justify="center" align="center" class="mb-8">
+      <v-row justify="center" align="center">
         <v-col sm="7">
           Votre motivation à poursuivre vos études, une formation
           professionnelle ou à vous projeter dans le monde du travail
@@ -37,7 +37,7 @@
           </v-slider> -->
         </v-col>
       </v-row>
-      <v-row justify="center" align="center" class="mb-8">
+      <v-row justify="center" align="center">
         <v-col sm="7">
           Votre confiance en vos capacités<v-tooltip
           bottom
@@ -66,7 +66,7 @@ ressources nécessaires pour affronter une situation particulière</span>
               </v-radio-group>
         </v-col>
       </v-row>
-      <v-row justify="center" align="center" class="mb-8">
+      <v-row justify="center" align="center">
         <v-col sm="7">
           Votre estime de vous<v-tooltip
           bottom
