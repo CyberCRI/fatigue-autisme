@@ -1,5 +1,8 @@
 <template>
+<section>
   <v-card class="pa-md-4 mb-4">
+    <h1 class="text-center">Bienvenue sur l'espace adolescents</h1>
+  <br>
     <!-- Text accueil enfant -->
     <Intro />
 
@@ -15,6 +18,7 @@
       </v-btn>
     </v-row>
   </v-card>
+</section>
 </template>
 
 <script>
