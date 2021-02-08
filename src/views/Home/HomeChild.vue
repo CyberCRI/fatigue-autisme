@@ -27,5 +27,12 @@ export default {
   components: {
     Intro,
   },
+  created() {
+    if (!this.$store.getters.consent) {
+      this.$router.push({ path: "/consentementEnfant" });
+    } else {
+      this.initialize();
+    }
+  },
 };
 </script>
