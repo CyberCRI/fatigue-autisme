@@ -36,13 +36,13 @@
         <v-row justify="center" class="mt-6">
           <v-col sm="10">
             <v-row>
-              <v-col sm="6"><strong>Manifestations physiques :</strong></v-col>
-              <v-col sm="2" class="text-center"
+              <v-col sm="8"><strong>Manifestations physiques :</strong></v-col>
+              <v-col sm="4" class="text-center"
                 ><strong>Cet aspect est-il impacté :</strong></v-col
               >
-              <v-col sm="4" class="text-center"
+              <!-- <v-col sm="4" class="text-center"
                 ><strong>Précisez si vous le souhaitez</strong></v-col
-              >
+              > -->
             </v-row>
             <v-divider class="ma-4"></v-divider>
             <v-row
@@ -51,24 +51,22 @@
               v-for="q in questionsC11"
               :key="q.question"
             >
-              <v-col sm="6">{{ q.question }}</v-col>
-              <v-col sm="2"
-                ><v-switch v-model="q.modelBool">
+              <v-col sm="8">{{ q.question }}</v-col>
+              <v-col sm="4"
+                >
+              <v-layout row wrap justify-center>
+                <v-switch v-model="q.modelBool">
                   <template v-slot:label>{{
                     q.modelBool ? " Oui" : " Non"
                   }}</template>
-                </v-switch></v-col
-              >
-              <v-col sm="4" align="center"
-                ><v-textarea
-                  v-model="q.modelText"
-                  name="context"
-                  solo
-                  label=""
-                  rows="2"
-                  prepend-inner-icon="mdi-pencil"
-                ></v-textarea
-              ></v-col>
+                </v-switch>
+              </v-layout>
+                </v-col>
+                <v-col sm="12" v-if="q.modelBool">
+                  Précisez si vous le souhaitez:
+                  <TextArea v-model="q.modelText"/>
+                </v-col>
+            <v-divider class="ma-4"></v-divider>
             </v-row>
             <v-row align="center">
               <v-col sm="6">Autres, précisez :</v-col>
