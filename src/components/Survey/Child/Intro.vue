@@ -23,8 +23,7 @@
               >en moyenne de 20 à 30 minutes. N’hésitez pas à faire une pause,
               ou à y répondre en plusieurs fois si le souhaitez.</span
             >
-            Pour cela, il vous suffit de cliquer sur « Enregistrer et terminer plus tard
-            » au bas de la page sur laquelle vous vous trouvez. Vos réponses
+            Pour cela, il vous suffit de cliquer sur «Enregistrer et terminer plus tard» au bas de la page sur laquelle vous vous trouvez. Vos réponses
             seront enregistrées et vous pourrez reprendre là où vous vous étiez
             arrêté la prochaine fois que vous vous connecterez sur le site.
           </p>
