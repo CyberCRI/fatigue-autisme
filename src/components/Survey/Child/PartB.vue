@@ -48,6 +48,8 @@
         </h3>
       </v-row>
 
+      <Indications>Vous pouvez annuler une réponse en cliquant sur le numéro</Indications>
+
       <v-row justify="center">
         <v-col sm="10">
           <v-row

@@ -35,13 +35,13 @@
 
         <v-row justify="center" class="mt-6">
           <v-col sm="10">
-            <v-row class="text-subtitle-2">
-              <v-col sm="6">Manifestations physiques :</v-col>
+            <v-row>
+              <v-col sm="6"><strong>Manifestations physiques :</strong></v-col>
               <v-col sm="2" class="text-center"
-                >Cet aspect est-il impacté :</v-col
+                ><strong>Cet aspect est-il impacté :</strong></v-col
               >
               <v-col sm="4" class="text-center"
-                >Précisez si vous le souhaitez</v-col
+                ><strong>Précisez si vous le souhaitez</strong></v-col
               >
             </v-row>
             <v-divider class="ma-4"></v-divider>
@@ -59,13 +59,14 @@
                   }}</template>
                 </v-switch></v-col
               >
-              <v-col sm="4"
+              <v-col sm="4" 
                 ><v-textarea
                   v-model="q.modelText"
                   name="context"
-                  filled
+                  solo
                   label=""
-                  rows="1"
+                  rows="2"
+                  prepend-inner-icon="mdi-pencil"
                 ></v-textarea
               ></v-col>
             </v-row>
@@ -107,7 +108,7 @@
             >
           </v-row>
           <v-divider class="mt-4 mb-8"></v-divider>
-          <v-row v-for="q in questionsC2" :key="q.question" class="ma-4">
+          <v-row v-for="q in questionsC2" :key="q.question" class="ma-4" align="top">
             <v-col sm="4" v-html="q.question"></v-col>
             <v-col sm="4"
               ><v-slider
@@ -127,13 +128,47 @@
             ></v-col>
           </v-row>
           <v-row class="ma-4" align="center">
+            <v-col sm="4">Système vestibulaire et proprioceptif<v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon v-bind="attrs" v-on="on">
+                <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
+              </v-btn>
+            </template>
+            <span
+              >(équilibre, mouvements, perception du corps dans l’espace, etc.)</span
+            >
+          </v-tooltip></v-col>
             <v-col sm="4"
-              >Autre(s)
-              <span class="text-caption"
-                >Si certaines sensibilités particulières non mentionnées
-                cidessus sont modifiées en périodes de fatigue, vous pouvez nous
+              ><v-slider
+                v-model="C2VestWith"
+                thumb-label="always"
+                min="0"
+                max="100"
+              ></v-slider
+            ></v-col>
+            <v-col sm="4"
+              ><v-slider
+                v-model="C2VestWithout"
+                thumb-label="always"
+                min="0"
+                max="100"
+              ></v-slider
+            ></v-col>
+          </v-row>
+          <v-row class="ma-4" align="center">
+            <v-col sm="4"
+              >Autre(s)<v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon v-bind="attrs" v-on="on">
+                <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
+              </v-btn>
+            </template>
+            <span
+              >Si certaines sensibilités particulières non mentionnées
+                ci-dessus sont modifiées en périodes de fatigue, vous pouvez nous
                 en faire part ici</span
-              >
+            >
+          </v-tooltip>
             </v-col>
             <v-col
               ><v-textarea
@@ -266,8 +301,9 @@
       <section v-if="relevantC41">
         <v-row class="ma-5" sm="12">
           <h4>
-            4.1 À quel moment de la journée vous sentez-vous généralement le
-            plus en forme :
+            4.1 À quel moment de la journée vous sentez-vous généralement <strong :class="this.$store.state.settings.accentTextClass"
+              >le
+            plus en forme</strong> :
           </h4>
         </v-row>
         <v-row justify="center">
@@ -570,11 +606,11 @@ export default {
           modelW: "C2SmellWith",
           modelWo: "C2SmellWithout",
         },
-        {
-          question: `Système vestibulaire et proprioceptif <span class="text-caption">(équilibre, mouvements, perception du corps dans l’espace, etc.)</span>`,
-          modelW: "C2VestWith",
-          modelWo: "C2VestWithout",
-        },
+        // {
+        //   question: `Système vestibulaire et proprioceptif`,
+        //   modelW: "C2VestWith",
+        //   modelWo: "C2VestWithout",
+        // },
       ],
       questionsC31a: [
         { question: "La nuit, je dors :", model: "C31a" },

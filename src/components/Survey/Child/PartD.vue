@@ -11,7 +11,8 @@
     <v-card class="pa-md-4 mb-4">
       <v-row class="ma-5" sm="12">
         <h3>
-          1. Lors de périodes de fatigue cognitive importante, avez-vous
+          1. <strong :class="this.$store.state.settings.accentTextClass"
+              >Lors de périodes de fatigue cognitive importante</strong>, avez-vous
           l’impression de « perdre » temporairement certaines de vos capacités,
           compétences ou habiletés :
         </h3>
@@ -38,7 +39,8 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          2. Lors de périodes de fatigue cognitive importante, avez-vous
+          2. <strong :class="this.$store.state.settings.accentTextClass"
+              >Lors de périodes de fatigue cognitive importante</strong>, avez-vous
           constaté des changements au niveau de votre mémoire :
         </h3>
       </v-row>
@@ -105,7 +107,8 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          4. Lors des périodes de fatigue mentale importante, avez-vous constaté
+          4. <strong :class="this.$store.state.settings.accentTextClass"
+              >Lors des périodes de fatigue mentale importante</strong>, avez-vous constaté
           des changements au niveau de votre attention, lors de tâches ou
           d’activités
           <strong :class="this.$store.state.settings.accentTextClass"
@@ -136,7 +139,8 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          5. Lors de périodes de fatigue importante, avez-vous l’impression
+          5. <strong :class="this.$store.state.settings.accentTextClass"
+              >Lors de périodes de fatigue importante</strong>, avez-vous l’impression
           d’être plus lent.e pour réaliser différentes tâches du quotidien,
           qu’elles soient scolaires ou non :
         </h3>
@@ -151,6 +155,13 @@
           </v-radio-group>
         </v-col>
       </v-row>
+
+      <section v-if="relevantD51">
+        <v-row class="ma-5" sm="12">
+          <h4>5.1 Souhaitez-vous préciser :</h4>
+        </v-row>
+        <TextArea v-model="D51" />
+      </section>
 
       <v-divider class="ma-4"></v-divider>
 
@@ -229,6 +240,7 @@ export default {
       D4: "",
       D41: "",
       D5: "",
+      D51: "",
       D6a: "",
       D6b: "",
       D6c: "",
@@ -313,6 +325,9 @@ export default {
     },
     relevantD41() {
       return this.D4.includes("Oui");
+    },
+    relevantD51() {
+      return this.D5.includes("Oui");
     },
     completions() {
       console.log(this.A3a);
