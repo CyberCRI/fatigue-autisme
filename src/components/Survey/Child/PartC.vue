@@ -59,7 +59,7 @@
                   }}</template>
                 </v-switch></v-col
               >
-              <v-col sm="4" 
+              <v-col sm="4" align="center"
                 ><v-textarea
                   v-model="q.modelText"
                   name="context"
