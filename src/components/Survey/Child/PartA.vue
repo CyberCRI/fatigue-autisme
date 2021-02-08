@@ -1,14 +1,20 @@
 <template>
   <section>
     <Header
-      :title="`A. La fatigue mentale au quotidien`"
+      :title="`Partie A`"
       :valueProgress="percentageCompletion"
     />
 
     <br />
     <br />
     <br />
+    <br />
     <v-card class="pa-md-4 mb-4">
+      <v-row sm="12" justify="center">
+        <h1>
+          La fatigue mentale au quotidien
+        </h1>
+      </v-row>
       <v-row class="ma-5" sm="12">
         <h3>
           1. Pouvez-vous estimer l’intensité de votre fatigue mentale dans les

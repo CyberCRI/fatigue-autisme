@@ -1,14 +1,20 @@
 <template>
   <section>
     <Header
-      :title="`E. Questions finales`"
+      :title="`Partie E`"
       :valueProgress="percentageCompletion"
     />
 
     <br />
     <br />
     <br />
+    <br />
     <v-card class="pa-md-4 mb-4">
+      <v-row sm="12" justify="center">
+        <h1>
+          Questions finales
+        </h1>
+      </v-row>
       <v-row class="ma-5" sm="12">
         <h3>
           1. À l’heure actuelle, diriez-vous que la fatigue cognitive constitue

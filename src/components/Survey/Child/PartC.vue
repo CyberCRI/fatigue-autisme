@@ -1,14 +1,20 @@
 <template>
   <section>
     <Header
-      :title="`C. Répercussions sur le fonctionnement physique`"
+      :title="`Partie C`"
       :valueProgress="percentageCompletion"
     />
 
     <br />
     <br />
     <br />
+    <br />
     <v-card class="pa-md-4 mb-4">
+      <v-row sm="12" justify="center">
+        <h1>
+          Répercussions sur le fonctionnement physique
+        </h1>
+      </v-row>
       <v-row class="ma-5" sm="12">
         <h3>
           1. Lorsque vous vivez des périodes de fatigue mentale, diriez-vous que

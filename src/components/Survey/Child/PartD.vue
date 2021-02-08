@@ -1,14 +1,20 @@
 <template>
   <section>
     <Header
-      :title="`D. Répercussions sur le fonctionnement cognitif et émotionnel`"
+      :title="`Partie D`"
       :valueProgress="percentageCompletion"
     />
 
     <br />
     <br />
     <br />
+    <br />
     <v-card class="pa-md-4 mb-4">
+      <v-row sm="12" justify="center">
+        <h1>
+          Répercussions sur le fonctionnement cognitif et émotionnel
+        </h1>
+      </v-row>
       <v-row class="ma-5" sm="12">
         <h3>
           1. <strong :class="this.$store.state.settings.accentTextClass"

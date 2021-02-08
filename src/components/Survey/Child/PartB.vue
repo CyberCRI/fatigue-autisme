@@ -1,14 +1,21 @@
 <template>
   <section>
     <Header
-      :title="`B. Répercussions dans la vie quotidienne`"
+      :title="`Partie B`"
       :valueProgress="percentageCompletion"
     />
 
     <br />
     <br />
     <br />
+    <br />
     <v-card class="pa-md-4 mb-4">
+      
+      <v-row sm="12" justify="center">
+        <h1>
+          Répercussions dans la vie quotidienne
+        </h1>
+      </v-row>
       <v-row class="ma-5" sm="12">
         <h3>1. Comment décririez-vous votre emploi du temps :</h3>
       </v-row>
