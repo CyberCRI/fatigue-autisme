@@ -57,7 +57,7 @@
         <v-row class="ma-5" sm="12">
           <h4>2.1 Souhaitez-vous préciser :</h4>
         </v-row>
-        
+
         <TextArea v-model="D21" />
       </section>
 
@@ -65,15 +65,25 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          3. <strong :class="this.$store.state.settings.accentTextClass">Lors de périodes de fatigue mentale importante</strong>, pouvez-vous
-          estimer à quel point les activités ou situations scolaires suivantes
-          vous demandent <strong :class="this.$store.state.settings.accentTextClass">plus d’efforts que d’habitude</strong> :
+          3.
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >Lors de périodes de fatigue mentale importante</strong
+          >, pouvez-vous estimer à quel point les activités ou situations
+          scolaires suivantes vous demandent
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >plus d’efforts que d’habitude</strong
+          >
+          :
         </h3>
       </v-row>
 
-      <Indications :items="ratingLabelsD3" />
+      <Indications>
+        <ul>
+          <li v-for="p in ratingLabelsD3" :key="p">{{ p }}</li>
+        </ul>
+      </Indications>
 
-      <v-row justify="center" >
+      <v-row justify="center">
         <v-col sm="10">
           <v-row align="center" v-for="q in questionsD3" :key="q.question">
             <v-col sm="6"><span v-html="q.question"></span></v-col>
@@ -95,9 +105,13 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          4. Lors des périodes de fatigue mentale importante, avez-vous
-          constaté des changements au niveau de votre attention, lors de tâches
-          ou d’activités <strong :class="this.$store.state.settings.accentTextClass">non scolaires</strong> :
+          4. Lors des périodes de fatigue mentale importante, avez-vous constaté
+          des changements au niveau de votre attention, lors de tâches ou
+          d’activités
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >non scolaires</strong
+          >
+          :
         </h3>
       </v-row>
 
@@ -117,7 +131,6 @@
         </v-row>
         <TextArea v-model="D41" />
       </section>
-
 
       <v-divider class="ma-4"></v-divider>
 
@@ -143,17 +156,18 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          6. <strong :class="this.$store.state.settings.accentTextClass">Lors de périodes de fatigue importante</strong>, avez-vous constaté des
-          changements au niveau de votre gestion des émotions :
+          6.
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >Lors de périodes de fatigue importante</strong
+          >, avez-vous constaté des changements au niveau de votre gestion des
+          émotions :
         </h3>
       </v-row>
 
       <v-row justify="center" v-for="q in questionsD6" :key="q.question">
         <v-col sm="10">
           <v-row align="center">
-            <v-col sm="5"
-              ><span v-html="q.question"></span></v-col
-            >
+            <v-col sm="5"><span v-html="q.question"></span></v-col>
             <v-col sm="7">
               <v-slider
                 v-model="q.model"
@@ -191,7 +205,7 @@
 import Indications from "../../Indications.vue";
 import Header from "../Header.vue";
 import TextArea from "../TextArea.vue";
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
   name: "SurveyChildPartD",
   data() {
@@ -226,67 +240,67 @@ export default {
         "2- Cela me demande plus d’efforts que d’habitude",
         "3- Cela me demande beaucoup plus d’efforts que d’habitude",
         "4- L’effort demandé est trop important : je ne parviens plus à le faire",
-        "n/a- Cela ne me concerne pas ou je ne parviens pas à évaluer la situation",
+        "n/a- Cela ne me concerne pas ou je ne parviens pas à évaluer la situation"
       ],
       valuesD3: ["1", "2", "3", "4", "n/a"],
       questionsD3: [
         {
           question: "Écouter le cours tout en prenant des notes",
-          model: "D3a",
+          model: "D3a"
         },
         {
           question: "Gérer les changements d’emploi du temps ou les imprévus",
-          model: "D3b",
+          model: "D3b"
         },
         {
           question:
             "S’organiser dans ses affaires scolaires (avoir le matériel requis, trier ses cours, etc.)",
-          model: "D3c",
+          model: "D3c"
         },
         {
           question: "De façon générale (du lundi matin au dimanche soir)",
-          model: "D3d",
+          model: "D3d"
         },
         {
           question:
             "Demander de l’aide à un.e enseignant.e ou un.e élève en cas de besoin",
-          model: "D3e",
+          model: "D3e"
         },
         {
           question:
             "Gérer les temps de pauses (interclasse, récréation, pause-déjeuner)",
-          model: "D3f",
+          model: "D3f"
         },
         { question: "Travailler en équipe", model: "D3g" },
         { question: "Gérer l’environnement sensoriel", model: "D3h" },
         {
           question:
             "Gérer l’anxiété ou le stress liés à une situation d’examen",
-          model: "D3i",
+          model: "D3i"
         },
         {
           question:
             "Structurer la rédaction d’un devoir ou la résolution d’un problème",
-          model: "D3j",
+          model: "D3j"
         },
         {
           question:
             "Comprendre les consignes et attentes d’un devoir ou examen (notamment les aspects implicites)",
-          model: "D3k",
+          model: "D3k"
         },
         {
           question:
             "S’exprimer à l’oral, spontanément ou lorsque vous êtes interrogé.e",
-          model: "D3l",
-        },
+          model: "D3l"
+        }
       ],
       questionsD6: [
-        {question: "Anxiété et stress", model: "D6a"},
-        {question: "Frustration", model: "D6b"},
-        {question: "Irritabilité, agressivité, impulsivité", model: "D6c"},
-        {question: "Estime de soi", model: "D6d"},
-        {question: "Tristesse, peine", model: "D6e"},
-        {question: "Motivation, joie, enthousiasme", model: "D6f"}
+        { question: "Anxiété et stress", model: "D6a" },
+        { question: "Frustration", model: "D6b" },
+        { question: "Irritabilité, agressivité, impulsivité", model: "D6c" },
+        { question: "Estime de soi", model: "D6d" },
+        { question: "Tristesse, peine", model: "D6e" },
+        { question: "Motivation, joie, enthousiasme", model: "D6f" }
       ]
     };
   },
@@ -321,28 +335,26 @@ export default {
         D3l: this.D3l != "",
         D4: this.D4 != "",
         // D41: this.D41 != "",
-        D5: this.D5 != "",
+        D5: this.D5 != ""
       };
     },
     percentageCompletion() {
       const size = Object.keys(this.completions).length;
-      const areOk = Object.values(this.completions).filter((a) => a);
+      const areOk = Object.values(this.completions).filter(a => a);
       console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
     answers() {
-      console.log('TODO');
+      console.log("TODO");
       return {
         D1: this.D1
-      }
+      };
     }
   },
   methods: {
-    ...mapActions([
-      'saveChildQuestionnaire'
-    ]),
+    ...mapActions(["saveChildQuestionnaire"]),
     save() {
-      this.saveChildQuestionnaire(this.answers)
+      this.saveChildQuestionnaire(this.answers);
     }
   },
   components: {
@@ -351,10 +363,10 @@ export default {
     TextArea
   },
   mounted() {
-    console.log('part D mounted')
+    console.log("part D mounted");
     window.scrollTo(0, 0);
-    this.D1 = this.$store.state.childQuestionnaire.D1 || ''
-    console.log('TODO');
+    this.D1 = this.$store.state.childQuestionnaire.D1 || "";
+    console.log("TODO");
   }
 };
 </script>

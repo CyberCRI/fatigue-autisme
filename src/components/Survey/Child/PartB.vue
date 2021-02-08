@@ -13,7 +13,11 @@
         <h3>1. Comment décririez-vous votre emploi du temps :</h3>
       </v-row>
 
-      <Indications :items="ratingLabels1" />
+      <Indications>
+        <ul>
+          <li v-for="p in ratingLabels1" :key="p">{{ p }}</li>
+        </ul>
+      </Indications>
 
       <v-row justify="center">
         <v-col sm="10">
@@ -46,41 +50,47 @@
 
       <v-row justify="center">
         <v-col sm="10">
-          <v-row v-for="o in optionsB2" :key="o.id" justify="center" align="center">
+          <v-row
+            v-for="o in optionsB2"
+            :key="o.id"
+            justify="center"
+            align="center"
+          >
             <v-col sm="2" align="center" justify="center">
-
-
               <section v-if="o.rank != ''">
-                <v-btn color="green lighten-2" rounded @click="removeRank(o.id)">{{ o.rank }}</v-btn>
+                <v-btn
+                  color="green lighten-2"
+                  rounded
+                  @click="removeRank(o.id)"
+                  >{{ o.rank }}</v-btn
+                >
               </section>
-
 
               <section v-else>
                 <section v-if="availableRanksB2.length != 0">
                   <v-menu offset-y>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn color="primary" dark v-bind="attrs" v-on="on">
-                      Choisir
-                    </v-btn>
-                  </template>
-                  <v-list>
-                    <v-list-item v-for="(item, index) in availableRanksB2" :key="index" @click="chooseRank(item, o.id)">
-                      <v-list-item-title>{{ item }}</v-list-item-title>
-                    </v-list-item>
-                  </v-list>
-                </v-menu>
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn color="primary" dark v-bind="attrs" v-on="on">
+                        Choisir
+                      </v-btn>
+                    </template>
+                    <v-list>
+                      <v-list-item
+                        v-for="(item, index) in availableRanksB2"
+                        :key="index"
+                        @click="chooseRank(item, o.id)"
+                      >
+                        <v-list-item-title>{{ item }}</v-list-item-title>
+                      </v-list-item>
+                    </v-list>
+                  </v-menu>
                 </section>
-                <section v-else>
-                </section>
-                
+                <section v-else></section>
               </section>
-
-
             </v-col>
             <v-col sm="10">
               {{ o.question }}
             </v-col>
-            
           </v-row>
         </v-col>
       </v-row>
@@ -95,11 +105,17 @@
         </h3>
       </v-row>
 
-      <Indications
-        :items="[
-          'S’il y en a plusieurs, vous pouvez les lister par ordre d’importance : la plus importante, la 2ième plus importante, la 3ième, etc.',
-        ]"
-      />
+      <v-row justify="center">
+        <v-col sm="8">
+          <Indications>
+            <p>
+              S’il y en a plusieurs, vous pouvez les lister par ordre
+              d’importance : la plus importante, la 2ième plus importante, la
+              3ième, etc.
+            </p>
+          </Indications>
+        </v-col>
+      </v-row>
 
       <TextArea v-model="B3" />
 
@@ -239,7 +255,9 @@ export default {
     },
     percentageCompletion() {
       const size = Object.keys(this.completions).length + 5;
-      const areOk = Object.values(this.completions).filter((a) => a).length + (5 - this.availableRanksB2.length);
+      const areOk =
+        Object.values(this.completions).filter((a) => a).length +
+        (5 - this.availableRanksB2.length);
       return parseInt((areOk / size) * 100.0);
     },
     answers() {
@@ -248,11 +266,11 @@ export default {
         B1b: this.B1b,
         B1c: this.B1c,
         B1d: this.B1d,
-        B2_1: this.getRankB2('1'),
-        B2_2: this.getRankB2('2'),
-        B2_3: this.getRankB2('3'),
-        B2_4: this.getRankB2('4'),
-        B2_5: this.getRankB2('5'),
+        B2_1: this.getRankB2("1"),
+        B2_2: this.getRankB2("2"),
+        B2_3: this.getRankB2("3"),
+        B2_4: this.getRankB2("4"),
+        B2_5: this.getRankB2("5"),
         B3: this.B3,
       };
     },
@@ -264,20 +282,20 @@ export default {
       if (res.length === 1) {
         return res[0].id;
       }
-      return '';
+      return "";
     },
     chooseRank(rank, itemId) {
-      this.optionsB2.filter(it => it.id === itemId)[0].rank = rank
+      this.optionsB2.filter((it) => it.id === itemId)[0].rank = rank;
     },
     removeRank(itemId) {
-      this.optionsB2.filter(it => it.id === itemId)[0].rank = ''
+      this.optionsB2.filter((it) => it.id === itemId)[0].rank = "";
     },
     getRank(rank) {
-      const res = this.optionsB2.filter(it => it.rank === rank);
+      const res = this.optionsB2.filter((it) => it.rank === rank);
       if (res) {
-        return res.id
+        return res.id;
       }
-      return ''
+      return "";
     },
     save() {
       this.saveChildQuestionnaire(this.answers);
@@ -297,19 +315,19 @@ export default {
     this.B1d = this.$store.state.childQuestionnaire.B1d || "";
 
     if (this.$store.state.childQuestionnaire.B2_1) {
-      this.chooseRank('1', this.$store.state.childQuestionnaire.B2_1);
+      this.chooseRank("1", this.$store.state.childQuestionnaire.B2_1);
     }
     if (this.$store.state.childQuestionnaire.B2_2) {
-      this.chooseRank('2', this.$store.state.childQuestionnaire.B2_2);
+      this.chooseRank("2", this.$store.state.childQuestionnaire.B2_2);
     }
     if (this.$store.state.childQuestionnaire.B2_3) {
-      this.chooseRank('3', this.$store.state.childQuestionnaire.B2_3);
+      this.chooseRank("3", this.$store.state.childQuestionnaire.B2_3);
     }
     if (this.$store.state.childQuestionnaire.B2_4) {
-      this.chooseRank('4', this.$store.state.childQuestionnaire.B2_4);
+      this.chooseRank("4", this.$store.state.childQuestionnaire.B2_4);
     }
     if (this.$store.state.childQuestionnaire.B2_5) {
-      this.chooseRank('5', this.$store.state.childQuestionnaire.B2_5);
+      this.chooseRank("5", this.$store.state.childQuestionnaire.B2_5);
     }
 
     this.B3 = this.$store.state.childQuestionnaire.B3 || "";

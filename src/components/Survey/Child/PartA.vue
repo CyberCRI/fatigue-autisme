@@ -1,10 +1,13 @@
 <template>
   <section>
-    <Header :title="`A. La fatigue mentale au quotidien`" :valueProgress="percentageCompletion" />
+    <Header
+      :title="`A. La fatigue mentale au quotidien`"
+      :valueProgress="percentageCompletion"
+    />
 
-    <br>
-    <br>
-    <br>
+    <br />
+    <br />
+    <br />
     <v-card class="pa-md-4 mb-4">
       <v-row class="ma-5" sm="12">
         <h3>
@@ -13,15 +16,17 @@
         </h3>
       </v-row>
 
-      <Indications :items="ratingLabels1" />
+      <Indications>
+        <ul>
+          <li v-for="p in ratingLabels1" :key="p">{{ p }}</li>
+        </ul>
+      </Indications>
 
       <!-- RADIO BUTTONS -->
-      <v-row justify="center" >
+      <v-row justify="center">
         <v-col sm="10">
           <v-row align="center" v-for="q in questionsA1" :key="q.question">
-            <v-col sm="6"
-              ><span v-html="q.question"></span></v-col
-            >
+            <v-col sm="6"><span v-html="q.question"></span></v-col>
             <v-col sm="6">
               <v-radio-group v-model="$data[q.model]" row>
                 <v-radio
@@ -36,59 +41,6 @@
         </v-col>
       </v-row>
 
-      <!-- SLIDERS -->
-      <!-- <v-row justify="center">
-                <v-col sm="6">
-                    En moyenne, sur la <b>dernière</b> semaine scolaire :
-                </v-col>
-                <v-col sm="4">
-                    <v-slider
-                        v-model="answers.A1a"
-                        :tick-labels="['1', '2', '3', '4', '5']"
-                        :max="4"
-                        step="1"
-                    ></v-slider>
-                </v-col>
-            </v-row>
-            <v-row justify="center">
-                <v-col sm="6">
-                    Au cours du <b>dernier</b> week-end :
-                </v-col>
-                <v-col sm="4">
-                    <v-slider
-                        v-model="answers.A1b"
-                        :tick-labels="['1', '2', '3', '4', '5']"
-                        :max="4"
-                        step="1"
-                    ></v-slider>
-                </v-col>
-            </v-row>
-            <v-row justify="center">
-                <v-col sm="6">
-                    Lorsque vous êtes en vacances :
-                </v-col>
-                <v-col sm="4">
-                    <v-slider
-                        v-model="answers.A1c"
-                        :tick-labels="['1', '2', '3', '4', '5']"
-                        :max="4"
-                        step="1"
-                    ></v-slider>
-                </v-col>
-            </v-row>
-            <v-row justify="center">
-                <v-col sm="6">
-                    Au moment précis où vous complétez ce questionnaire
-                </v-col>
-                <v-col sm="4">
-                    <v-slider
-                        v-model="answers.A1d"
-                        :tick-labels="['1', '2', '3', '4', '5']"
-                        :max="4"
-                        step="1"
-                    ></v-slider>
-                </v-col>
-            </v-row> -->
       <section id="tired" v-if="areYouTired">
         <v-row justify="center">
           <v-col sm="6">
@@ -103,23 +55,24 @@
       <section id="A11" v-if="relevantA11">
         <v-row class="ma-8" sm="12" v-if="relevantA11">
           <h4>
-            1.1 Pouvez-vous évaluer, à l’aide de la jauge, l’intensité de
-            cette fatigue mentale :
+            1.1 Pouvez-vous évaluer, à l’aide de la jauge, l’intensité de cette
+            fatigue mentale :
           </h4>
         </v-row>
 
         <v-row justify="center">
           <v-col sm="4">
-            Durant la journée où vous avez été <strong :class="this.$store.state.settings.accentTextClass">le / la plus</strong> fatigué.e <strong :class="this.$store.state.settings.accentTextClass">la semaine
-            passée</strong>
+            Durant la journée où vous avez été
+            <strong :class="this.$store.state.settings.accentTextClass"
+              >le / la plus</strong
+            >
+            fatigué.e
+            <strong :class="this.$store.state.settings.accentTextClass"
+              >la semaine passée</strong
+            >
           </v-col>
           <v-col sm="6">
-            <v-slider
-              v-model="A11a"
-              thumb-label="always"
-              min="0"
-              max="100"
-            >
+            <v-slider v-model="A11a" thumb-label="always" min="0" max="100">
               <template v-slot:prepend> Aucune fatigue </template>
               <template v-slot:append>
                 Aussi fatigué.e qu’il est possible de l’être
@@ -129,16 +82,17 @@
         </v-row>
         <v-row justify="center">
           <v-col sm="4">
-            Durant la journée où vous avez été <strong :class="this.$store.state.settings.accentTextClass">le / la moins</strong> fatigué.e <strong :class="this.$store.state.settings.accentTextClass">la semaine
-            passée</strong>
+            Durant la journée où vous avez été
+            <strong :class="this.$store.state.settings.accentTextClass"
+              >le / la moins</strong
+            >
+            fatigué.e
+            <strong :class="this.$store.state.settings.accentTextClass"
+              >la semaine passée</strong
+            >
           </v-col>
           <v-col sm="6">
-            <v-slider
-              v-model="A11b"
-              thumb-label="always"
-              min="0"
-              max="100"
-            >
+            <v-slider v-model="A11b" thumb-label="always" min="0" max="100">
               <template v-slot:prepend> Aucune fatigue </template>
               <template v-slot:append>
                 Aussi fatigué.e qu’il est possible de l’être
@@ -152,8 +106,8 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          2. Diriez-vous que la fatigue cognitive est plus importante depuis
-          que vous êtes entré.e au lycée ?
+          2. Diriez-vous que la fatigue cognitive est plus importante depuis que
+          vous êtes entré.e au lycée ?
         </h3>
       </v-row>
       <v-row justify="center">
@@ -171,21 +125,28 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          3. <strong :class="this.$store.state.settings.accentTextClass">Lorsque vous vivez des périodes de fatigue mentale</strong>, à quel
-          point les situations suivantes vous demandent-elles
-          <strong :class="this.$store.state.settings.accentTextClass">plus d’efforts que d’habitude</strong> :
+          3.
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >Lorsque vous vivez des périodes de fatigue mentale</strong
+          >, à quel point les situations suivantes vous demandent-elles
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >plus d’efforts que d’habitude</strong
+          >
+          :
         </h3>
       </v-row>
 
-      <Indications :items="ratingLabels2" />
+      <Indications>
+        <ul>
+          <li v-for="p in ratingLabels2" :key="p">{{ p }}</li>
+        </ul>
+      </Indications>
 
       <!-- RADIO BUTTONS -->
-      <v-row justify="center" >
+      <v-row justify="center">
         <v-col sm="10">
           <v-row align="center" v-for="q in questionsA3" :key="q.question">
-            <v-col sm="7"
-              >{{ q.question }}</v-col
-            >
+            <v-col sm="7">{{ q.question }}</v-col>
             <v-col sm="5">
               <v-radio-group v-model="$data[q.model]" row>
                 <v-radio
@@ -206,7 +167,10 @@
         <h3>
           4. De façon générale, avez-vous le sentiment de devoir fournir
           davantage d’efforts que les autres jeunes de votre âge dans
-          <strong :class="this.$store.state.settings.accentTextClass">certaines</strong> situations de la vie quotidienne ?
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >certaines</strong
+          >
+          situations de la vie quotidienne ?
         </h3>
       </v-row>
       <v-row justify="center">
@@ -227,10 +191,7 @@
       </section>
 
       <v-row justify="center">
-        <v-btn
-          class="btn primary bouton ma-4"
-          @click="save"
-        >
+        <v-btn class="btn primary bouton ma-4" @click="save">
           Enregistrer et terminer plus tard
         </v-btn>
         <v-btn
@@ -247,9 +208,9 @@
 
 <script>
 import Indications from "../../Indications.vue";
-import Header from '../Header.vue';
-import TextArea from '../TextArea.vue';
-import { mapActions } from 'vuex'
+import Header from "../Header.vue";
+import TextArea from "../TextArea.vue";
+import { mapActions } from "vuex";
 export default {
   name: "SurveyChildPartA",
   data() {
@@ -288,28 +249,76 @@ export default {
         "3- Cela me demande trop d’efforts, au point que je ne peux pas le faire",
         "n/a- Cela ne me concerne pas ou je ne parviens pas à évaluer la situation",
       ],
-      valuesA1: ['1', '2', '3', '4', '5'],
-      valuesA3: ['1', '2', '3', 'n/a'],
+      valuesA1: ["1", "2", "3", "4", "5"],
+      valuesA3: ["1", "2", "3", "n/a"],
       questionsA1: [
-                    {question: `En moyenne, sur la <strong class="${this.$store.state.settings.accentTextClass}">dernière</strong> semaine scolaire :`, model: "A1a"},
-                    {question: `Au cours du <strong class="${this.$store.state.settings.accentTextClass}">dernier</strong> week-end :`, model: "A1b"},
-                    {question: `Lorsque vous êtes en vacances :`, model: "A1c"},
-                    {question: `Au moment précis où vous complétez ce questionnaire :`, model: "A1d"}
-                  ],
+        {
+          question: `En moyenne, sur la <strong class="${this.$store.state.settings.accentTextClass}">dernière</strong> semaine scolaire :`,
+          model: "A1a",
+        },
+        {
+          question: `Au cours du <strong class="${this.$store.state.settings.accentTextClass}">dernier</strong> week-end :`,
+          model: "A1b",
+        },
+        { question: `Lorsque vous êtes en vacances :`, model: "A1c" },
+        {
+          question: `Au moment précis où vous complétez ce questionnaire :`,
+          model: "A1d",
+        },
+      ],
       questionsA3: [
-                    {question: "Vous préparer pour la journée (déjeuner, se laver, faire son sac, etc.)", model: "A3a"},
-                    {question: "Prendre les transports en commun / faire le trajet jusqu’au lycée", model: "A3b"},
-                    {question: "Suivre une journée de cours (compréhension, participation, attention)", model: "A3c"},
-                    {question: "Interagir avec les élèves du lycée (incluant les travaux de groupe)", model: "A3d"},
-                    {question: "Interagir avec les enseignant.e.s et autres adultes du lycée", model: "A3e"},
-                    {question: "Faire vos devoirs une fois de retour à la maison", model: "A3f"},
-                    {question: "Participer à la vie de famille (repas, discussion, jeux, tâches ménagères, etc.)", model: "A3g"},
-                    {question: "Vous investir dans vos activités extrascolaires (sport, musique, club ou association, etc.)", model: "A3h"},
-                    {question: "Vous consacrer à vos passions", model: "A3i"},
-                    {question: "Voir et échanger avec vos amis", model: "A3j"},
-                    {question: "Vous repérer au niveau spatial (représentation mentale des lieux) et temporel (situer les événements les uns par rapport aux autres, avoir la notion du temps qui passe, etc.", model: "A3k"},
-                    {question: "Vous exprimer (articuler, trouver vos mots, vous faire comprendre, etc.)", model: "A3l"}
-                  ]
+        {
+          question:
+            "Vous préparer pour la journée (déjeuner, se laver, faire son sac, etc.)",
+          model: "A3a",
+        },
+        {
+          question:
+            "Prendre les transports en commun / faire le trajet jusqu’au lycée",
+          model: "A3b",
+        },
+        {
+          question:
+            "Suivre une journée de cours (compréhension, participation, attention)",
+          model: "A3c",
+        },
+        {
+          question:
+            "Interagir avec les élèves du lycée (incluant les travaux de groupe)",
+          model: "A3d",
+        },
+        {
+          question:
+            "Interagir avec les enseignant.e.s et autres adultes du lycée",
+          model: "A3e",
+        },
+        {
+          question: "Faire vos devoirs une fois de retour à la maison",
+          model: "A3f",
+        },
+        {
+          question:
+            "Participer à la vie de famille (repas, discussion, jeux, tâches ménagères, etc.)",
+          model: "A3g",
+        },
+        {
+          question:
+            "Vous investir dans vos activités extrascolaires (sport, musique, club ou association, etc.)",
+          model: "A3h",
+        },
+        { question: "Vous consacrer à vos passions", model: "A3i" },
+        { question: "Voir et échanger avec vos amis", model: "A3j" },
+        {
+          question:
+            "Vous repérer au niveau spatial (représentation mentale des lieux) et temporel (situer les événements les uns par rapport aux autres, avoir la notion du temps qui passe, etc.",
+          model: "A3k",
+        },
+        {
+          question:
+            "Vous exprimer (articuler, trouver vos mots, vous faire comprendre, etc.)",
+          model: "A3l",
+        },
+      ],
     };
   },
   computed: {
@@ -323,7 +332,7 @@ export default {
       return this.A1d >= 2;
     },
     completions() {
-      console.log(this.A3a)
+      console.log(this.A3a);
       return {
         A1a: this.A1a != "",
         A1b: this.A1b != "",
@@ -361,7 +370,7 @@ export default {
 
         A11a: this.A11a,
         A11b: this.A11b,
-        
+
         A2: this.A2,
         A3a: this.A3a,
         A3b: this.A3b,
@@ -378,46 +387,44 @@ export default {
 
         A4: this.A4,
         A41: this.A41,
-      }
-    }
+      };
+    },
   },
   methods: {
-    ...mapActions([
-      'saveChildQuestionnaire'
-    ]),
+    ...mapActions(["saveChildQuestionnaire"]),
     save() {
-      this.saveChildQuestionnaire(this.answers)
-    }
+      this.saveChildQuestionnaire(this.answers);
+    },
   },
   components: {
     Indications,
     Header,
-    TextArea
+    TextArea,
   },
   mounted() {
-    console.log('part A mounted')
+    console.log("part A mounted");
     window.scrollTo(0, 0);
-    this.A1a = this.$store.state.childQuestionnaire.A1a || ''
-    this.A1b = this.$store.state.childQuestionnaire.A1b || ''
-    this.A1c = this.$store.state.childQuestionnaire.A1c || ''
-    this.A1d = this.$store.state.childQuestionnaire.A1d || ''
-    this.A11a = this.$store.state.childQuestionnaire.A11a || ''
-    this.A11b = this.$store.state.childQuestionnaire.A11b || ''
-    this.A2 = this.$store.state.childQuestionnaire.A2 || ''
-    this.A3a = this.$store.state.childQuestionnaire.A3a || ''
-    this.A3b = this.$store.state.childQuestionnaire.A3b || ''
-    this.A3c = this.$store.state.childQuestionnaire.A3c || ''
-    this.A3d = this.$store.state.childQuestionnaire.A3d || ''
-    this.A3e = this.$store.state.childQuestionnaire.A3e || ''
-    this.A3f = this.$store.state.childQuestionnaire.A3f || ''
-    this.A3g = this.$store.state.childQuestionnaire.A3g || ''
-    this.A3h = this.$store.state.childQuestionnaire.A3h || ''
-    this.A3i = this.$store.state.childQuestionnaire.A3i || ''
-    this.A3j = this.$store.state.childQuestionnaire.A3j || ''
-    this.A3k = this.$store.state.childQuestionnaire.A3k || ''
-    this.A3l = this.$store.state.childQuestionnaire.A3l || ''
-    this.A4 = this.$store.state.childQuestionnaire.A4 || ''
-    this.A41 = this.$store.state.childQuestionnaire.A41 || ''
-  }
+    this.A1a = this.$store.state.childQuestionnaire.A1a || "";
+    this.A1b = this.$store.state.childQuestionnaire.A1b || "";
+    this.A1c = this.$store.state.childQuestionnaire.A1c || "";
+    this.A1d = this.$store.state.childQuestionnaire.A1d || "";
+    this.A11a = this.$store.state.childQuestionnaire.A11a || "";
+    this.A11b = this.$store.state.childQuestionnaire.A11b || "";
+    this.A2 = this.$store.state.childQuestionnaire.A2 || "";
+    this.A3a = this.$store.state.childQuestionnaire.A3a || "";
+    this.A3b = this.$store.state.childQuestionnaire.A3b || "";
+    this.A3c = this.$store.state.childQuestionnaire.A3c || "";
+    this.A3d = this.$store.state.childQuestionnaire.A3d || "";
+    this.A3e = this.$store.state.childQuestionnaire.A3e || "";
+    this.A3f = this.$store.state.childQuestionnaire.A3f || "";
+    this.A3g = this.$store.state.childQuestionnaire.A3g || "";
+    this.A3h = this.$store.state.childQuestionnaire.A3h || "";
+    this.A3i = this.$store.state.childQuestionnaire.A3i || "";
+    this.A3j = this.$store.state.childQuestionnaire.A3j || "";
+    this.A3k = this.$store.state.childQuestionnaire.A3k || "";
+    this.A3l = this.$store.state.childQuestionnaire.A3l || "";
+    this.A4 = this.$store.state.childQuestionnaire.A4 || "";
+    this.A41 = this.$store.state.childQuestionnaire.A41 || "";
+  },
 };
 </script>

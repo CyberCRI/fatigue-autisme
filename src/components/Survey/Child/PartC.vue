@@ -11,8 +11,8 @@
     <v-card class="pa-md-4 mb-4">
       <v-row class="ma-5" sm="12">
         <h3>
-          1. Lorsque vous vivez des périodes de fatigue mentale, diriez-vous
-          que cela a des répercussions sur votre état physique :
+          1. Lorsque vous vivez des périodes de fatigue mentale, diriez-vous que
+          cela a des répercussions sur votre état physique :
         </h3>
       </v-row>
 
@@ -28,8 +28,8 @@
       <section v-if="relevantC11">
         <v-row class="ma-5" sm="12">
           <h4>
-            1.1 Pouvez-vous préciser de quelle(s) façon(s) la fatigue
-            cognitive impacte votre état physique :
+            1.1 Pouvez-vous préciser de quelle(s) façon(s) la fatigue cognitive
+            impacte votre état physique :
           </h4>
         </v-row>
 
@@ -182,10 +182,14 @@
             <h4>C.3.1 Pouvez-vous préciser :</h4>
           </v-row>
 
-          <indications :items="ratingLabelsC31a" />
-          <v-row justify="center" v-for="q in questionsC31a" :key="q.question">
+          <Indications>
+            <ul>
+              <li v-for="p in ratingLabelsC31a" :key="p">{{ p }}</li>
+            </ul>
+          </Indications>
+          <v-row justify="center" >
             <v-col sm="10">
-              <v-row align="center">
+              <v-row align="center" v-for="q in questionsC31a" :key="q.question">
                 <v-col sm="6"><span v-html="q.question"></span></v-col>
                 <v-col sm="6">
                   <v-radio-group v-model="$data[q.model]" row>
@@ -202,10 +206,15 @@
           </v-row>
           <br />
           <br />
-          <indications :items="ratingLabelsC31b" />
-          <v-row justify="center" v-for="q in questionsC31b" :key="q.question">
+
+          <Indications>
+            <ul>
+              <li v-for="p in ratingLabelsC31b" :key="p">{{ p }}</li>
+            </ul>
+          </Indications>
+          <v-row justify="center" >
             <v-col sm="10">
-              <v-row align="center">
+              <v-row align="center" v-for="q in questionsC31b" :key="q.question">
                 <v-col sm="6"><span v-html="q.question"></span></v-col>
                 <v-col sm="6">
                   <v-radio-group v-model="$data[q.model]" row>
@@ -227,9 +236,14 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          4. <strong :class="this.$store.state.settings.accentTextClass">Lors de périodes de fatigue mentale importante</strong>, avez-vous
-          constaté des variations de cette fatigue
-          <strong :class="this.$store.state.settings.accentTextClass">en fonction de l’heure</strong> de la journée :
+          4.
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >Lors de périodes de fatigue mentale importante</strong
+          >, avez-vous constaté des variations de cette fatigue
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >en fonction de l’heure</strong
+          >
+          de la journée :
         </h3>
       </v-row>
       <v-row justify="center">
@@ -278,9 +292,11 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          5. <strong :class="this.$store.state.settings.accentTextClass">Lors de périodes de fatigue cognitive importante</strong>, faire une
-          sieste ou vous octroyer un temps de repos vous permet-il de récupérer
-          de l’énergie :
+          5.
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >Lors de périodes de fatigue cognitive importante</strong
+          >, faire une sieste ou vous octroyer un temps de repos vous permet-il
+          de récupérer de l’énergie :
         </h3>
       </v-row>
 
@@ -386,7 +402,7 @@
 import Indications from "../../Indications.vue";
 import Header from "../Header.vue";
 import TextArea from "../TextArea.vue";
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
   name: "SurveyChildPartC",
   data() {
@@ -598,42 +614,39 @@ export default {
       return parseInt((areOk.length / size) * 100.0);
     },
     answers() {
-      console.log('TODO');
+      console.log("TODO");
       return {
-        C1: this.C1
-      }
-    }
+        C1: this.C1,
+      };
+    },
   },
   methods: {
-    ...mapActions([
-      'saveChildQuestionnaire'
-    ]),
+    ...mapActions(["saveChildQuestionnaire"]),
     save() {
-      this.saveChildQuestionnaire(this.answers)
-    }
+      this.saveChildQuestionnaire(this.answers);
+    },
   },
   components: {
     Indications,
     Header,
-    TextArea
+    TextArea,
   },
   mounted() {
-    console.log('part C mounted')
+    console.log("part C mounted");
     window.scrollTo(0, 0);
-    this.C1 = this.$store.state.childQuestionnaire.C1 || ''
-    console.log('TODO');
-  }
+    this.C1 = this.$store.state.childQuestionnaire.C1 || "";
+    console.log("TODO");
+  },
 };
 </script>
 
 <style scoped>
 .fade-enter-active {
-  transition: opacity .5s
+  transition: opacity 0.5s;
 }
 
 .fade-enter,
 .fade-leave-active {
-  opacity: 0
+  opacity: 0;
 }
-
 </style>

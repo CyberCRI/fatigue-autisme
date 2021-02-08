@@ -16,8 +16,11 @@
         </h3>
       </v-row>
 
-      <Indications :items="ratingLabelsE1" />
-
+      <Indications>
+        <ul>
+          <li v-for="p in ratingLabelsE1" :key="p">{{ p }}</li>
+        </ul>
+      </Indications>
 
       <v-row justify="center" align="center">
         <v-col sm="7">
@@ -26,75 +29,67 @@
         </v-col>
         <v-col sm="4">
           <v-radio-group v-model="E1a" row>
-                <v-radio
-                  v-for="i in valuesE1"
-                  :key="i"
-                  :label="i"
-                  :value="i"
-                ></v-radio>
-              </v-radio-group>
+            <v-radio
+              v-for="i in valuesE1"
+              :key="i"
+              :label="i"
+              :value="i"
+            ></v-radio>
+          </v-radio-group>
           <!-- <v-slider :tick-labels="['1', '2', '3', '4']" :max="3" step="1">
           </v-slider> -->
         </v-col>
       </v-row>
       <v-row justify="center" align="center">
         <v-col sm="7">
-          Votre confiance en vos capacités<v-tooltip
-          bottom
-        >
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn
-              icon
-              v-bind="attrs"
-              v-on="on"
+          Votre confiance en vos capacités<v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon v-bind="attrs" v-on="on">
+                <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
+              </v-btn>
+            </template>
+            <span
+              >« confiance »: Évaluation réaliste et ponctuelle des ressources
+              nécessaires pour affronter une situation particulière</span
             >
-              <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
-            </v-btn>
-          </template>
-          <span>« confiance »: Évaluation réaliste et ponctuelle des
-ressources nécessaires pour affronter une situation particulière</span>
-        </v-tooltip>
+          </v-tooltip>
         </v-col>
         <v-col sm="4">
           <v-radio-group v-model="E1b" row>
-                <v-radio
-                  v-for="i in valuesE1"
-                  :key="i"
-                  :label="i"
-                  :value="i"
-                ></v-radio>
-              </v-radio-group>
+            <v-radio
+              v-for="i in valuesE1"
+              :key="i"
+              :label="i"
+              :value="i"
+            ></v-radio>
+          </v-radio-group>
         </v-col>
       </v-row>
       <v-row justify="center" align="center">
         <v-col sm="7">
-          Votre estime de vous<v-tooltip
-          bottom
-        >
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn
-              icon
-              v-bind="attrs"
-              v-on="on"
-            >
-              <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
-            </v-btn>
-          </template>
-          <span>« estime de soi »: Perception et auto-évaluation de ses points
+          Votre estime de vous<v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon v-bind="attrs" v-on="on">
+                <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
+              </v-btn>
+            </template>
+            <span
+              >« estime de soi »: Perception et auto-évaluation de ses points
               forts et de ses points faibles quand on les compare à nos
-              valeur</span>
-        </v-tooltip>
+              valeur</span
+            >
+          </v-tooltip>
         </v-col>
-        
+
         <v-col sm="4">
           <v-radio-group v-model="E1c" row>
-                <v-radio
-                  v-for="i in valuesE1"
-                  :key="i"
-                  :label="i"
-                  :value="i"
-                ></v-radio>
-              </v-radio-group>
+            <v-radio
+              v-for="i in valuesE1"
+              :key="i"
+              :label="i"
+              :value="i"
+            ></v-radio>
+          </v-radio-group>
         </v-col>
       </v-row>
       <v-row justify="center" align="center" class="mb-8">
@@ -104,13 +99,13 @@ ressources nécessaires pour affronter une situation particulière</span>
         </v-col>
         <v-col sm="4">
           <v-radio-group v-model="E1d" row>
-                <v-radio
-                  v-for="i in valuesE1"
-                  :key="i"
-                  :label="i"
-                  :value="i"
-                ></v-radio>
-              </v-radio-group>
+            <v-radio
+              v-for="i in valuesE1"
+              :key="i"
+              :label="i"
+              :value="i"
+            ></v-radio>
+          </v-radio-group>
         </v-col>
       </v-row>
 
@@ -136,12 +131,11 @@ ressources nécessaires pour affronter une situation particulière</span>
   </section>
 </template>
 
-
 <script>
 import Indications from "../../Indications.vue";
 import Header from "../Header.vue";
 import TextArea from "../TextArea.vue";
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
   name: "SurveyChildPartE",
   data() {
@@ -158,7 +152,7 @@ export default {
         "3- C’est une source d’inquiétude importante",
         "4- Je n’y réfléchis pas "
       ],
-      valuesE1: ['1', '2', '3', '4']
+      valuesE1: ["1", "2", "3", "4"]
     };
   },
   computed: {
@@ -169,33 +163,31 @@ export default {
         E1c: this.E1c != "",
         E1d: this.E1d != "",
         E2: this.E2 != "",
-        E3: this.E3 != "",
+        E3: this.E3 != ""
       };
     },
     percentageCompletion() {
       const size = Object.keys(this.completions).length;
-      const areOk = Object.values(this.completions).filter((a) => a);
+      const areOk = Object.values(this.completions).filter(a => a);
       console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
     answers() {
-      console.log('TODO');
+      console.log("TODO");
       return {
         E1a: this.E1a,
         E1b: this.E1b,
         E1c: this.E1c,
         E1d: this.E1d,
         E2: this.E2,
-        E3: this.E3,
-      }
+        E3: this.E3
+      };
     }
   },
   methods: {
-    ...mapActions([
-      'saveChildQuestionnaire'
-    ]),
+    ...mapActions(["saveChildQuestionnaire"]),
     save() {
-      this.saveChildQuestionnaire(this.answers)
+      this.saveChildQuestionnaire(this.answers);
     }
   },
   components: {
@@ -204,14 +196,14 @@ export default {
     TextArea
   },
   mounted() {
-    console.log('part E mounted')
+    console.log("part E mounted");
     window.scrollTo(0, 0);
-    this.E1a = this.$store.state.childQuestionnaire.E1a || ''
-    this.E1b = this.$store.state.childQuestionnaire.E1b || ''
-    this.E1c = this.$store.state.childQuestionnaire.E1c || ''
-    this.E1d = this.$store.state.childQuestionnaire.E1d || ''
-    this.E2 = this.$store.state.childQuestionnaire.E2 || ''
-    this.E3 = this.$store.state.childQuestionnaire.E3 || ''
+    this.E1a = this.$store.state.childQuestionnaire.E1a || "";
+    this.E1b = this.$store.state.childQuestionnaire.E1b || "";
+    this.E1c = this.$store.state.childQuestionnaire.E1c || "";
+    this.E1d = this.$store.state.childQuestionnaire.E1d || "";
+    this.E2 = this.$store.state.childQuestionnaire.E2 || "";
+    this.E3 = this.$store.state.childQuestionnaire.E3 || "";
   }
 };
 </script>
