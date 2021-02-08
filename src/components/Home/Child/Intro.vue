@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-row justify="center">
-      <v-col md="10">
+      <v-col sm="10">
         <p>Cher lycéen, chère lycéenne,</p>
         <p>
           Vous avez accepté de participer à cette étude en complétant ce
@@ -22,7 +22,7 @@
             <v-card color="blue lighten-5" class="py-6 px-6">
               <p>
                 Avant de démarrer, voici quelques explications sur ce que nous
-                appelons la fatigue mentale. La fatigue mentale (aussi appelée
+                appelons la <strong :class="this.$store.state.settings.accentTextClass">fatigue mentale</strong>. La fatigue mentale (aussi appelée
                 fatigue cognitive, ou fatigabilité mentale) est relativement peu
                 étudiée en recherche et en médecine. Or, nous savons qu’elle
                 peut avoir des répercussions importantes sur le quotidien des
