@@ -115,6 +115,22 @@
       </v-row>
 
       <v-row justify="center">
+        <v-col sm="10">
+          <v-radio-group v-model="B3">
+            <v-radio label="Non" value="Non"></v-radio>
+            <v-radio label="Oui" value="Oui"></v-radio>
+          </v-radio-group>
+        </v-col>
+      </v-row>
+
+      <section id="B31" v-if="relevantB31">
+        <v-row class="ma-5" sm="12">
+          <h4>3.1 Pouvez-vous préciser :</h4>
+        </v-row>
+        <TextArea v-model="B31" />
+      </section>
+
+      <!-- <v-row justify="center">
         <v-col sm="8">
           <Indications>
             <p>
@@ -124,9 +140,9 @@
             </p>
           </Indications>
         </v-col>
-      </v-row>
+      </v-row> -->
 
-      <TextArea v-model="B3" />
+      <!-- <TextArea v-model="B3" /> -->
 
       <v-row justify="center">
         <v-btn
@@ -160,6 +176,7 @@ export default {
       B1c: "",
       B1d: "",
       B3: "",
+      B31: "",
       ratingLabels1: [
         "1- Insuffisamment chargé",
         "2- Bien équilibré (ni trop chargé, ni trop peu chargé)",
@@ -249,6 +266,9 @@ export default {
     };
   },
   computed: {
+    relevantB31() {
+      return this.B3 === 'Oui';
+    },
     availableRanksB2() {
       const rankTaken = this.optionsB2.map(o => o.rank);
       return ["1", "2", "3", "4", "5"].filter(i => !rankTaken.includes(i));
