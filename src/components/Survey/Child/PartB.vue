@@ -130,20 +130,6 @@
         <TextArea v-model="B31" />
       </section>
 
-      <!-- <v-row justify="center">
-        <v-col sm="8">
-          <Indications>
-            <p>
-              S’il y en a plusieurs, vous pouvez les lister par ordre
-              d’importance : la plus importante, la 2ième plus importante, la
-              3ième, etc.
-            </p>
-          </Indications>
-        </v-col>
-      </v-row> -->
-
-      <!-- <TextArea v-model="B3" /> -->
-
       <v-row justify="center">
         <v-btn
           class="btn primary bouton ma-4"
