@@ -21,8 +21,11 @@
           <v-row justify="center">
             <v-card color="blue lighten-5" class="py-6 px-6">
               <p>
-                Avant de démarrer, voici quelques explications sur ce que nous
-                appelons la <strong :class="this.$store.state.settings.accentTextClass">fatigue mentale</strong>. La fatigue mentale (aussi appelée
+                Quelques mots sur <strong :class="this.$store.state.settings.accentTextClass">la fatigue mentale</strong>:</p>
+                <p>
+                <!-- Avant de démarrer, voici quelques explications sur ce que nous
+                appelons la <strong :class="this.$store.state.settings.accentTextClass">fatigue mentale</strong>.  -->
+                <strong :class="this.$store.state.settings.accentTextClass">La fatigue mentale</strong> (aussi appelée
                 fatigue cognitive, ou fatigabilité mentale) est relativement peu
                 étudiée en recherche et en médecine. Or, nous savons qu’elle
                 peut avoir des répercussions importantes sur le quotidien des
