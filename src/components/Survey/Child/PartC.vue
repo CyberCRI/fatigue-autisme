@@ -63,22 +63,23 @@
               </v-layout>
                 </v-col>
                 <v-col sm="12" v-if="q.modelBool">
-                  Précisez si vous le souhaitez:
+                  <section v-if="q.modelT === 'C11hText'">
+                    <p><strong>La question 2 explore plus en détails les particularités sensorielles</strong></p>
+                  </section>
+                  <section v-else>
+                    <strong>Précisez si vous le souhaitez:</strong>
                   <TextArea v-model="q.modelText"/>
+                  </section>
+                  
                 </v-col>
             <v-divider class="ma-4"></v-divider>
             </v-row>
-            <v-row align="center">
-              <v-col sm="6">Autres, précisez :</v-col>
-              <v-col sm="6"
-                ><v-textarea
-                  v-model="C11lText"
-                  name="context"
-                  filled
-                  label=""
-                  rows="2"
-                ></v-textarea
-              ></v-col>
+            <v-row align="top">
+              <v-col sm="4">Autres, précisez :</v-col>
+              <v-col sm="8"
+                >
+                <TextArea v-model="C11lText" />
+              </v-col>
             </v-row>
           </v-col>
         </v-row>
