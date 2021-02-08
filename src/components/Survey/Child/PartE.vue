@@ -55,7 +55,7 @@
               </v-btn>
             </template>
             <span
-              >« confiance »: Évaluation réaliste et ponctuelle des ressources
+              >Confiance en soi: Évaluation réaliste et ponctuelle des ressources
               nécessaires pour affronter une situation particulière</span
             >
           </v-tooltip>
@@ -80,7 +80,7 @@
               </v-btn>
             </template>
             <span
-              >« estime de soi »: Perception et auto-évaluation de ses points
+              >Estime de soi: Perception et auto-évaluation de ses points
               forts et de ses points faibles quand on les compare à nos
               valeur</span
             >

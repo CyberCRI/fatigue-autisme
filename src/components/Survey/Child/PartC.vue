@@ -163,7 +163,7 @@
               </v-btn>
             </template>
             <span
-              >(équilibre, mouvements, perception du corps dans l’espace, etc.)</span
+              >Equilibre, mouvements, perception du corps dans l’espace, etc.</span
             >
           </v-tooltip></v-col>
             <v-col sm="4"
