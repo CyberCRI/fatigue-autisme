@@ -89,21 +89,44 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          2. Pouvez-vous évaluer, à l’aide de la jauge, la gêne liée aux
+          2. Pouvez-vous évaluer, à l’aide de la jauge, <strong :class="this.$store.state.settings.accentTextClass"
+              >la gêne</strong> liée aux
           différents stimuli sensoriels, en temps normal et lors des périodes de
           fatigue cognitive :
         </h3>
       </v-row>
 
+      <v-row justify="center">
+        <v-col sm="8">
+          
+      <v-card color="blue lighten-5" class="py-4 px-10">
+        Utilisez les jauges pour indiquer votre niveau de gêne
+        <v-row justify="center" class="mt-8">
+          <v-col sm="10">
+        <v-slider
+            v-model="dummySlider"
+                thumb-label="always"
+                min="0"
+                max="100"
+              ><template v-slot:prepend>Aucune gêne</template>
+              <template v-slot:append>
+                Gêne aussi forte que possible
+              </template></v-slider>
+          </v-col>
+        </v-row>
+      </v-card>
+        </v-col>
+      </v-row>
+
       <v-row justify="center" class="mt-6">
         <v-col sm="10">
-          <v-row class="text-subtitle-2 text-center" align="center">
-            <v-col sm="4">Sensibilité sensorielle</v-col>
+          <v-row align="center">
+            <v-col sm="4"><strong>Sensibilité sensorielle</strong></v-col>
             <v-col sm="4" class="text-center"
-              >Hors période de fatigue mentale</v-col
+              ><strong>Hors période de fatigue mentale</strong></v-col
             >
             <v-col sm="4" class="text-center"
-              >En période de fatigue mentale</v-col
+              ><strong>En période de fatigue mentale</strong></v-col
             >
           </v-row>
           <v-divider class="mt-4 mb-8"></v-divider>
@@ -170,18 +193,23 @@
           </v-tooltip>
             </v-col>
             <v-col
-              ><v-textarea
+              >
+              <!-- <TextArea v-model="C2OtherWith"/> -->
+              <v-textarea
                 v-model="C2OtherWith"
+                prepend-inner-icon="mdi-pencil"
                 name="context"
-                filled
+                solo
                 label=""
                 rows="2"
-              ></v-textarea
-            ></v-col>
+              ></v-textarea>
+            </v-col>
             <v-col
               ><v-textarea
                 v-model="C2OtherWithout"
+                prepend-inner-icon="mdi-pencil"
                 name="context"
+                solo
                 filled
                 label=""
                 rows="2"
@@ -228,8 +256,8 @@
                 v-for="q in questionsC31a"
                 :key="q.question"
               >
-                <v-col sm="6"><span v-html="q.question"></span></v-col>
-                <v-col sm="6">
+                <v-col sm="7"><span v-html="q.question"></span></v-col>
+                <v-col sm="5">
                   <v-radio-group v-model="$data[q.model]" row>
                     <v-radio
                       v-for="i in valuesC3a"
@@ -257,8 +285,8 @@
                 v-for="q in questionsC31b"
                 :key="q.question"
               >
-                <v-col sm="6"><span v-html="q.question"></span></v-col>
-                <v-col sm="6">
+                <v-col sm="7"><span v-html="q.question"></span></v-col>
+                <v-col sm="5">
                   <v-radio-group v-model="$data[q.model]" row>
                     <v-radio
                       v-for="i in valuesC3a"
@@ -449,6 +477,7 @@ export default {
   name: "SurveyChildPartC",
   data() {
     return {
+      dummySlider: 0,
       C1: "",
       C11aBool: false,
       C11aText: "",
@@ -518,7 +547,8 @@ export default {
         "3- Plus difficile que d’habitude",
         "4- Je ne sais pas",
       ],
-      valuesC3a: ["1", "2", "3", "Je ne sais pas"],
+      // valuesC3a: ["1", "2", "3", "Je ne sais pas"],
+      valuesC3a: ["1", "2", "3", "4"],
       questionsC11: [
         {
           question:
