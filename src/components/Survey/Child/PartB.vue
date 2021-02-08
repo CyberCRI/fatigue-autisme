@@ -156,7 +156,7 @@ export default {
         "2- Bien équilibré (ni trop chargé, ni trop peu chargé)",
         "3- Un peu trop chargé",
         "4- Trop chargé",
-        "5- Beaucoup trop chargé",
+        "5- Beaucoup trop chargé"
       ],
       valuesB1: ["1", "2", "3", "4", "5"],
       questionsB1: [
@@ -164,12 +164,12 @@ export default {
         {
           question:
             "Après le lycée (impératifs divers, accompagnements, devoirs, etc.)",
-          model: "B1b",
+          model: "B1b"
         },
         { question: "Durant le week-end", model: "B1c" },
         {
           question: "De façon générale (du lundi matin au dimanche soir)",
-          model: "B1d",
+          model: "B1d"
         },
       ],
       optionsB2: [
@@ -178,71 +178,71 @@ export default {
           id: "b",
           question:
             "La répartition des cours (dans la journée, dans la semaine)",
-          rank: "",
+          rank: ""
         },
         {
           id: "c",
           question:
             "Le rythme des enseignements dispensés en classe (trop rapides, trop lents, etc.)",
-          rank: "",
+          rank: ""
         },
         {
           id: "d",
           question:
             "Les interactions avec les élèves (comprendre le fonctionnement du groupe, les normes sociales implicites entre les adolescents, etc.)",
-          rank: "",
+          rank: ""
         },
         {
           id: "e",
           question:
             "Les interactions avec les enseignants et les adultes de l’établissement",
-          rank: "",
+          rank: ""
         },
         {
           id: "f",
           question: "La gestion de l’environnement sensoriel",
-          rank: "",
+          rank: ""
         },
         {
           id: "g",
           question: "La charge de travail scolaire (au lycée et à la maison)",
-          rank: "",
+          rank: ""
         },
         {
           id: "h",
           question:
             "Les activités après le lycée (loisirs, accompagnements divers, etc.)",
-          rank: "",
+          rank: ""
         },
         {
           id: "i",
           question:
             "Le fait de devoir s’adapter aux autres, faire le caméléon, porter un masque",
-          rank: "",
+          rank: ""
         },
         {
           id: "j",
           question: "Les attentes et exigences de votre entourage",
-          rank: "",
+          rank: ""
         },
         {
           id: "k",
           question: "La pression que vous vous mettez pour réussir",
-          rank: "",
+          rank: ""
         },
         {
           id: "l",
           question:
             "Le manque de sommeil / la mauvaise qualité de votre sommeil",
-          rank: "",
+          rank: ""
         },
       ],
     };
   },
   computed: {
     availableRanksB2() {
-      const rankTaken = this.optionsB2.map((o) => o.rank);
-      return ["1", "2", "3", "4", "5"].filter((i) => !rankTaken.includes(i));
+      const rankTaken = this.optionsB2.map(o => o.rank);
+      return ["1", "2", "3", "4", "5"].filter(i => !rankTaken.includes(i));
     },
     completions() {
       return {
@@ -250,13 +250,13 @@ export default {
         B1b: this.B1b != "",
         B1c: this.B1c != "",
         B1d: this.B1d != "",
-        B3: this.B3 != "",
+        B3: this.B3 != ""
       };
     },
     percentageCompletion() {
       const size = Object.keys(this.completions).length + 5;
       const areOk =
-        Object.values(this.completions).filter((a) => a).length +
+        Object.values(this.completions).filter(a => a).length +
         (5 - this.availableRanksB2.length);
       return parseInt((areOk / size) * 100.0);
     },
@@ -271,27 +271,27 @@ export default {
         B2_3: this.getRankB2("3"),
         B2_4: this.getRankB2("4"),
         B2_5: this.getRankB2("5"),
-        B3: this.B3,
+        B3: this.B3
       };
     },
   },
   methods: {
     ...mapActions(["saveChildQuestionnaire"]),
     getRankB2(rank) {
-      const res = this.optionsB2.filter((it) => it.rank === rank);
+      const res = this.optionsB2.filter(it => it.rank === rank);
       if (res.length === 1) {
         return res[0].id;
       }
       return "";
     },
     chooseRank(rank, itemId) {
-      this.optionsB2.filter((it) => it.id === itemId)[0].rank = rank;
+      this.optionsB2.filter(it => it.id === itemId)[0].rank = rank;
     },
     removeRank(itemId) {
-      this.optionsB2.filter((it) => it.id === itemId)[0].rank = "";
+      this.optionsB2.filter(it => it.id === itemId)[0].rank = "";
     },
     getRank(rank) {
-      const res = this.optionsB2.filter((it) => it.rank === rank);
+      const res = this.optionsB2.filter(it => it.rank === rank);
       if (res) {
         return res.id;
       }
@@ -299,12 +299,12 @@ export default {
     },
     save() {
       this.saveChildQuestionnaire(this.answers);
-    },
+    }
   },
   components: {
     Indications,
     Header,
-    TextArea,
+    TextArea
   },
   mounted() {
     console.log("part B mounted");
@@ -331,6 +331,6 @@ export default {
     }
 
     this.B3 = this.$store.state.childQuestionnaire.B3 || "";
-  },
+  }
 };
 </script>

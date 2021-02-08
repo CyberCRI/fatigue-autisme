@@ -187,9 +187,13 @@
               <li v-for="p in ratingLabelsC31a" :key="p">{{ p }}</li>
             </ul>
           </Indications>
-          <v-row justify="center" >
+          <v-row justify="center">
             <v-col sm="10">
-              <v-row align="center" v-for="q in questionsC31a" :key="q.question">
+              <v-row
+                align="center"
+                v-for="q in questionsC31a"
+                :key="q.question"
+              >
                 <v-col sm="6"><span v-html="q.question"></span></v-col>
                 <v-col sm="6">
                   <v-radio-group v-model="$data[q.model]" row>
@@ -212,9 +216,13 @@
               <li v-for="p in ratingLabelsC31b" :key="p">{{ p }}</li>
             </ul>
           </Indications>
-          <v-row justify="center" >
+          <v-row justify="center">
             <v-col sm="10">
-              <v-row align="center" v-for="q in questionsC31b" :key="q.question">
+              <v-row
+                align="center"
+                v-for="q in questionsC31b"
+                :key="q.question"
+              >
                 <v-col sm="6"><span v-html="q.question"></span></v-col>
                 <v-col sm="6">
                   <v-radio-group v-model="$data[q.model]" row>
@@ -396,7 +404,6 @@
     </v-card>
   </section>
 </template>
-
 
 <script>
 import Indications from "../../Indications.vue";
@@ -609,7 +616,7 @@ export default {
     },
     percentageCompletion() {
       const size = Object.keys(this.completions).length;
-      const areOk = Object.values(this.completions).filter((a) => a);
+      const areOk = Object.values(this.completions).filter(a => a);
       console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
