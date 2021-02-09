@@ -50,6 +50,7 @@ export default new Vuex.Store({
     loginSuccess(state, user) {
       state.auth.loggedIn = true;
       state.auth.user = user;
+      localStorage.setItem('user', JSON.stringify(user));
     },
     loginFailure(state, user) {
       state.auth.loggedIn = false;
@@ -60,7 +61,6 @@ export default new Vuex.Store({
       state.auth.user = null;
     },
     questionnaire(state, answers) {
-      console.log('mutation questionnaire')
       for (const key in answers) {
         state.childQuestionnaire[key] = answers[key];
       }
@@ -182,8 +182,9 @@ export default new Vuex.Store({
     login({ commit }, user) {
       console.log('store action login')
       return AuthService.login(user).then(
-        user => {
-          commit('loginSuccess', user);
+        data => {
+          commit('loginSuccess', data.user);
+          commit('questionnaire', data.questionnaire);
           return Promise.resolve(user);
         },
         error => {
@@ -198,8 +199,7 @@ export default new Vuex.Store({
       commit('logout');
     },
     saveChildQuestionnaire({ state, commit }, answers) {
-      console.log('store action save child questionnaire');
-      return UserService.saveChildQuestionnaire(state.auth.user.userId, state.childQuestionnaire).then(
+      return UserService.saveChildQuestionnaire(state.auth.user.userId, answers).then(
         () => {
           commit('questionnaire', answers);
           return Promise.resolve();

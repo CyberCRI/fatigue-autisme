@@ -542,12 +542,6 @@ export default {
       C11kBool: false,
       C11kText: "",
       C11lText: "",
-      C31a: "",
-      C31b: "",
-      C31c: "",
-      C31d: "",
-      C31e: "",
-      C31f: "",
       C2HearingWith: "",
       C2HearingWithout: "",
       C2SightWith: "",
@@ -563,12 +557,12 @@ export default {
       C2OtherWith: "",
       C2OtherWithout: "",
       C3: "",
-      C3a: 0,
-      C3b: 0,
-      C3c: 0,
-      C3d: 0,
-      C3e: 0,
-      C3f: 0,
+      C31a: "",
+      C31b: "",
+      C31c: "",
+      C31d: "",
+      C31e: "",
+      C31f: "",
       C4: "",
       C41: "",
       C5: "",
@@ -742,9 +736,58 @@ export default {
       return parseInt((areOk.length / size) * 100.0);
     },
     answers() {
-      console.log("TODO");
       return {
         C1: this.C1,
+        C11aBool: this.C11aBool,
+        C11aText: this.C11aText,
+        C11bBool: this.C11bBool,
+        C11bText: this.C11bText,
+        C11cBool: this.C11cBool,
+        C11cText: this.C11cText,
+        C11dBool: this.C11dBool,
+        C11dText: this.C11dText,
+        C11eBool: this.C11eBool,
+        C11eText: this.C11eText,
+        C11fBool: this.C11fBool,
+        C11fText: this.C11fText,
+        C11gBool: this.C11gBool,
+        C11gText: this.C11gText,
+        C11hBool: this.C11hBool,
+        C11hText: this.C11gText,
+        C11iBool: this.C11iBool,
+        C11iText: this.C11iText,
+        C11jBool: this.C11jBool,
+        C11jText: this.C11jText,
+        C11kBool: this.C11kBool,
+        C11kText: this.C11kText,
+        C11lText: this.C11lText,
+        C2HearingWith: this.C2HearingWith,
+        C2HearingWithout: this.C2HearingWithout,
+        C2SightWith: this.C2SightWith,
+        C2SightWithout: this.C2SightWithout,
+        C2TasteWith: this.C2TasteWith,
+        C2TasteWithout: this.C2TasteWithout,
+        C2TouchWith: this.C2TouchWith,
+        C2TouchWithout: this.C2TouchWithout,
+        C2SmellWith: this.C2SmellWith,
+        C2SmellWithout: this.C2SmellWithout,
+        C2VestWith: this.C2VestWith,
+        C2VestWithout: this.C2VestWithout,
+        C2OtherWith: this.C2OtherWith,
+        C2OtherWithout: this.C2OtherWithout,
+        C3: this.C3,
+        C31a: this.C31a,
+        C31b: this.C31b,
+        C31c: this.C31c,
+        C31d: this.C31d,
+        C31e: this.C31e,
+        C31f: this.C31f,
+        C4: this.C4,
+        C41: this.C41,
+        C5: this.C5,
+        C6: this.C6,
+        C61: this.C61,
+        C7: this.C7,
       };
     },
   },
@@ -786,7 +829,42 @@ export default {
     console.log("part C mounted");
     window.scrollTo(0, 0);
     this.C1 = this.$store.state.childQuestionnaire.C1 || "";
-    console.log("TODO");
+    this.C11aBool = this.$store.state.childQuestionnaire.C11aBool || "";
+    this.C11aText = this.$store.state.childQuestionnaire.C11aText || "";
+    this.C11bBool = this.$store.state.childQuestionnaire.C11bBool || "";
+    this.C11bText = this.$store.state.childQuestionnaire.C11bText || "";
+    this.C11cBool = this.$store.state.childQuestionnaire.C11cBool || "";
+    this.C11cText = this.$store.state.childQuestionnaire.C11cText || "";
+    this.C11dBool = this.$store.state.childQuestionnaire.C11dBool || "";
+    this.C11dText = this.$store.state.childQuestionnaire.C11dText || "";
+    this.C11eBool = this.$store.state.childQuestionnaire.C11eBool || "";
+    this.C11eText = this.$store.state.childQuestionnaire.C11eText || "";
+    this.C11fBool = this.$store.state.childQuestionnaire.C11fBool || "";
+    this.C11fText = this.$store.state.childQuestionnaire.C11fText || "";
+    this.C11gBool = this.$store.state.childQuestionnaire.C11gBool || "";
+    this.C11gText = this.$store.state.childQuestionnaire.C11gText || "";
+    this.C11hBool = this.$store.state.childQuestionnaire.C11hBool || "";
+    this.C11hText = this.$store.state.childQuestionnaire.C11hText || "";
+    this.C11iBool = this.$store.state.childQuestionnaire.C11iBool || "";
+    this.C11iText = this.$store.state.childQuestionnaire.C11iText || "";
+    this.C11jBool = this.$store.state.childQuestionnaire.C11jBool || "";
+    this.C11jText = this.$store.state.childQuestionnaire.C11jText || "";
+    this.C11kBool = this.$store.state.childQuestionnaire.C11kBool || "";
+    this.C11kText = this.$store.state.childQuestionnaire.C11kText || "";
+    this.C11lText = this.$store.state.childQuestionnaire.C11lText || "";
+    this.C3 = this.$store.state.childQuestionnaire.C3 || "";
+    this.C31a = this.$store.state.childQuestionnaire.C31a || "";
+    this.C31b = this.$store.state.childQuestionnaire.C31b || "";
+    this.C31c = this.$store.state.childQuestionnaire.C31c || "";
+    this.C31d = this.$store.state.childQuestionnaire.C31d || "";
+    this.C31e = this.$store.state.childQuestionnaire.C31e || "";
+    this.C31f = this.$store.state.childQuestionnaire.C31f || "";
+    this.C4 = this.$store.state.childQuestionnaire.C4 || "";
+    this.C41 = this.$store.state.childQuestionnaire.C41 || "";
+    this.C5 = this.$store.state.childQuestionnaire.C5 || "";
+    this.C6 = this.$store.state.childQuestionnaire.C6 || "";
+    this.C61 = this.$store.state.childQuestionnaire.C61 || "";
+    this.C7 = this.$store.state.childQuestionnaire.C7 || "";
   },
 };
 </script>

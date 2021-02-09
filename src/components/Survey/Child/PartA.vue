@@ -16,7 +16,7 @@
           Certaines questions ci-dessous nécessitent une réponse afin de valider cette partie.
         </v-col>
       </v-row>
-      
+
       <v-row class="ma-5" sm="12">
         <h3>
           1. Pouvez-vous estimer l’intensité de votre fatigue mentale dans les
@@ -477,6 +477,8 @@ export default {
   },
   mounted() {
     console.log("part A mounted");
+    console.log('childQuestionnaire in state:')
+    console.log(this.$store.state.childQuestionnaire)
     window.scrollTo(0, 0);
     this.A1a = this.$store.state.childQuestionnaire.A1a || "";
     this.A1b = this.$store.state.childQuestionnaire.A1b || "";
