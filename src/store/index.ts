@@ -199,8 +199,15 @@ export default new Vuex.Store({
     },
     saveChildQuestionnaire({ state, commit }, answers) {
       console.log('store action save child questionnaire');
-      commit('questionnaire', answers);
-      UserService.saveChildQuestionnaire(state.auth.user.userId, state.childQuestionnaire);
+      return UserService.saveChildQuestionnaire(state.auth.user.userId, state.childQuestionnaire).then(
+        () => {
+          commit('questionnaire', answers);
+          return Promise.resolve();
+        },
+        error => {
+          return Promise.reject(error);
+        }
+      )
     },
     sendConsent({ commit }) {
       console.log('store action send consent');
