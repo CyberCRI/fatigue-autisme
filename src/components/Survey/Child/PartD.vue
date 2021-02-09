@@ -29,7 +29,7 @@
       </v-row>
 
       <v-row justify="center">
-        <v-col sm="10">
+        <v-col cols="6" sm="10">
           <v-radio-group v-model="D1" v-bind:class="{ 'error-borders': errors.includes('D1') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
@@ -57,7 +57,7 @@
       </v-row>
 
       <v-row justify="center">
-        <v-col sm="10">
+        <v-col cols="6" sm="10">
           <v-radio-group v-model="D2" v-bind:class="{ 'error-borders': errors.includes('D2') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
@@ -99,8 +99,8 @@
       <v-row justify="center">
         <v-col sm="10">
           <v-row align="center" v-for="q in questionsD3" :key="q.question" v-bind:class="{ 'error-borders': errors.includes(q.model) }">
-            <v-col sm="6"><span v-html="q.question"></span></v-col>
-            <v-col sm="6">
+            <v-col cols="12" sm="6"><span v-html="q.question"></span></v-col>
+            <v-col cols="12" sm="6">
               <v-radio-group v-model="$data[q.model]" row>
                 <v-radio
                   v-for="i in valuesD3"
@@ -131,7 +131,7 @@
       </v-row>
 
       <v-row justify="center">
-        <v-col sm="10">
+        <v-col cols="6" sm="10">
           <v-radio-group v-model="D4" v-bind:class="{ 'error-borders': errors.includes('D4') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
@@ -160,7 +160,7 @@
       </v-row>
 
       <v-row justify="center">
-        <v-col sm="10">
+        <v-col cols="6" sm="10">
           <v-radio-group v-model="D5" v-bind:class="{ 'error-borders': errors.includes('D5') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
@@ -191,8 +191,8 @@
       <v-row justify="center" v-for="q in questionsD6" :key="q.question">
         <v-col sm="10">
           <v-row align="center">
-            <v-col sm="5"><span v-html="q.question"></span></v-col>
-            <v-col sm="7">
+            <v-col cols="12" sm="5"><span v-html="q.question"></span></v-col>
+            <v-col cols="12" sm="7">
               <v-slider
                 v-model="$data[q.model]"
                 thumb-label="always"

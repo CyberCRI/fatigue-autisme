@@ -22,7 +22,7 @@
         </v-col>
       </v-row>
 
-      <v-row class="ma-5" sm="12">
+      <v-row class="ma-5" cols="12" sm="12" >
         <h3>
           1. Lorsque vous vivez des périodes de fatigue mentale, diriez-vous que
           cela a des répercussions sur votre état physique :
@@ -30,7 +30,7 @@
       </v-row>
 
       <v-row justify="center">
-        <v-col sm="10">
+        <v-col cols="6" sm="10">
           <v-radio-group v-model="C1" v-bind:class="{ 'error-borders': errors.includes('C1') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
@@ -49,8 +49,8 @@
         <v-row justify="center" class="mt-6">
           <v-col sm="10">
             <v-row>
-              <v-col sm="8"><strong>Manifestations physiques :</strong></v-col>
-              <v-col sm="4" class="text-center"
+              <v-col cols="6" sm="8"><strong>Manifestations physiques :</strong></v-col>
+              <v-col cols="6" sm="4" class="text-center"
                 ><strong>Cet aspect est-il impacté :</strong></v-col
               >
               <!-- <v-col sm="4" class="text-center"
@@ -64,8 +64,8 @@
               v-for="q in questionsC11"
               :key="q.question"
             >
-              <v-col sm="8">{{ q.question }}</v-col>
-              <v-col sm="4"
+              <v-col cols="8" sm="8">{{ q.question }}</v-col>
+              <v-col cols="4" sm="4"
                 >
               <v-layout row wrap justify-center>
                 <v-switch v-model="$data[q.modelB]">
@@ -75,7 +75,7 @@
                 </v-switch>
               </v-layout>
                 </v-col>
-                <v-col sm="12" v-if="$data[q.modelB]">
+                <v-col cols="12" sm="12" v-if="$data[q.modelB]">
                   <section v-if="q.modelT === 'C11hText'">
                     <p><strong>La question 2 explore plus en détails les particularités sensorielles</strong></p>
                   </section>
@@ -88,8 +88,8 @@
             <v-divider class="ma-4"></v-divider>
             </v-row>
             <v-row>
-              <v-col sm="4">Autres, précisez :</v-col>
-              <v-col sm="8"
+              <v-col cols="12" sm="4">Autres, précisez :</v-col>
+              <v-col cols="12" sm="8"
                 >
                 <TextArea v-model="C11lText" />
               </v-col>
@@ -241,7 +241,7 @@
       </v-row>
 
       <v-row justify="center">
-        <v-col sm="10" v-bind:class="{ 'error-borders': errors.includes('C3') }">
+        <v-col sm="10" cols="6" v-bind:class="{ 'error-borders': errors.includes('C3') }">
           <v-radio-group v-model="C3" >
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
@@ -268,8 +268,8 @@
                 v-for="q in questionsC31a"
                 :key="q.question"
               >
-                <v-col sm="7"><span v-html="q.question"></span></v-col>
-                <v-col sm="5">
+                <v-col cols="12" sm="7"><span v-html="q.question"></span></v-col>
+                <v-col cols="12" sm="5">
                   <v-radio-group v-model="$data[q.model]" row>
                     <v-radio
                       v-for="i in valuesC3a"
@@ -297,8 +297,8 @@
                 v-for="q in questionsC31b"
                 :key="q.question"
               >
-                <v-col sm="7"><span v-html="q.question"></span></v-col>
-                <v-col sm="5">
+                <v-col cols="12" sm="7"><span v-html="q.question"></span></v-col>
+                <v-col cols="12" sm="5">
                   <v-radio-group v-model="$data[q.model]" row>
                     <v-radio
                       v-for="i in valuesC3a"
@@ -329,7 +329,7 @@
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col sm="10" v-bind:class="{ 'error-borders': errors.includes('C4') }">
+        <v-col cols="6" sm="10" v-bind:class="{ 'error-borders': errors.includes('C4') }">
           <v-radio-group v-model="C4" >
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
@@ -346,7 +346,7 @@
           </h4>
         </v-row>
         <v-row justify="center">
-          <v-col sm="10">
+          <v-col cols="6" sm="10">
             <v-radio-group v-model="C41">
               <v-radio label="Avant 8h" value="Avant 8h"></v-radio>
               <v-radio
@@ -384,7 +384,7 @@
       </v-row>
 
       <v-row justify="center" >
-        <v-col sm="10" v-bind:class="{ 'error-borders': errors.includes('C5') }">
+        <v-col cols="10" sm="10" v-bind:class="{ 'error-borders': errors.includes('C5') }">
           <v-radio-group v-model="C5">
             <v-radio
               label="Beaucoup (je suis de nouveau en forme)"
@@ -416,7 +416,7 @@
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col sm="10" v-bind:class="{ 'error-borders': errors.includes('C6') }">
+        <v-col cols="6" sm="10" v-bind:class="{ 'error-borders': errors.includes('C6') }">
           <v-radio-group v-model="C6" >
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
@@ -433,14 +433,14 @@
 
       <v-divider class="ma-4"></v-divider>
 
-      <v-row class="ma-5" sm="12">
+      <v-row class="ma-5" cols="6" sm="12">
         <h3>
           7. Identifier les signaux physiques et psychologiques de fatigue que
           vous envoie votre corps, cela vous paraît :
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col sm="10" v-bind:class="{ 'error-borders': errors.includes('C7') }">
+        <v-col cols="10" sm="10" v-bind:class="{ 'error-borders': errors.includes('C7') }">
           <v-radio-group v-model="C7" >
             <v-radio
               label="Facile ou relativement facile"

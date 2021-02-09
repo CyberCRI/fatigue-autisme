@@ -11,7 +11,7 @@
     <br />
     <v-card class="pa-md-4 mb-4">
       
-      <v-row sm="12" justify="center">
+      <v-row cols="10" sm="10" justify="center">
         <h1>
           Répercussions dans la vie quotidienne
         </h1>
@@ -36,8 +36,8 @@
       <v-row justify="center">
         <v-col sm="10">
           <v-row align="center" v-for="q in questionsB1" :key="q.question" v-bind:class="{ 'error-borders': errors.includes(q.model) }">
-            <v-col sm="7"><span v-html="q.question"></span></v-col>
-            <v-col sm="5">
+            <v-col cols="12" sm="7"><span v-html="q.question"></span></v-col>
+            <v-col cols="12" sm="5">
               <v-radio-group v-model="$data[q.model]" row>
                 <v-radio
                   v-for="i in valuesB1"
@@ -122,7 +122,7 @@
       </v-row>
 
       <v-row justify="center">
-        <v-col sm="10">
+        <v-col sm="10" cols="6">
           <v-radio-group v-model="B3" v-bind:class="{ 'error-borders': errors.includes('B3') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
