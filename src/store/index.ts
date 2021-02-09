@@ -199,9 +199,15 @@ export default new Vuex.Store({
       commit('logout');
     },
     saveChildQuestionnaire({ state, commit }, answers) {
-      return UserService.saveChildQuestionnaire(state.auth.user.userId, answers).then(
+      console.log('store action saveChildQuestionnaire');
+      console.log('current child questionnaire:');
+      console.log(state.childQuestionnaire)
+      console.log('to add:')
+      console.log(answers)
+      const newAnswers = Object.assign(state.childQuestionnaire, answers);
+      return UserService.saveChildQuestionnaire(state.auth.user.userId, newAnswers).then(
         () => {
-          commit('questionnaire', answers);
+          commit('questionnaire', newAnswers);
           return Promise.resolve();
         },
         error => {
