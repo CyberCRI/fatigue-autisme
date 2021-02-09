@@ -194,7 +194,7 @@
             <v-col sm="5"><span v-html="q.question"></span></v-col>
             <v-col sm="7">
               <v-slider
-                v-model="q.model"
+                v-model="$data[q.model]"
                 thumb-label="always"
                 min="0"
                 max="100"
@@ -415,6 +415,30 @@ export default {
       console.log("TODO");
       return {
         D1: this.D1,
+        D11: this.D11,
+        D2: this.D2,
+        D21: this.D21,
+        D3a: this.D3a,
+        D3b: this.D3b,
+        D3c: this.D3c,
+        D3d: this.D3d,
+        D3e: this.D3e,
+        D3f: this.D3f,
+        D3g: this.D3g,
+        D3h: this.D3h,
+        D3i: this.D3i,
+        D3j: this.D3j,
+        D3k: this.D3k,
+        D3l: this.D3l,
+        D4: this.D4,
+        D41: this.D41,
+        D5: this.D5,
+        D6a: this.D6a,
+        D6b: this.D6b,
+        D6c: this.D6c,
+        D6d: this.D6d,
+        D6e: this.D6e,
+        D6f: this.D6f,
       };
     },
   },
@@ -454,9 +478,32 @@ export default {
   },
   mounted() {
     console.log("part D mounted");
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0, 'smooth');
     this.D1 = this.$store.state.childQuestionnaire.D1 || "";
-    console.log("TODO");
+    this.D11 = this.$store.state.childQuestionnaire.D11 || "";
+    this.D2 = this.$store.state.childQuestionnaire.D2 || "";
+    this.D21 = this.$store.state.childQuestionnaire.D21 || "";
+    this.D3a = this.$store.state.childQuestionnaire.D3a || "";
+    this.D3b = this.$store.state.childQuestionnaire.D3b || "";
+    this.D3c = this.$store.state.childQuestionnaire.D3c || "";
+    this.D3d = this.$store.state.childQuestionnaire.D3d || "";
+    this.D3e = this.$store.state.childQuestionnaire.D3e || "";
+    this.D3f = this.$store.state.childQuestionnaire.D3f || "";
+    this.D3g = this.$store.state.childQuestionnaire.D3g || "";
+    this.D3h = this.$store.state.childQuestionnaire.D3h || "";
+    this.D3i = this.$store.state.childQuestionnaire.D3i || "";
+    this.D3j = this.$store.state.childQuestionnaire.D3j || "";
+    this.D3k = this.$store.state.childQuestionnaire.D3k || "";
+    this.D3l = this.$store.state.childQuestionnaire.D3l || "";
+    this.D4 = this.$store.state.childQuestionnaire.D4 || "";
+    this.D41 = this.$store.state.childQuestionnaire.D41 || "";
+    this.D5 = this.$store.state.childQuestionnaire.D5 || "";
+    this.D6a = this.$store.state.childQuestionnaire.D6a || 0;
+    this.D6b = this.$store.state.childQuestionnaire.D6b || 0;
+    this.D6c = this.$store.state.childQuestionnaire.D6c || 0;
+    this.D6d = this.$store.state.childQuestionnaire.D6d || 0;
+    this.D6e = this.$store.state.childQuestionnaire.D6e || 0;
+    this.D6f = this.$store.state.childQuestionnaire.D6f || 0;
   },
 };
 </script>
