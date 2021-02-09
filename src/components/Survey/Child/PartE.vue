@@ -15,6 +15,13 @@
           Questions finales
         </h1>
       </v-row>
+
+      <v-row justify="center" class="ma-10" v-if="errors.length > 0">
+        <v-col sm="9" class="error-borders pa-4">
+          Certaines questions ci-dessous nécessitent une réponse afin de valider cette partie.
+        </v-col>
+      </v-row>
+
       <v-row class="ma-5" sm="12">
         <h3>
           1. À l’heure actuelle, diriez-vous que la fatigue cognitive constitue
@@ -28,7 +35,9 @@
         </ul>
       </Indications>
 
-      <v-row justify="center" align="center">
+      <v-row justify="center">
+        <v-col sm="10">
+      <v-row justify="center" align="center" v-bind:class="{ 'error-borders': errors.includes('E1a') }">
         <v-col sm="7">
           Votre motivation à poursuivre vos études, une formation
           professionnelle ou à vous projeter dans le monde du travail
@@ -46,7 +55,7 @@
           </v-slider> -->
         </v-col>
       </v-row>
-      <v-row justify="center" align="center">
+      <v-row justify="center" align="center" v-bind:class="{ 'error-borders': errors.includes('E1b') }">
         <v-col sm="7">
           Votre confiance en vos capacités<v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
@@ -71,7 +80,7 @@
           </v-radio-group>
         </v-col>
       </v-row>
-      <v-row justify="center" align="center">
+      <v-row justify="center" align="center" v-bind:class="{ 'error-borders': errors.includes('E1c') }">
         <v-col sm="7">
           Votre estime de vous<v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
@@ -98,7 +107,7 @@
           </v-radio-group>
         </v-col>
       </v-row>
-      <v-row justify="center" align="center" class="mb-8">
+      <v-row justify="center" align="center" class="mb-8" v-bind:class="{ 'error-borders': errors.includes('E1d') }">
         <v-col sm="7">
           Votre indépendance à venir (logement, gestion du quotidien,
           transports, etc.)
@@ -112,6 +121,8 @@
               :value="i"
             ></v-radio>
           </v-radio-group>
+        </v-col>
+      </v-row>
         </v-col>
       </v-row>
 
@@ -133,6 +144,42 @@
         </h3>
       </v-row>
       <TextArea v-model="E3" />
+
+      <v-row justify="center">
+        <v-btn class="btn primary bouton ma-4" @click="save">
+          Enregistrer et terminer plus tard
+        </v-btn>
+        <v-btn
+          class="btn primary bouton ma-4"
+          @click="nextPart"
+        >
+          Valider le questionnaire
+        </v-btn>
+      </v-row>
+      <v-row justify="center">
+        <v-col sm="6">
+          <v-alert
+            outlined
+            type="success"
+            text
+            v-if="showSuccess"
+          >
+            Vos réponses ont bien été enregistrées.
+          </v-alert>
+        </v-col>
+      </v-row>
+      <v-row justify="center">
+        <v-col sm="6">
+          <v-alert
+            outlined
+            type="error"
+            text
+            v-if="alertErrorMessage"
+          >
+            {{ alertErrorMessage }}
+          </v-alert>
+        </v-col>
+      </v-row>
     </v-card>
   </section>
 </template>
@@ -146,6 +193,9 @@ export default {
   name: "SurveyChildPartE",
   data() {
     return {
+      activeErrors: false,
+      showSuccess: false,
+      alertErrorMessage: '',
       E1a: "",
       E1b: "",
       E1c: "",
@@ -162,14 +212,26 @@ export default {
     };
   },
   computed: {
+    errors() {
+      const errors = [];
+      if (!this.activeErrors) {
+        return errors;
+      }
+      for (const id in this.completions) {
+        if (!this.completions[id]) {
+          errors.push(id);
+        }
+      }
+      return errors;
+    },
     completions() {
       return {
         E1a: this.E1a != "",
         E1b: this.E1b != "",
         E1c: this.E1c != "",
         E1d: this.E1d != "",
-        E2: this.E2 != "",
-        E3: this.E3 != ""
+        // E2: this.E2 != "",
+        // E3: this.E3 != ""
       };
     },
     percentageCompletion() {
@@ -193,7 +255,30 @@ export default {
   methods: {
     ...mapActions(["saveChildQuestionnaire"]),
     save() {
-      this.saveChildQuestionnaire(this.answers);
+      this.alertErrorMessage = '';
+      this.saveChildQuestionnaire(this.answers).then(
+        () => {
+          this.showSuccess = true;
+          console.log('ok')
+        },
+        error => {
+          this.alertErrorMessage = 'Une erreur est survenue'
+          this.showSuccess = false;
+          console.log('ko')
+          console.log(error)
+        }
+      )
+    },
+    nextPart() {
+      this.showSuccess = false;
+      this.alertErrorMessage = '';
+      this.activeErrors = true;
+      if (this.errors.length > 0) {
+        console.log('some errors');
+        window.scrollTo(0, 0);
+      } else {
+        this.$router.push('/enfants/questionnaire/Outro')
+      }
     }
   },
   components: {
