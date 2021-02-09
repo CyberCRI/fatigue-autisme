@@ -15,6 +15,13 @@
           Répercussions sur le fonctionnement physique
         </h1>
       </v-row>
+
+      <v-row justify="center" class="ma-10" v-if="errors.length > 0">
+        <v-col sm="9" class="error-borders pa-4">
+          Certaines questions ci-dessous nécessitent une réponse afin de valider cette partie.
+        </v-col>
+      </v-row>
+
       <v-row class="ma-5" sm="12">
         <h3>
           1. Lorsque vous vivez des périodes de fatigue mentale, diriez-vous que
@@ -24,7 +31,7 @@
 
       <v-row justify="center">
         <v-col sm="10">
-          <v-radio-group v-model="C1">
+          <v-radio-group v-model="C1" v-bind:class="{ 'error-borders': errors.includes('C1') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
           </v-radio-group>
@@ -236,7 +243,7 @@
 
       <v-row justify="center">
         <v-col sm="10">
-          <v-radio-group v-model="C3">
+          <v-radio-group v-model="C3" v-bind:class="{ 'error-borders': errors.includes('C3') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
             <v-radio label="Je ne sais pas" value="Je ne sais pas"></v-radio>
@@ -324,7 +331,7 @@
       </v-row>
       <v-row justify="center">
         <v-col sm="10">
-          <v-radio-group v-model="C4">
+          <v-radio-group v-model="C4" v-bind:class="{ 'error-borders': errors.includes('C4') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
           </v-radio-group>
@@ -379,7 +386,7 @@
 
       <v-row justify="center">
         <v-col sm="10">
-          <v-radio-group v-model="C5">
+          <v-radio-group v-model="C5" v-bind:class="{ 'error-borders': errors.includes('C5') }">
             <v-radio
               label="Beaucoup (je suis de nouveau en forme)"
               value="Beaucoup"
@@ -411,7 +418,7 @@
       </v-row>
       <v-row justify="center">
         <v-col sm="10">
-          <v-radio-group v-model="C6">
+          <v-radio-group v-model="C6" v-bind:class="{ 'error-borders': errors.includes('C6') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
           </v-radio-group>
@@ -435,7 +442,7 @@
       </v-row>
       <v-row justify="center">
         <v-col sm="10">
-          <v-radio-group v-model="C7">
+          <v-radio-group v-model="C7" v-bind:class="{ 'error-borders': errors.includes('C7') }">
             <v-radio
               label="Facile ou relativement facile"
               value="Facile ou relativement facile"
@@ -459,16 +466,40 @@
       <v-row justify="center">
         <v-btn
           class="btn primary bouton ma-4"
-          @click="$router.push('/enfants/questionnaire/partD')"
+          @click="save"
         >
           Enregistrer et terminer plus tard
         </v-btn>
         <v-btn
           class="btn primary bouton ma-4"
-          @click="$router.push('/enfants/questionnaire/partD')"
+          @click="nextPart"
         >
           Accéder à la partie D
         </v-btn>
+      </v-row>
+      <v-row justify="center">
+        <v-col sm="6">
+          <v-alert
+            outlined
+            type="success"
+            text
+            v-if="showSuccess"
+          >
+            Vos réponses ont bien été enregistrées.
+          </v-alert>
+        </v-col>
+      </v-row>
+      <v-row justify="center">
+        <v-col sm="6">
+          <v-alert
+            outlined
+            type="error"
+            text
+            v-if="alertErrorMessage"
+          >
+            {{ alertErrorMessage }}
+          </v-alert>
+        </v-col>
       </v-row>
     </v-card>
   </section>
@@ -483,6 +514,9 @@ export default {
   name: "SurveyChildPartC",
   data() {
     return {
+      activeErrors: false,
+      showSuccess: false,
+      alertErrorMessage: '',
       dummySlider: 0,
       C1: "",
       C11aBool: false,
@@ -667,6 +701,18 @@ export default {
     };
   },
   computed: {
+    errors() {
+      const errors = [];
+      if (!this.activeErrors) {
+        return errors;
+      }
+      for (const id in this.completions) {
+        if (!this.completions[id]) {
+          errors.push(id);
+        }
+      }
+      return errors;
+    },
     relevantC11() {
       return this.C1 === "Oui";
     },
@@ -682,7 +728,11 @@ export default {
     completions() {
       return {
         C1: this.C1 != "",
-        A4: this.A4 != "",
+        C3: this.C3 != "",
+        C4: this.C4 != "",
+        C5: this.C5 != "",
+        C6: this.C6 != "",
+        C7: this.C7 != "",
       };
     },
     percentageCompletion() {
@@ -701,8 +751,31 @@ export default {
   methods: {
     ...mapActions(["saveChildQuestionnaire"]),
     save() {
-      this.saveChildQuestionnaire(this.answers);
+      this.alertErrorMessage = '';
+      this.saveChildQuestionnaire(this.answers).then(
+        () => {
+          this.showSuccess = true;
+          console.log('ok')
+        },
+        error => {
+          this.alertErrorMessage = 'Une erreur est survenue'
+          this.showSuccess = false;
+          console.log('ko')
+          console.log(error)
+        }
+      )
     },
+    nextPart() {
+      this.showSuccess = false;
+      this.alertErrorMessage = '';
+      this.activeErrors = true;
+      if (this.errors.length > 0) {
+        console.log('some errors');
+        window.scrollTo(0, 0);
+      } else {
+        this.$router.push('/enfants/questionnaire/partD')
+      }
+    }
   },
   components: {
     Indications,
