@@ -863,8 +863,8 @@ export default {
     this.C2SmellWithout = this.$store.state.childQuestionnaire.C2SmellWithout || 0;
     this.C2VestWith = this.$store.state.childQuestionnaire.C2VestWith || 0;
     this.C2VestWithout = this.$store.state.childQuestionnaire.C2VestWithout || 0;
-    this.C2OtherWith = this.$store.state.childQuestionnaire.C2OtherWith || 0;
-    this.C2OtherWithout = this.$store.state.childQuestionnaire.C2OtherWithout || 0;
+    this.C2OtherWith = this.$store.state.childQuestionnaire.C2OtherWith || "";
+    this.C2OtherWithout = this.$store.state.childQuestionnaire.C2OtherWithout || "";
     this.C3 = this.$store.state.childQuestionnaire.C3 || "";
     this.C31a = this.$store.state.childQuestionnaire.C31a || "";
     this.C31b = this.$store.state.childQuestionnaire.C31b || "";
