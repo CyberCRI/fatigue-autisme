@@ -157,10 +157,10 @@
 
       <!-- RADIO BUTTONS -->
       <v-row justify="center">
-        <v-col sm="10">
+        <v-col cols="10">
           <v-row align="center" v-for="q in questionsA3" :key="q.question" v-bind:class="{ 'error-borders': errors.includes(q.model) }">
-            <v-col sm="7">{{ q.question }}</v-col>
-            <v-col sm="5">
+            <v-col sm="7" cols="12">{{ q.question }}</v-col>
+            <v-col sm="5" cols="12">
               <v-radio-group v-model="$data[q.model]" row>
                 <v-radio
                   v-for="i in valuesA3"
@@ -187,7 +187,7 @@
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col sm="10" v-bind:class="{ 'error-borders': errors.includes('A4') }">
+        <v-col cols="6" sm="10" v-bind:class="{ 'error-borders': errors.includes('A4') }">
           <v-radio-group v-model="A4">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>

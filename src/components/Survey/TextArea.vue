@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center">
-    <v-col sm="10">
+    <v-col cols="10">
       <v-textarea
         v-model="inputVal"
         name="context"

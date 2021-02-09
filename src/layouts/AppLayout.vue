@@ -10,8 +10,8 @@
     </v-app-bar>
     <v-main>
       <v-row justify="center">
-        <v-col sd="10">
-          <v-container fluid class="main-container grey lighten-4">
+        <v-col cols="12" sm="10">
+          <v-container class="main-container grey lighten-4">
             <router-view></router-view>
           </v-container>
         </v-col>
