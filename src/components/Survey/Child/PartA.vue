@@ -7,7 +7,7 @@
     <br />
     <br />
     <v-card class="pa-md-4 mb-4">
-      <v-row sm="12" justify="center">
+      <v-row xs="12" justify="center">
         <h1>La fatigue mentale au quotidien</h1>
       </v-row>
       
@@ -17,7 +17,7 @@
         </v-col>
       </v-row>
 
-      <v-row class="ma-5" sm="12">
+      <v-row class="ma-5" cols="12">
         <h3>
           1. Pouvez-vous estimer l’intensité de votre fatigue mentale dans les
           situations suivantes :
@@ -32,15 +32,15 @@
 
       <!-- RADIO BUTTONS -->
       <v-row justify="center">
-        <v-col sm="10">
+        <v-col cols="10">
           <v-row
             align="center"
             v-for="q in questionsA1"
             :key="q.question"
             v-bind:class="{ 'error-borders': errors.includes(q.model) }"
           >
-            <v-col sm="6"><span v-html="q.question"></span></v-col>
-            <v-col sm="6">
+            <v-col sm="12" md="6" cols="12"><span v-html="q.question"></span></v-col>
+            <v-col sm="12" md="6" cols="12">
               <v-radio-group v-model="$data[q.model]" row>
                 <v-radio
                   v-for="i in valuesA1"
@@ -56,7 +56,7 @@
 
       <section id="tired" v-if="areYouTired">
         <v-row justify="center">
-          <v-col sm="6">
+          <v-col cols="10" sm="6">
             <div class="rounded-lg text-center green lighten-4 pa-4">
               Si vous vous sentez actuellement très fatigué.e, n’hésitez pas à
               compléter ce questionnaire en plusieurs fois.
@@ -74,7 +74,7 @@
         </v-row>
 
         <v-row justify="center">
-          <v-col sm="4">
+          <v-col cols="12" sm="4">
             Durant la journée où vous avez été
             <strong :class="this.$store.state.settings.accentTextClass"
               >le / la plus</strong
@@ -84,7 +84,7 @@
               >la semaine passée</strong
             >
           </v-col>
-          <v-col sm="6">
+          <v-col sm="6" cols="12">
             <v-slider v-model="A11a" thumb-label="always" min="0" max="100">
               <template v-slot:prepend> Aucune fatigue </template>
               <template v-slot:append>
@@ -94,7 +94,7 @@
           </v-col>
         </v-row>
         <v-row justify="center">
-          <v-col sm="4">
+          <v-col sm="4" cols="12">
             Durant la journée où vous avez été
             <strong :class="this.$store.state.settings.accentTextClass"
               >le / la moins</strong
@@ -104,7 +104,7 @@
               >la semaine passée</strong
             >
           </v-col>
-          <v-col sm="6">
+          <v-col sm="6" cols="12">
             <v-slider v-model="A11b" thumb-label="always" min="0" max="100">
               <template v-slot:prepend> Aucune fatigue </template>
               <template v-slot:append>
@@ -124,7 +124,7 @@
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col sm="10"  v-bind:class="{ 'error-borders': errors.includes('A2') }">
+        <v-col sm="10" cols="6"  v-bind:class="{ 'error-borders': errors.includes('A2') }">
           <v-radio-group v-model="A2">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
