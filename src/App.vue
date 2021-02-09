@@ -8,6 +8,7 @@
 import AppLayout from "./layouts/AppLayout";
 import SimpleLayout from "./layouts/SimpleLayout";
 import Authorize from "@/mixins/Authorize.ts";
+import './assets/styles.css';
 
 export default {
   name: "App",
