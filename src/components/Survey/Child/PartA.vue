@@ -208,11 +208,36 @@
         </v-btn>
         <v-btn
           class="btn primary bouton ma-4"
-          @click="$router.push('/enfants/questionnaire/partB')"
+          @click="nextPart"
         >
           Accéder à la partie B
         </v-btn>
       </v-row>
+      <v-row justify="center">
+        <v-col sm="6">
+          <v-alert
+            outlined
+            type="success"
+            text
+            v-if="showSuccess"
+          >
+            Vos réponses ont bien été enregistrées.
+          </v-alert>
+        </v-col>
+      </v-row>
+      <v-row justify="center">
+        <v-col sm="6">
+          <v-alert
+            outlined
+            type="error"
+            text
+            v-if="alertErrorMessage"
+          >
+            {{ alertErrorMessage }}
+          </v-alert>
+        </v-col>
+      </v-row>
+    
     </v-card>
     <!-- </v-expansion-panel-content> -->
   </section>
@@ -228,6 +253,8 @@ export default {
   data() {
     return {
       activeErrors: false,
+      showSuccess: false,
+      alertErrorMessage: '',
       A1a: "",
       A1b: "",
       A1c: "",
@@ -416,9 +443,31 @@ export default {
   methods: {
     ...mapActions(["saveChildQuestionnaire"]),
     save() {
-      this.activeErrors = true;
-      this.saveChildQuestionnaire(this.answers);
+      this.alertErrorMessage = '';
+      this.saveChildQuestionnaire(this.answers).then(
+        () => {
+          this.showSuccess = true;
+          console.log('ok')
+        },
+        error => {
+          this.alertErrorMessage = 'Une erreur est survenue'
+          this.showSuccess = false;
+          console.log('ko')
+          console.log(error)
+        }
+      )
     },
+    nextPart() {
+      this.showSuccess = false;
+      this.alertErrorMessage = '';
+      this.activeErrors = true;
+      if (this.errors.length > 0) {
+        console.log('some errors');
+        window.scrollTo(0, 0);
+      } else {
+        this.$router.push('/enfants/questionnaire/partB')
+      }
+    }
   },
   components: {
     Indications,
@@ -452,10 +501,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.error-borders {
-  border-left: 2px solid #FFC107 !important;
-  background-color: #FFC10733;
-}
-</style>
