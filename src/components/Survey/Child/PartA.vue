@@ -1,9 +1,6 @@
 <template>
   <section>
-    <Header
-      :title="`Partie A`"
-      :valueProgress="percentageCompletion"
-    />
+    <Header :title="`Partie A`" :valueProgress="percentageCompletion" />
 
     <br />
     <br />
@@ -11,9 +8,13 @@
     <br />
     <v-card class="pa-md-4 mb-4">
       <v-row sm="12" justify="center">
-        <h1>
-          La fatigue mentale au quotidien
-        </h1>
+        <h1>La fatigue mentale au quotidien</h1>
+      </v-row>
+      
+      <v-row justify="center" class="ma-10" v-if="errors.length > 0">
+        <v-col sm="9" class="error-borders pa-4">
+          Certaines questions ci-dessous nécessitent une réponse afin de valider cette partie.
+        </v-col>
       </v-row>
       <v-row class="ma-5" sm="12">
         <h3>
@@ -31,7 +32,12 @@
       <!-- RADIO BUTTONS -->
       <v-row justify="center">
         <v-col sm="10">
-          <v-row align="center" v-for="q in questionsA1" :key="q.question">
+          <v-row
+            align="center"
+            v-for="q in questionsA1"
+            :key="q.question"
+            v-bind:class="{ 'error-borders': errors.includes(q.model) }"
+          >
             <v-col sm="6"><span v-html="q.question"></span></v-col>
             <v-col sm="6">
               <v-radio-group v-model="$data[q.model]" row>
@@ -117,7 +123,7 @@
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col sm="10">
+        <v-col sm="10"  v-bind:class="{ 'error-borders': errors.includes('A2') }">
           <v-radio-group v-model="A2">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
@@ -151,7 +157,7 @@
       <!-- RADIO BUTTONS -->
       <v-row justify="center">
         <v-col sm="10">
-          <v-row align="center" v-for="q in questionsA3" :key="q.question">
+          <v-row align="center" v-for="q in questionsA3" :key="q.question" v-bind:class="{ 'error-borders': errors.includes(q.model) }">
             <v-col sm="7">{{ q.question }}</v-col>
             <v-col sm="5">
               <v-radio-group v-model="$data[q.model]" row>
@@ -180,7 +186,7 @@
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col sm="10">
+        <v-col sm="10" v-bind:class="{ 'error-borders': errors.includes('A4') }">
           <v-radio-group v-model="A4">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
@@ -221,6 +227,7 @@ export default {
   name: "SurveyChildPartA",
   data() {
     return {
+      activeErrors: false,
       A1a: "",
       A1b: "",
       A1c: "",
@@ -328,6 +335,18 @@ export default {
     };
   },
   computed: {
+    errors() {
+      const errors = [];
+      if (!this.activeErrors) {
+        return errors;
+      }
+      for (const id in this.completions) {
+        if (!this.completions[id]) {
+          errors.push(id);
+        }
+      }
+      return errors;
+    },
     relevantA11() {
       return this.A1a > 1 || this.A1b > 1 || this.A1d > 1;
     },
@@ -338,7 +357,6 @@ export default {
       return this.A1d >= 2;
     },
     completions() {
-      console.log(this.A3a);
       return {
         A1a: this.A1a != "",
         A1b: this.A1b != "",
@@ -358,7 +376,6 @@ export default {
         A3k: this.A3k != "",
         A3l: this.A3l != "",
         A4: this.A4 != "",
-        A41: this.A41 != "",
       };
     },
     percentageCompletion() {
@@ -399,6 +416,7 @@ export default {
   methods: {
     ...mapActions(["saveChildQuestionnaire"]),
     save() {
+      this.activeErrors = true;
       this.saveChildQuestionnaire(this.answers);
     },
   },
@@ -434,3 +452,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.error-borders {
+  border-left: 2px solid #FFC107 !important;
+  background-color: #FFC10733;
+}
+</style>
