@@ -16,6 +16,7 @@
           Certaines questions ci-dessous nécessitent une réponse afin de valider cette partie.
         </v-col>
       </v-row>
+      
       <v-row class="ma-5" sm="12">
         <h3>
           1. Pouvez-vous estimer l’intensité de votre fatigue mentale dans les
