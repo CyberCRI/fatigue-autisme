@@ -68,26 +68,26 @@
               <v-col sm="4"
                 >
               <v-layout row wrap justify-center>
-                <v-switch v-model="q.modelBool">
+                <v-switch v-model="$data[q.modelB]">
                   <template v-slot:label>{{
-                    q.modelBool ? " Oui" : " Non"
+                    $data[q.modelB] ? " Oui" : " Non"
                   }}</template>
                 </v-switch>
               </v-layout>
                 </v-col>
-                <v-col sm="12" v-if="q.modelBool">
+                <v-col sm="12" v-if="$data[q.modelB]">
                   <section v-if="q.modelT === 'C11hText'">
                     <p><strong>La question 2 explore plus en détails les particularités sensorielles</strong></p>
                   </section>
                   <section v-else>
                     <strong>Précisez si vous le souhaitez:</strong>
-                  <TextArea v-model="q.modelText"/>
+                  <TextArea v-model="$data[q.modelT]"/>
                   </section>
                   
                 </v-col>
             <v-divider class="ma-4"></v-divider>
             </v-row>
-            <v-row align="top">
+            <v-row>
               <v-col sm="4">Autres, précisez :</v-col>
               <v-col sm="8"
                 >
@@ -143,11 +143,11 @@
             >
           </v-row>
           <v-divider class="mt-4 mb-8"></v-divider>
-          <v-row v-for="q in questionsC2" :key="q.question" class="ma-4" align="top">
+          <v-row v-for="q in questionsC2" :key="q.question" class="ma-4">
             <v-col sm="4" v-html="q.question"></v-col>
             <v-col sm="4"
               ><v-slider
-                v-model="q.modelW"
+                v-model="$data[q.modelW]"
                 thumb-label="always"
                 min="0"
                 max="100"
@@ -155,7 +155,7 @@
             ></v-col>
             <v-col sm="4"
               ><v-slider
-                v-model="q.modelWo"
+                v-model="$data[q.modelWo]"
                 thumb-label="always"
                 min="0"
                 max="100"
@@ -223,7 +223,6 @@
                 prepend-inner-icon="mdi-pencil"
                 name="context"
                 solo
-                filled
                 label=""
                 rows="2"
               ></v-textarea
@@ -242,8 +241,8 @@
       </v-row>
 
       <v-row justify="center">
-        <v-col sm="10">
-          <v-radio-group v-model="C3" v-bind:class="{ 'error-borders': errors.includes('C3') }">
+        <v-col sm="10" v-bind:class="{ 'error-borders': errors.includes('C3') }">
+          <v-radio-group v-model="C3" >
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
             <v-radio label="Je ne sais pas" value="Je ne sais pas"></v-radio>
@@ -330,8 +329,8 @@
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col sm="10">
-          <v-radio-group v-model="C4" v-bind:class="{ 'error-borders': errors.includes('C4') }">
+        <v-col sm="10" v-bind:class="{ 'error-borders': errors.includes('C4') }">
+          <v-radio-group v-model="C4" >
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
           </v-radio-group>
@@ -384,9 +383,9 @@
         </h3>
       </v-row>
 
-      <v-row justify="center">
-        <v-col sm="10">
-          <v-radio-group v-model="C5" v-bind:class="{ 'error-borders': errors.includes('C5') }">
+      <v-row justify="center" >
+        <v-col sm="10" v-bind:class="{ 'error-borders': errors.includes('C5') }">
+          <v-radio-group v-model="C5">
             <v-radio
               label="Beaucoup (je suis de nouveau en forme)"
               value="Beaucoup"
@@ -417,8 +416,8 @@
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col sm="10">
-          <v-radio-group v-model="C6" v-bind:class="{ 'error-borders': errors.includes('C6') }">
+        <v-col sm="10" v-bind:class="{ 'error-borders': errors.includes('C6') }">
+          <v-radio-group v-model="C6" >
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
           </v-radio-group>
@@ -441,8 +440,8 @@
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col sm="10">
-          <v-radio-group v-model="C7" v-bind:class="{ 'error-borders': errors.includes('C7') }">
+        <v-col sm="10" v-bind:class="{ 'error-borders': errors.includes('C7') }">
+          <v-radio-group v-model="C7" >
             <v-radio
               label="Facile ou relativement facile"
               value="Facile ou relativement facile"
@@ -519,7 +518,7 @@ export default {
       alertErrorMessage: '',
       dummySlider: 0,
       C1: "",
-      C11aBool: false,
+      C11aBool: true,
       C11aText: "",
       C11bBool: false,
       C11bText: "",
@@ -829,29 +828,43 @@ export default {
     console.log("part C mounted");
     window.scrollTo(0, 0);
     this.C1 = this.$store.state.childQuestionnaire.C1 || "";
-    this.C11aBool = this.$store.state.childQuestionnaire.C11aBool || "";
+    this.C11aBool = this.$store.state.childQuestionnaire.C11aBool || false;
     this.C11aText = this.$store.state.childQuestionnaire.C11aText || "";
-    this.C11bBool = this.$store.state.childQuestionnaire.C11bBool || "";
+    this.C11bBool = this.$store.state.childQuestionnaire.C11bBool || false;
     this.C11bText = this.$store.state.childQuestionnaire.C11bText || "";
-    this.C11cBool = this.$store.state.childQuestionnaire.C11cBool || "";
+    this.C11cBool = this.$store.state.childQuestionnaire.C11cBool || false;
     this.C11cText = this.$store.state.childQuestionnaire.C11cText || "";
-    this.C11dBool = this.$store.state.childQuestionnaire.C11dBool || "";
+    this.C11dBool = this.$store.state.childQuestionnaire.C11dBool || false;
     this.C11dText = this.$store.state.childQuestionnaire.C11dText || "";
-    this.C11eBool = this.$store.state.childQuestionnaire.C11eBool || "";
+    this.C11eBool = this.$store.state.childQuestionnaire.C11eBool || false;
     this.C11eText = this.$store.state.childQuestionnaire.C11eText || "";
-    this.C11fBool = this.$store.state.childQuestionnaire.C11fBool || "";
+    this.C11fBool = this.$store.state.childQuestionnaire.C11fBool || false;
     this.C11fText = this.$store.state.childQuestionnaire.C11fText || "";
-    this.C11gBool = this.$store.state.childQuestionnaire.C11gBool || "";
+    this.C11gBool = this.$store.state.childQuestionnaire.C11gBool || false;
     this.C11gText = this.$store.state.childQuestionnaire.C11gText || "";
-    this.C11hBool = this.$store.state.childQuestionnaire.C11hBool || "";
+    this.C11hBool = this.$store.state.childQuestionnaire.C11hBool || false;
     this.C11hText = this.$store.state.childQuestionnaire.C11hText || "";
-    this.C11iBool = this.$store.state.childQuestionnaire.C11iBool || "";
+    this.C11iBool = this.$store.state.childQuestionnaire.C11iBool || false;
     this.C11iText = this.$store.state.childQuestionnaire.C11iText || "";
-    this.C11jBool = this.$store.state.childQuestionnaire.C11jBool || "";
+    this.C11jBool = this.$store.state.childQuestionnaire.C11jBool || false;
     this.C11jText = this.$store.state.childQuestionnaire.C11jText || "";
-    this.C11kBool = this.$store.state.childQuestionnaire.C11kBool || "";
+    this.C11kBool = this.$store.state.childQuestionnaire.C11kBool || false;
     this.C11kText = this.$store.state.childQuestionnaire.C11kText || "";
     this.C11lText = this.$store.state.childQuestionnaire.C11lText || "";
+    this.C2HearingWith = this.$store.state.childQuestionnaire.C2HearingWith || 0;
+    this.C2HearingWithout = this.$store.state.childQuestionnaire.C2HearingWithout || 0;
+    this.C2SightWith = this.$store.state.childQuestionnaire.C2SightWith || 0;
+    this.C2SightWithout = this.$store.state.childQuestionnaire.C2SightWithout || 0;
+    this.C2TasteWith = this.$store.state.childQuestionnaire.C2TasteWith || 0;
+    this.C2TasteWithout = this.$store.state.childQuestionnaire.C2TasteWithout || 0;
+    this.C2TouchWith = this.$store.state.childQuestionnaire.C2TouchWith || 0;
+    this.C2TouchWithout = this.$store.state.childQuestionnaire.C2TouchWithout || 0;
+    this.C2SmellWith = this.$store.state.childQuestionnaire.C2SmellWith || 0;
+    this.C2SmellWithout = this.$store.state.childQuestionnaire.C2SmellWithout || 0;
+    this.C2VestWith = this.$store.state.childQuestionnaire.C2VestWith || 0;
+    this.C2VestWithout = this.$store.state.childQuestionnaire.C2VestWithout || 0;
+    this.C2OtherWith = this.$store.state.childQuestionnaire.C2OtherWith || 0;
+    this.C2OtherWithout = this.$store.state.childQuestionnaire.C2OtherWithout || 0;
     this.C3 = this.$store.state.childQuestionnaire.C3 || "";
     this.C31a = this.$store.state.childQuestionnaire.C31a || "";
     this.C31b = this.$store.state.childQuestionnaire.C31b || "";
