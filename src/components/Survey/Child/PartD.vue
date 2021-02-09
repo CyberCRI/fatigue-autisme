@@ -1,9 +1,6 @@
 <template>
   <section>
-    <Header
-      :title="`Partie D`"
-      :valueProgress="percentageCompletion"
-    />
+    <Header :title="`Partie D`" :valueProgress="percentageCompletion" />
 
     <br />
     <br />
@@ -11,22 +8,29 @@
     <br />
     <v-card class="pa-md-4 mb-4">
       <v-row sm="12" justify="center">
-        <h1>
-          Répercussions sur le fonctionnement cognitif et émotionnel
-        </h1>
+        <h1>Répercussions sur le fonctionnement cognitif et émotionnel</h1>
       </v-row>
+
+      <v-row justify="center" class="ma-10" v-if="errors.length > 0">
+        <v-col sm="9" class="error-borders pa-4">
+          Certaines questions ci-dessous nécessitent une réponse afin de valider
+          cette partie.
+        </v-col>
+      </v-row>
+
       <v-row class="ma-5" sm="12">
         <h3>
-          1. <strong :class="this.$store.state.settings.accentTextClass"
-              >Lors de périodes de fatigue cognitive importante</strong>, avez-vous
-          l’impression de « perdre » temporairement certaines de vos capacités,
-          compétences ou habiletés :
+          1.
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >Lors de périodes de fatigue cognitive importante</strong
+          >, avez-vous l’impression de « perdre » temporairement certaines de
+          vos capacités, compétences ou habiletés :
         </h3>
       </v-row>
 
       <v-row justify="center">
         <v-col sm="10">
-          <v-radio-group v-model="D1">
+          <v-radio-group v-model="D1" v-bind:class="{ 'error-borders': errors.includes('D1') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
             <v-radio label="Oui, beaucoup" value="Oui, beaucoup"></v-radio>
@@ -45,15 +49,16 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          2. <strong :class="this.$store.state.settings.accentTextClass"
-              >Lors de périodes de fatigue cognitive importante</strong>, avez-vous
-          constaté des changements au niveau de votre mémoire :
+          2.
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >Lors de périodes de fatigue cognitive importante</strong
+          >, avez-vous constaté des changements au niveau de votre mémoire :
         </h3>
       </v-row>
 
       <v-row justify="center">
         <v-col sm="10">
-          <v-radio-group v-model="D2">
+          <v-radio-group v-model="D2" v-bind:class="{ 'error-borders': errors.includes('D2') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
             <v-radio label="Oui, beaucoup" value="Oui, beaucoup"></v-radio>
@@ -93,7 +98,7 @@
 
       <v-row justify="center">
         <v-col sm="10">
-          <v-row align="center" v-for="q in questionsD3" :key="q.question">
+          <v-row align="center" v-for="q in questionsD3" :key="q.question" v-bind:class="{ 'error-borders': errors.includes(q.model) }">
             <v-col sm="6"><span v-html="q.question"></span></v-col>
             <v-col sm="6">
               <v-radio-group v-model="$data[q.model]" row>
@@ -113,10 +118,11 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          4. <strong :class="this.$store.state.settings.accentTextClass"
-              >Lors des périodes de fatigue mentale importante</strong>, avez-vous constaté
-          des changements au niveau de votre attention, lors de tâches ou
-          d’activités
+          4.
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >Lors des périodes de fatigue mentale importante</strong
+          >, avez-vous constaté des changements au niveau de votre attention,
+          lors de tâches ou d’activités
           <strong :class="this.$store.state.settings.accentTextClass"
             >non scolaires</strong
           >
@@ -126,7 +132,7 @@
 
       <v-row justify="center">
         <v-col sm="10">
-          <v-radio-group v-model="D4">
+          <v-radio-group v-model="D4" v-bind:class="{ 'error-borders': errors.includes('D4') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
             <v-radio label="Oui, beaucoup" value="Oui, beaucoup"></v-radio>
@@ -145,16 +151,17 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          5. <strong :class="this.$store.state.settings.accentTextClass"
-              >Lors de périodes de fatigue importante</strong>, avez-vous l’impression
-          d’être plus lent.e pour réaliser différentes tâches du quotidien,
-          qu’elles soient scolaires ou non :
+          5.
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >Lors de périodes de fatigue importante</strong
+          >, avez-vous l’impression d’être plus lent.e pour réaliser différentes
+          tâches du quotidien, qu’elles soient scolaires ou non :
         </h3>
       </v-row>
 
       <v-row justify="center">
         <v-col sm="10">
-          <v-radio-group v-model="D5">
+          <v-radio-group v-model="D5" v-bind:class="{ 'error-borders': errors.includes('D5') }">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
             <v-radio label="Oui, beaucoup" value="Oui, beaucoup"></v-radio>
@@ -203,16 +210,40 @@
       <v-row justify="center">
         <v-btn
           class="btn primary bouton ma-4"
-          @click="$router.push('/enfants/questionnaire/partE')"
+          @click="save"
         >
           Enregistrer et terminer plus tard
         </v-btn>
         <v-btn
           class="btn primary bouton ma-4"
-          @click="$router.push('/enfants/questionnaire/partE')"
+          @click="nextPart"
         >
           Accéder à la partie E
         </v-btn>
+      </v-row>
+      <v-row justify="center">
+        <v-col sm="6">
+          <v-alert
+            outlined
+            type="success"
+            text
+            v-if="showSuccess"
+          >
+            Vos réponses ont bien été enregistrées.
+          </v-alert>
+        </v-col>
+      </v-row>
+      <v-row justify="center">
+        <v-col sm="6">
+          <v-alert
+            outlined
+            type="error"
+            text
+            v-if="alertErrorMessage"
+          >
+            {{ alertErrorMessage }}
+          </v-alert>
+        </v-col>
       </v-row>
     </v-card>
   </section>
@@ -227,6 +258,9 @@ export default {
   name: "SurveyChildPartD",
   data() {
     return {
+      activeErrors: false,
+      showSuccess: false,
+      alertErrorMessage: '',
       D1: "",
       D11: "",
       D2: "",
@@ -258,59 +292,59 @@ export default {
         "2- Cela me demande plus d’efforts que d’habitude",
         "3- Cela me demande beaucoup plus d’efforts que d’habitude",
         "4- L’effort demandé est trop important : je ne parviens plus à le faire",
-        "n/a- Cela ne me concerne pas ou je ne parviens pas à évaluer la situation"
+        "n/a- Cela ne me concerne pas ou je ne parviens pas à évaluer la situation",
       ],
       valuesD3: ["1", "2", "3", "4", "n/a"],
       questionsD3: [
         {
           question: "Écouter le cours tout en prenant des notes",
-          model: "D3a"
+          model: "D3a",
         },
         {
           question: "Gérer les changements d’emploi du temps ou les imprévus",
-          model: "D3b"
+          model: "D3b",
         },
         {
           question:
             "S’organiser dans ses affaires scolaires (avoir le matériel requis, trier ses cours, etc.)",
-          model: "D3c"
+          model: "D3c",
         },
         {
           question: "De façon générale (du lundi matin au dimanche soir)",
-          model: "D3d"
+          model: "D3d",
         },
         {
           question:
             "Demander de l’aide à un.e enseignant.e ou un.e élève en cas de besoin",
-          model: "D3e"
+          model: "D3e",
         },
         {
           question:
             "Gérer les temps de pauses (interclasse, récréation, pause-déjeuner)",
-          model: "D3f"
+          model: "D3f",
         },
         { question: "Travailler en équipe", model: "D3g" },
         { question: "Gérer l’environnement sensoriel", model: "D3h" },
         {
           question:
             "Gérer l’anxiété ou le stress liés à une situation d’examen",
-          model: "D3i"
+          model: "D3i",
         },
         {
           question:
             "Structurer la rédaction d’un devoir ou la résolution d’un problème",
-          model: "D3j"
+          model: "D3j",
         },
         {
           question:
             "Comprendre les consignes et attentes d’un devoir ou examen (notamment les aspects implicites)",
-          model: "D3k"
+          model: "D3k",
         },
         {
           question:
             "S’exprimer à l’oral, spontanément ou lorsque vous êtes interrogé.e",
-          model: "D3l"
-        }
+          model: "D3l",
+        },
       ],
       questionsD6: [
         { question: "Anxiété et stress", model: "D6a" },
@@ -318,11 +352,23 @@ export default {
         { question: "Irritabilité, agressivité, impulsivité", model: "D6c" },
         { question: "Estime de soi", model: "D6d" },
         { question: "Tristesse, peine", model: "D6e" },
-        { question: "Motivation, joie, enthousiasme", model: "D6f" }
-      ]
+        { question: "Motivation, joie, enthousiasme", model: "D6f" },
+      ],
     };
   },
   computed: {
+    errors() {
+      const errors = [];
+      if (!this.activeErrors) {
+        return errors;
+      }
+      for (const id in this.completions) {
+        if (!this.completions[id]) {
+          errors.push(id);
+        }
+      }
+      return errors;
+    },
     relevantD11() {
       return this.D1.includes("Oui");
     },
@@ -356,38 +402,61 @@ export default {
         D3l: this.D3l != "",
         D4: this.D4 != "",
         // D41: this.D41 != "",
-        D5: this.D5 != ""
+        D5: this.D5 != "",
       };
     },
     percentageCompletion() {
       const size = Object.keys(this.completions).length;
-      const areOk = Object.values(this.completions).filter(a => a);
+      const areOk = Object.values(this.completions).filter((a) => a);
       console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
     answers() {
       console.log("TODO");
       return {
-        D1: this.D1
+        D1: this.D1,
       };
-    }
+    },
   },
   methods: {
     ...mapActions(["saveChildQuestionnaire"]),
     save() {
-      this.saveChildQuestionnaire(this.answers);
+      this.alertErrorMessage = '';
+      this.saveChildQuestionnaire(this.answers).then(
+        () => {
+          this.showSuccess = true;
+          console.log('ok')
+        },
+        error => {
+          this.alertErrorMessage = 'Une erreur est survenue'
+          this.showSuccess = false;
+          console.log('ko')
+          console.log(error)
+        }
+      )
+    },
+    nextPart() {
+      this.showSuccess = false;
+      this.alertErrorMessage = '';
+      this.activeErrors = true;
+      if (this.errors.length > 0) {
+        console.log('some errors');
+        window.scrollTo(0, 0);
+      } else {
+        this.$router.push('/enfants/questionnaire/partE')
+      }
     }
   },
   components: {
     Indications,
     Header,
-    TextArea
+    TextArea,
   },
   mounted() {
     console.log("part D mounted");
     window.scrollTo(0, 0);
     this.D1 = this.$store.state.childQuestionnaire.D1 || "";
     console.log("TODO");
-  }
+  },
 };
 </script>
