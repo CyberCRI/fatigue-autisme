@@ -226,6 +226,18 @@ export default new Vuex.Store({
           return Promise.reject(error);
         }
       );
+    },
+    sendComment(comment) {
+      console.log('store action send comment')
+      console.log(comment)
+      return UserService.sendComment(this.state.auth.user.userId, comment).then(
+        () => {
+          return Promise.resolve();
+        },
+        error => {
+          return Promise.reject(error);
+        }
+      );
     }
   },
   modules: {},

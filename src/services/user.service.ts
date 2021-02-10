@@ -24,6 +24,19 @@ class UserService {
             });
     }
 
+    sendComment(userId, comment) {
+        console.log('user service send comment')
+        console.log('userId:' + userId)
+        console.log('comment:' + comment)
+        return axios
+            .put(process.env.VUE_APP_ROOT_API + "/comment", {
+                userId: userId,
+                comment: comment
+            },{
+                headers: authHeader()
+            });
+    }
+
     saveChildQuestionnaire(userId, content) {
         console.log('user service saveChildQuestionnaire')
         console.log("userId: " + userId)
