@@ -18,6 +18,7 @@ import SurveyChildPartB from "../components/Survey/Child/PartB.vue";
 import SurveyChildPartC from "../components/Survey/Child/PartC.vue";
 import SurveyChildPartD from "../components/Survey/Child/PartD.vue";
 import SurveyChildPartE from "../components/Survey/Child/PartE.vue";
+import SurveyChildOutro from "../components/Survey/Child/Outro.vue";
 import ChildConsent from "../components/Consent/Child.vue";
 
 Vue.use(VueRouter);
@@ -112,6 +113,11 @@ const routes: Array<RouteConfig> = [
     path: "/enfants/questionnaire/partE",
     name: "Questionnaire-Enfants-PartE",
     component: SurveyChildPartE,
+  },
+  {
+    path: "/enfants/questionnaire/outro",
+    name: "Questionnaire-Enfants-Outro",
+    component: SurveyChildOutro,
   }
 ];
 
