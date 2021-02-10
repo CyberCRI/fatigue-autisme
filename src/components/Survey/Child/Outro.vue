@@ -55,7 +55,7 @@
         <v-row justify="center">
           <v-col sm="6">
             <v-alert outlined type="success" text v-if="showSuccess">
-              Vos réponses ont bien été enregistrées.
+              Votre commentaire a bien été envoyé.
             </v-alert>
           </v-col>
         </v-row>
@@ -88,7 +88,6 @@ export default {
       if (!this.myComment) {
         return;
       }
-      console.log('sending comment:' + this.myComment);
       this.alertErrorMessage = "";
       this.showSuccess = false;
       this.sendComment(this.myComment).then(

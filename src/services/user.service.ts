@@ -12,7 +12,6 @@ class UserService {
     }
 
     sendConsent(userId) {
-        console.log('user service sendConsent')
         return axios
           .patch(
             process.env.VUE_APP_ROOT_API + "/users",
@@ -25,9 +24,6 @@ class UserService {
     }
 
     sendComment(userId, comment) {
-        console.log('user service send comment')
-        console.log('userId:' + userId)
-        console.log('comment:' + comment)
         return axios
             .put(process.env.VUE_APP_ROOT_API + "/comment", {
                 userId: userId,
@@ -38,11 +34,6 @@ class UserService {
     }
 
     saveChildQuestionnaire(userId, content) {
-        console.log('user service saveChildQuestionnaire')
-        console.log("userId: " + userId)
-        console.log("content: ")
-        console.log(content)
-
         return axios
             .put(process.env.VUE_APP_ROOT_API + "/childQuestionnaire", {
                 userId: userId,

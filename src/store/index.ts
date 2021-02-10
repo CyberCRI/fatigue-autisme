@@ -227,9 +227,7 @@ export default new Vuex.Store({
         }
       );
     },
-    sendComment(comment) {
-      console.log('store action send comment')
-      console.log(comment)
+    sendComment({ commit }, comment) {
       return UserService.sendComment(this.state.auth.user.userId, comment).then(
         () => {
           return Promise.resolve();
