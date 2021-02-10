@@ -446,28 +446,34 @@ export default {
     ...mapActions(["saveChildQuestionnaire"]),
     save() {
       this.alertErrorMessage = '';
+      this.showSuccess = false;
+
       this.saveChildQuestionnaire(this.answers).then(
         () => {
           this.showSuccess = true;
-          console.log('ok')
         },
         error => {
           this.alertErrorMessage = 'Une erreur est survenue'
-          this.showSuccess = false;
-          console.log('ko')
           console.log(error)
         }
       )
     },
     nextPart() {
-      this.showSuccess = false;
-      this.alertErrorMessage = '';
       this.activeErrors = true;
+      this.alertErrorMessage = '';
+
       if (this.errors.length > 0) {
-        console.log('some errors');
         window.scrollTo(0, 0);
       } else {
-        this.$router.push('/enfants/questionnaire/partE')
+        this.saveChildQuestionnaire(this.answers).then(
+          () => {
+            this.$router.push('/enfants/questionnaire/partE');
+          },
+          error => {
+            this.alertErrorMessage = 'Une erreur est survenue'
+            console.log(error)
+          }
+        )
       }
     }
   },
