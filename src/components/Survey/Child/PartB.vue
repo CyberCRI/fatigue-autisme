@@ -62,6 +62,12 @@
         </h3>
       </v-row>
 
+      <v-row justify="center" class="ma-10" v-if="errorRanking">
+        <v-col sm="9" class="error-borders pa-4">
+          Veuillez choisir cinq réponses
+        </v-col>
+      </v-row>
+
       <Indications>Vous pouvez annuler une réponse en cliquant sur le numéro</Indications>
 
       <v-row justify="center">
@@ -298,6 +304,13 @@ export default {
       }
       return errors;
     },
+    errorRanking() {
+      return this.errors.includes('B2_1') ||
+              this.errors.includes('B2_2') ||
+              this.errors.includes('B2_3') ||
+              this.errors.includes('B2_4') ||
+              this.errors.includes('B2_5'); 
+    },
     relevantB31() {
       return this.B3 === 'Oui';
     },
@@ -311,6 +324,12 @@ export default {
         B1b: this.B1b != "",
         B1c: this.B1c != "",
         B1d: this.B1d != "",
+        B2_1: this.getRankB2("1") != "",
+        B2_2: this.getRankB2("2")!= "",
+        B2_3: this.getRankB2("3")!= "",
+        B2_4: this.getRankB2("4")!= "",
+        B2_5: this.getRankB2("5")!= "",
+
         B3: this.B3 != ""
       };
     },
