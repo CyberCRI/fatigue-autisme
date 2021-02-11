@@ -48,6 +48,9 @@ import TextArea from '../TextArea.vue';
 export default {
   components: {
     TextArea
+  },
+  mounted() {
+    window.scroll(0, 0);
   }
 }
 </script>

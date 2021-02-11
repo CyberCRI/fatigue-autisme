@@ -32,5 +32,8 @@ export default {
       this.$router.push({ path: "/consentementEnfant" });
     }
   },
+  mounted() {
+    window.scroll(0, 0);
+  }
 };
 </script>
