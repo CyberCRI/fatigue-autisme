@@ -309,41 +309,41 @@ export default {
             "S’organiser dans ses affaires scolaires (avoir le matériel requis, trier ses cours, etc.)",
           model: "D3c",
         },
+        // {
+        //   question: "De façon générale (du lundi matin au dimanche soir)",
+        //   model: "D3d",
+        // },
         {
-          question: "De façon générale (du lundi matin au dimanche soir)",
+          question:
+            "Demander de l’aide à un.e enseignant.e ou un.e élève en cas de besoin",
           model: "D3d",
         },
         {
           question:
-            "Demander de l’aide à un.e enseignant.e ou un.e élève en cas de besoin",
+            "Gérer les temps de pauses (interclasse, récréation, pause-déjeuner)",
           model: "D3e",
         },
-        {
-          question:
-            "Gérer les temps de pauses (interclasse, récréation, pause-déjeuner)",
-          model: "D3f",
-        },
-        { question: "Travailler en équipe", model: "D3g" },
-        { question: "Gérer l’environnement sensoriel", model: "D3h" },
+        { question: "Travailler en équipe", model: "D3f" },
+        { question: "Gérer l’environnement sensoriel", model: "D3g" },
         {
           question:
             "Gérer l’anxiété ou le stress liés à une situation d’examen",
-          model: "D3i",
+          model: "D3h",
         },
         {
           question:
             "Structurer la rédaction d’un devoir ou la résolution d’un problème",
-          model: "D3j",
+          model: "D3i",
         },
         {
           question:
             "Comprendre les consignes et attentes d’un devoir ou examen (notamment les aspects implicites)",
-          model: "D3k",
+          model: "D3j",
         },
         {
           question:
             "S’exprimer à l’oral, spontanément ou lorsque vous êtes interrogé.e",
-          model: "D3l",
+          model: "D3k",
         },
       ],
       questionsD6: [
@@ -399,7 +399,7 @@ export default {
         D3i: this.D3i != "",
         D3j: this.D3j != "",
         D3k: this.D3k != "",
-        D3l: this.D3l != "",
+        // D3l: this.D3l != "",
         D4: this.D4 != "",
         // D41: this.D41 != "",
         D5: this.D5 != "",
@@ -429,7 +429,7 @@ export default {
         D3i: this.D3i,
         D3j: this.D3j,
         D3k: this.D3k,
-        D3l: this.D3l,
+        // D3l: this.D3l,
         D4: this.D4,
         D41: this.D41,
         D5: this.D5,
@@ -500,7 +500,7 @@ export default {
     this.D3i = this.$store.state.childQuestionnaire.D3i || "";
     this.D3j = this.$store.state.childQuestionnaire.D3j || "";
     this.D3k = this.$store.state.childQuestionnaire.D3k || "";
-    this.D3l = this.$store.state.childQuestionnaire.D3l || "";
+    // this.D3l = this.$store.state.childQuestionnaire.D3l || "";
     this.D4 = this.$store.state.childQuestionnaire.D4 || "";
     this.D41 = this.$store.state.childQuestionnaire.D41 || "";
     this.D5 = this.$store.state.childQuestionnaire.D5 || "";
