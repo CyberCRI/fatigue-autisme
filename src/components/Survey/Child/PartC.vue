@@ -166,19 +166,19 @@
           <v-divider class="mt-4 mb-8"></v-divider>
           <v-row v-for="q in questionsC2" :key="q.question" class="ma-4 mt-6">
             <v-col cols="4" v-html="q.question"></v-col>
-            <v-col cols="4"
+            <v-col cols="4" v-bind:class="{ 'error-borders': errors.includes(q.modelW) }"
               ><v-slider
                 v-model="$data[q.modelW]"
                 thumb-label="always"
-                min="0"
+                min="-1"
                 max="100"
               ></v-slider
             ></v-col>
-            <v-col cols="4"
+            <v-col cols="4" v-bind:class="{ 'error-borders': errors.includes(q.modelWo) }"
               ><v-slider
                 v-model="$data[q.modelWo]"
                 thumb-label="always"
-                min="0"
+                min="-1"
                 max="100"
               ></v-slider
             ></v-col>
@@ -202,16 +202,18 @@
               ><v-slider
                 v-model="C2VestWith"
                 thumb-label="always"
-                min="0"
+                min="-1"
                 max="100"
+                v-bind:class="{ 'error-borders': errors.includes('C2VestWith') }"
               ></v-slider
             ></v-col>
             <v-col cols="4"
               ><v-slider
                 v-model="C2VestWithout"
                 thumb-label="always"
-                min="0"
+                min="-1"
                 max="100"
+                v-bind:class="{ 'error-borders': errors.includes('C2VestWithout') }"
               ></v-slider
             ></v-col>
               <v-divider class="ma-1"></v-divider>
@@ -760,6 +762,18 @@ export default {
     completions() {
       return {
         C1: this.C1 != "",
+        C2HearingWith: this.C2HearingWith > -1,
+        C2HearingWithout: this.C2HearingWithout > -1,
+        C2SightWith: this.C2SightWith > -1,
+        C2SightWithout: this.C2SightWithout > -1,
+        C2TasteWith: this.C2TasteWith > -1,
+        C2TasteWithout: this.C2TasteWithout > -1,
+        C2TouchWith: this.C2TouchWith > -1,
+        C2TouchWithout: this.C2TouchWithout > -1,
+        C2SmellWith: this.C2SmellWith > -1,
+        C2SmellWithout: this.C2SmellWithout > -1,
+        C2VestWith: this.C2VestWith > -1,
+        C2VestWithout: this.C2VestWithout > -1,
         C3: this.C3 != "",
         C4: this.C4 != "",
         C5: this.C5 != "",
@@ -897,24 +911,24 @@ export default {
     this.C11kText = this.$store.state.childQuestionnaire.C11kText || "";
     this.C11lText = this.$store.state.childQuestionnaire.C11lText || "";
     this.C2HearingWith =
-      this.$store.state.childQuestionnaire.C2HearingWith || 0;
+      this.$store.state.childQuestionnaire.C2HearingWith || -1;
     this.C2HearingWithout =
-      this.$store.state.childQuestionnaire.C2HearingWithout || 0;
-    this.C2SightWith = this.$store.state.childQuestionnaire.C2SightWith || 0;
+      this.$store.state.childQuestionnaire.C2HearingWithout || -1;
+    this.C2SightWith = this.$store.state.childQuestionnaire.C2SightWith || -1;
     this.C2SightWithout =
-      this.$store.state.childQuestionnaire.C2SightWithout || 0;
-    this.C2TasteWith = this.$store.state.childQuestionnaire.C2TasteWith || 0;
+      this.$store.state.childQuestionnaire.C2SightWithout || -1;
+    this.C2TasteWith = this.$store.state.childQuestionnaire.C2TasteWith || -1;
     this.C2TasteWithout =
-      this.$store.state.childQuestionnaire.C2TasteWithout || 0;
-    this.C2TouchWith = this.$store.state.childQuestionnaire.C2TouchWith || 0;
+      this.$store.state.childQuestionnaire.C2TasteWithout || -1;
+    this.C2TouchWith = this.$store.state.childQuestionnaire.C2TouchWith || -1;
     this.C2TouchWithout =
-      this.$store.state.childQuestionnaire.C2TouchWithout || 0;
-    this.C2SmellWith = this.$store.state.childQuestionnaire.C2SmellWith || 0;
+      this.$store.state.childQuestionnaire.C2TouchWithout || -1;
+    this.C2SmellWith = this.$store.state.childQuestionnaire.C2SmellWith || -1;
     this.C2SmellWithout =
-      this.$store.state.childQuestionnaire.C2SmellWithout || 0;
-    this.C2VestWith = this.$store.state.childQuestionnaire.C2VestWith || 0;
+      this.$store.state.childQuestionnaire.C2SmellWithout || -1;
+    this.C2VestWith = this.$store.state.childQuestionnaire.C2VestWith || -1;
     this.C2VestWithout =
-      this.$store.state.childQuestionnaire.C2VestWithout || 0;
+      this.$store.state.childQuestionnaire.C2VestWithout || -1;
     this.C2OtherWith = this.$store.state.childQuestionnaire.C2OtherWith || "";
     this.C2OtherWithout =
       this.$store.state.childQuestionnaire.C2OtherWithout || "";

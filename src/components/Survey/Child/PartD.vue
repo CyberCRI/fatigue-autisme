@@ -192,11 +192,11 @@
         <v-col sm="10">
           <v-row align="center">
             <v-col cols="12" sm="5"><span v-html="q.question"></span></v-col>
-            <v-col cols="12" sm="7">
+            <v-col cols="12" sm="7" v-bind:class="{ 'error-borders': errors.includes(q.model) }">
               <v-slider
                 v-model="$data[q.model]"
                 thumb-label="always"
-                min="0"
+                min="-1"
                 max="100"
               >
                 <template v-slot:prepend>Pas de changement</template>
@@ -403,6 +403,12 @@ export default {
         D4: this.D4 != "",
         // D41: this.D41 != "",
         D5: this.D5 != "",
+        D6a: this.D6a > -1,
+        D6b: this.D6b> -1,
+        D6c: this.D6c> -1,
+        D6d: this.D6d> -1,
+        D6e: this.D6e> -1,
+        D6f: this.D6f> -1,
       };
     },
     percentageCompletion() {
@@ -504,12 +510,12 @@ export default {
     this.D4 = this.$store.state.childQuestionnaire.D4 || "";
     this.D41 = this.$store.state.childQuestionnaire.D41 || "";
     this.D5 = this.$store.state.childQuestionnaire.D5 || "";
-    this.D6a = this.$store.state.childQuestionnaire.D6a || 0;
-    this.D6b = this.$store.state.childQuestionnaire.D6b || 0;
-    this.D6c = this.$store.state.childQuestionnaire.D6c || 0;
-    this.D6d = this.$store.state.childQuestionnaire.D6d || 0;
-    this.D6e = this.$store.state.childQuestionnaire.D6e || 0;
-    this.D6f = this.$store.state.childQuestionnaire.D6f || 0;
+    this.D6a = this.$store.state.childQuestionnaire.D6a || -1;
+    this.D6b = this.$store.state.childQuestionnaire.D6b || -1;
+    this.D6c = this.$store.state.childQuestionnaire.D6c || -1;
+    this.D6d = this.$store.state.childQuestionnaire.D6d || -1;
+    this.D6e = this.$store.state.childQuestionnaire.D6e || -1;
+    this.D6f = this.$store.state.childQuestionnaire.D6f || -1;
   },
 };
 </script>

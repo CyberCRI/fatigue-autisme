@@ -85,7 +85,7 @@
             >
           </v-col>
           <v-col sm="6" cols="12">
-            <v-slider v-model="A11a" thumb-label="always" min="0" max="100">
+            <v-slider v-model="A11a" thumb-label="always" min="-1" max="100">
               <template v-slot:prepend> Aucune fatigue </template>
               <template v-slot:append>
                 Aussi fatigué.e qu’il est possible de l’être
@@ -105,7 +105,7 @@
             >
           </v-col>
           <v-col sm="6" cols="12">
-            <v-slider v-model="A11b" thumb-label="always" min="0" max="100">
+            <v-slider v-model="A11b" thumb-label="always" min="-1" max="100">
               <template v-slot:prepend> Aucune fatigue </template>
               <template v-slot:append>
                 Aussi fatigué.e qu’il est possible de l’être
@@ -490,8 +490,8 @@ export default {
     this.A1b = this.$store.state.childQuestionnaire.A1b || "";
     this.A1c = this.$store.state.childQuestionnaire.A1c || "";
     this.A1d = this.$store.state.childQuestionnaire.A1d || "";
-    this.A11a = this.$store.state.childQuestionnaire.A11a || "";
-    this.A11b = this.$store.state.childQuestionnaire.A11b || "";
+    this.A11a = this.$store.state.childQuestionnaire.A11a || -1;
+    this.A11b = this.$store.state.childQuestionnaire.A11b || -1;
     this.A2 = this.$store.state.childQuestionnaire.A2 || "";
     this.A3a = this.$store.state.childQuestionnaire.A3a || "";
     this.A3b = this.$store.state.childQuestionnaire.A3b || "";
