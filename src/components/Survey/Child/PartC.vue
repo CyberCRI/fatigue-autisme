@@ -1,9 +1,6 @@
 <template>
   <section>
-    <Header
-      :title="`Partie C`"
-      :valueProgress="percentageCompletion"
-    />
+    <Header :title="`Partie C`" :valueProgress="percentageCompletion" />
 
     <br />
     <br />
@@ -11,27 +8,30 @@
     <br />
     <v-card class="pa-md-4 mb-4">
       <v-row sm="12" justify="center">
-        <h1>
-          Répercussions sur le fonctionnement physique
-        </h1>
+        <h1>Répercussions sur le fonctionnement physique</h1>
       </v-row>
 
       <v-row justify="center" class="ma-10" v-if="errors.length > 0">
         <v-col sm="9" class="error-borders pa-4">
-          Certaines questions ci-dessous nécessitent une réponse afin de valider cette partie.
+          Certaines questions ci-dessous nécessitent une réponse afin de valider
+          cette partie.
         </v-col>
       </v-row>
 
-      <v-row class="ma-5" cols="12" sm="12" >
+      <v-row class="ma-5" cols="12" sm="12">
         <h3>
           1. Lorsque vous vivez des périodes de fatigue mentale, diriez-vous que
-          cela a des répercussions sur votre état <span style="white-space: nowrap;">physique :</span>
+          cela a des répercussions sur votre état
+          <span style="white-space: nowrap">physique :</span>
         </h3>
       </v-row>
 
       <v-row justify="center">
         <v-col cols="6" sm="10">
-          <v-radio-group v-model="C1" v-bind:class="{ 'error-borders': errors.includes('C1') }">
+          <v-radio-group
+            v-model="C1"
+            v-bind:class="{ 'error-borders': errors.includes('C1') }"
+          >
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
           </v-radio-group>
@@ -42,16 +42,25 @@
         <v-row class="ma-5" sm="12">
           <h4>
             1.1 Pouvez-vous préciser de quelle(s) façon(s) la fatigue cognitive
-            impacte votre état <span style="white-space: nowrap;">physique :</span>
+            impacte votre état
+            <span style="white-space: nowrap">physique :</span>
           </h4>
         </v-row>
 
         <v-row justify="center" class="mt-6">
           <v-col sm="10">
             <v-row>
-              <v-col cols="6" sm="8"><strong>Manifestations <span style="white-space: nowrap;">physiques :</span></strong></v-col>
+              <v-col cols="6" sm="8"
+                ><strong
+                  >Manifestations
+                  <span style="white-space: nowrap">physiques :</span></strong
+                ></v-col
+              >
               <v-col cols="6" sm="4" class="text-center"
-                ><strong>Cet aspect est-il <span style="white-space: nowrap;">impacté :</span></strong></v-col
+                ><strong
+                  >Cet aspect est-il
+                  <span style="white-space: nowrap">impacté :</span></strong
+                ></v-col
               >
               <!-- <v-col sm="4" class="text-center"
                 ><strong>Précisez si vous le souhaitez</strong></v-col
@@ -65,38 +74,41 @@
               :key="q.question"
             >
               <v-col cols="8" sm="8" class="pa-0">{{ q.question }}</v-col>
-              <v-col cols="4" sm="4" class="pa-0"
-                >
-              <v-layout row wrap justify-center>
-                <v-switch v-model="$data[q.modelB]" class="pt-1">
-                  <template v-slot:label>{{
-                    $data[q.modelB] ? " Oui" : " Non"
-                  }}</template>
-                </v-switch>
-              </v-layout>
-                </v-col>
-                <v-col cols="12" sm="12" v-if="$data[q.modelB]" class="pa-0">
-                  <section v-if="q.modelT === 'C11hText'">
-                    <p><strong>La question 2 explore plus en détails les particularités sensorielles</strong></p>
-                  </section>
-                  <section v-else>
-                    <v-row justify="center">
+              <v-col cols="4" sm="4" class="pa-0">
+                <v-layout row wrap justify-center>
+                  <v-switch v-model="$data[q.modelB]" class="pt-1">
+                    <template v-slot:label>{{
+                      $data[q.modelB] ? " Oui" : " Non"
+                    }}</template>
+                  </v-switch>
+                </v-layout>
+              </v-col>
+              <v-col cols="12" sm="12" v-if="$data[q.modelB]" class="pa-0">
+                <section v-if="q.modelT === 'C11hText'">
+                  <v-row justify="center">
+                    <v-col cols="10" sm="8">
+                      <div class="rounded-lg text-center green lighten-4 pa-4">
+                        La question 2 explore plus en détails les particularités <span style="white-space: nowrap">sensorielles : </span>vous pourrez détailler ces aspects si vous le souhaitez.
+                      </div>
+                    </v-col>
+                  </v-row>
+                </section>
+                <section v-else>
+                  <v-row justify="center">
                     <v-col cols="12" sm="4" class="pa-0">
-                    <strong>Précisez si vous le souhaitez:</strong>
+                      <strong>Précisez si vous le souhaitez:</strong>
                     </v-col>
                     <v-col cols="12" sm="6" class="pa-0">
-                  <TextArea v-model="$data[q.modelT]"/>
+                      <TextArea v-model="$data[q.modelT]" />
                     </v-col>
-                    </v-row>
-                  </section>
-                  
-                </v-col>
-            <v-divider class="ma-1"></v-divider>
+                  </v-row>
+                </section>
+              </v-col>
+              <v-divider class="ma-1"></v-divider>
             </v-row>
             <v-row>
               <v-col cols="12" sm="4">Autres, précisez :</v-col>
-              <v-col cols="12" sm="8"
-                >
+              <v-col cols="12" sm="8">
                 <TextArea v-model="C11lText" />
               </v-col>
             </v-row>
@@ -108,32 +120,35 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          2. Pouvez-vous évaluer, à l’aide de la jauge, <strong :class="this.$store.state.settings.accentTextClass"
-              >la gêne</strong> liée aux
-          différents stimuli sensoriels, en temps normal et lors des périodes de
-          <span style="white-space: nowrap;">fatigue cognitive :</span>
+          2. Pouvez-vous évaluer, à l’aide de la jauge,
+          <strong :class="this.$store.state.settings.accentTextClass"
+            >la gêne</strong
+          >
+          liée aux différents stimuli sensoriels, en temps normal et lors des
+          périodes de
+          <span style="white-space: nowrap">fatigue cognitive :</span>
         </h3>
       </v-row>
 
       <v-row justify="center">
         <v-col sm="8">
-          
-      <v-card color="blue lighten-5" class="py-4 px-10">
-        Utilisez les jauges pour indiquer votre niveau de gêne
-        <v-row justify="center" class="mt-8">
-          <v-col sm="10">
-        <v-slider
-            v-model="dummySlider"
-                thumb-label="always"
-                min="0"
-                max="100"
-              ><template v-slot:prepend>Aucune gêne</template>
-              <template v-slot:append>
-                Gêne aussi forte que possible
-              </template></v-slider>
-          </v-col>
-        </v-row>
-      </v-card>
+          <v-card color="blue lighten-5" class="py-4 px-10">
+            Utilisez les jauges pour indiquer votre niveau de gêne
+            <v-row justify="center" class="mt-8">
+              <v-col sm="10">
+                <v-slider
+                  v-model="dummySlider"
+                  thumb-label="always"
+                  min="0"
+                  max="100"
+                  ><template v-slot:prepend>Aucune gêne</template>
+                  <template v-slot:append>
+                    Gêne aussi forte que possible
+                  </template></v-slider
+                >
+              </v-col>
+            </v-row>
+          </v-card>
         </v-col>
       </v-row>
 
@@ -169,16 +184,19 @@
             ></v-col>
           </v-row>
           <v-row class="ma-4" align="center">
-            <v-col sm="4">Système vestibulaire et proprioceptif<v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn icon v-bind="attrs" v-on="on">
-                <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
-              </v-btn>
-            </template>
-            <span
-              >Equilibre, mouvements, perception du corps dans l’espace, etc.</span
+            <v-col sm="4"
+              >Système vestibulaire et proprioceptif<v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn icon v-bind="attrs" v-on="on">
+                    <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
+                  </v-btn>
+                </template>
+                <span
+                  >Equilibre, mouvements, perception du corps dans l’espace,
+                  etc.</span
+                >
+              </v-tooltip></v-col
             >
-          </v-tooltip></v-col>
             <v-col sm="4"
               ><v-slider
                 v-model="C2VestWith"
@@ -199,20 +217,19 @@
           <v-row class="ma-4" align="center">
             <v-col sm="4"
               >Autre(s)<v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn icon v-bind="attrs" v-on="on">
-                <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
-              </v-btn>
-            </template>
-            <span
-              >Si certaines sensibilités particulières non mentionnées
-                ci-dessus sont modifiées en périodes de fatigue, vous pouvez nous
-                en faire part ici</span
-            >
-          </v-tooltip>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn icon v-bind="attrs" v-on="on">
+                    <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
+                  </v-btn>
+                </template>
+                <span
+                  >Si certaines sensibilités particulières non mentionnées
+                  ci-dessus sont modifiées en périodes de fatigue, vous pouvez
+                  nous en faire part ici</span
+                >
+              </v-tooltip>
             </v-col>
-            <v-col
-              >
+            <v-col>
               <!-- <TextArea v-model="C2OtherWith"/> -->
               <v-textarea
                 v-model="C2OtherWith"
@@ -242,13 +259,18 @@
       <v-row class="ma-5" sm="12">
         <h3>
           3. Lors de périodes de fatigue mentale, avez-vous constaté des
-          changements au niveau du <span style="white-space: nowrap;">sommeil :</span>
+          changements au niveau du
+          <span style="white-space: nowrap">sommeil :</span>
         </h3>
       </v-row>
 
       <v-row justify="center">
-        <v-col sm="10" cols="6" v-bind:class="{ 'error-borders': errors.includes('C3') }">
-          <v-radio-group v-model="C3" >
+        <v-col
+          sm="10"
+          cols="6"
+          v-bind:class="{ 'error-borders': errors.includes('C3') }"
+        >
+          <v-radio-group v-model="C3">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
             <v-radio label="Je ne sais pas" value="Je ne sais pas"></v-radio>
@@ -274,7 +296,9 @@
                 v-for="q in questionsC31a"
                 :key="q.question"
               >
-                <v-col cols="12" sm="7"><span v-html="q.question"></span></v-col>
+                <v-col cols="12" sm="7"
+                  ><span v-html="q.question"></span
+                ></v-col>
                 <v-col cols="12" sm="5">
                   <v-radio-group v-model="$data[q.model]" row>
                     <v-radio
@@ -303,7 +327,9 @@
                 v-for="q in questionsC31b"
                 :key="q.question"
               >
-                <v-col cols="12" sm="7"><span v-html="q.question"></span></v-col>
+                <v-col cols="12" sm="7"
+                  ><span v-html="q.question"></span
+                ></v-col>
                 <v-col cols="12" sm="5">
                   <v-radio-group v-model="$data[q.model]" row>
                     <v-radio
@@ -331,12 +357,16 @@
           <strong :class="this.$store.state.settings.accentTextClass"
             >en fonction de l’heure</strong
           >
-          de la <span style="white-space: nowrap;">journée :</span>
+          de la <span style="white-space: nowrap">journée :</span>
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col cols="6" sm="10" v-bind:class="{ 'error-borders': errors.includes('C4') }">
-          <v-radio-group v-model="C4" >
+        <v-col
+          cols="6"
+          sm="10"
+          v-bind:class="{ 'error-borders': errors.includes('C4') }"
+        >
+          <v-radio-group v-model="C4">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
           </v-radio-group>
@@ -346,9 +376,13 @@
       <section v-if="relevantC41">
         <v-row class="ma-5" sm="12">
           <h4>
-            4.1 À quel moment de la journée vous sentez-vous généralement <span style="white-space: nowrap;"><strong :class="this.$store.state.settings.accentTextClass"
-              >le
-            plus en forme</strong> :</span>
+            4.1 À quel moment de la journée vous sentez-vous généralement
+            <span style="white-space: nowrap"
+              ><strong :class="this.$store.state.settings.accentTextClass"
+                >le plus en forme</strong
+              >
+              :</span
+            >
           </h4>
         </v-row>
         <v-row justify="center">
@@ -385,12 +419,16 @@
           <strong :class="this.$store.state.settings.accentTextClass"
             >Lors de périodes de fatigue cognitive importante</strong
           >, faire une sieste ou vous octroyer un temps de repos vous permet-il
-          de récupérer de <span style="white-space: nowrap;">l’énergie :</span>
+          de récupérer de <span style="white-space: nowrap">l’énergie :</span>
         </h3>
       </v-row>
 
-      <v-row justify="center" >
-        <v-col cols="10" sm="10" v-bind:class="{ 'error-borders': errors.includes('C5') }">
+      <v-row justify="center">
+        <v-col
+          cols="10"
+          sm="10"
+          v-bind:class="{ 'error-borders': errors.includes('C5') }"
+        >
           <v-radio-group v-model="C5">
             <v-radio
               label="Beaucoup (je suis de nouveau en forme)"
@@ -418,12 +456,16 @@
         <h3>
           6. Vous arrive-t-il de consommer des aliments, des boissons ou des
           médicaments (sur ordonnance ou hors ordonnance) pour avoir davantage
-          <span style="white-space: nowrap;">d’énergie :</span>
+          <span style="white-space: nowrap">d’énergie :</span>
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col cols="6" sm="10" v-bind:class="{ 'error-borders': errors.includes('C6') }">
-          <v-radio-group v-model="C6" >
+        <v-col
+          cols="6"
+          sm="10"
+          v-bind:class="{ 'error-borders': errors.includes('C6') }"
+        >
+          <v-radio-group v-model="C6">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
           </v-radio-group>
@@ -442,12 +484,17 @@
       <v-row class="ma-5" cols="6" sm="12">
         <h3>
           7. Identifier les signaux physiques et psychologiques de fatigue que
-          vous envoie votre corps, cela vous <span style="white-space: nowrap;">paraît :</span>
+          vous envoie votre corps, cela vous
+          <span style="white-space: nowrap">paraît :</span>
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col cols="10" sm="10" v-bind:class="{ 'error-borders': errors.includes('C7') }">
-          <v-radio-group v-model="C7" >
+        <v-col
+          cols="10"
+          sm="10"
+          v-bind:class="{ 'error-borders': errors.includes('C7') }"
+        >
+          <v-radio-group v-model="C7">
             <v-radio
               label="Facile ou relativement facile"
               value="Facile ou relativement facile"
@@ -469,39 +516,23 @@
       </v-row>
 
       <v-row justify="center">
-        <v-btn
-          class="btn primary bouton ma-4"
-          @click="save"
-        >
+        <v-btn class="btn primary bouton ma-4" @click="save">
           Enregistrer et terminer plus tard
         </v-btn>
-        <v-btn
-          class="btn primary bouton ma-4"
-          @click="nextPart"
-        >
+        <v-btn class="btn primary bouton ma-4" @click="nextPart">
           Accéder à la partie D
         </v-btn>
       </v-row>
       <v-row justify="center">
         <v-col sm="6">
-          <v-alert
-            outlined
-            type="success"
-            text
-            v-if="showSuccess"
-          >
+          <v-alert outlined type="success" text v-if="showSuccess">
             Vos réponses ont bien été enregistrées.
           </v-alert>
         </v-col>
       </v-row>
       <v-row justify="center">
         <v-col sm="6">
-          <v-alert
-            outlined
-            type="error"
-            text
-            v-if="alertErrorMessage"
-          >
+          <v-alert outlined type="error" text v-if="alertErrorMessage">
             {{ alertErrorMessage }}
           </v-alert>
         </v-col>
@@ -521,7 +552,7 @@ export default {
     return {
       activeErrors: false,
       showSuccess: false,
-      alertErrorMessage: '',
+      alertErrorMessage: "",
       dummySlider: 0,
       C1: "",
       C11aBool: true,
@@ -736,7 +767,7 @@ export default {
     },
     percentageCompletion() {
       const size = Object.keys(this.completions).length;
-      const areOk = Object.values(this.completions).filter(a => a);
+      const areOk = Object.values(this.completions).filter((a) => a);
       console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
@@ -799,37 +830,37 @@ export default {
   methods: {
     ...mapActions(["saveChildQuestionnaire"]),
     save() {
-      this.alertErrorMessage = '';
+      this.alertErrorMessage = "";
       this.showSuccess = false;
 
       this.saveChildQuestionnaire(this.answers).then(
         () => {
           this.showSuccess = true;
         },
-        error => {
-          this.alertErrorMessage = 'Une erreur est survenue'
-          console.log(error)
+        (error) => {
+          this.alertErrorMessage = "Une erreur est survenue";
+          console.log(error);
         }
-      )
+      );
     },
     nextPart() {
       this.activeErrors = true;
-      this.alertErrorMessage = '';
+      this.alertErrorMessage = "";
 
       if (this.errors.length > 0) {
         window.scrollTo(0, 0);
       } else {
         this.saveChildQuestionnaire(this.answers).then(
           () => {
-            this.$router.push('/enfants/questionnaire/partD');
+            this.$router.push("/enfants/questionnaire/partD");
           },
-          error => {
-            this.alertErrorMessage = 'Une erreur est survenue'
-            console.log(error)
+          (error) => {
+            this.alertErrorMessage = "Une erreur est survenue";
+            console.log(error);
           }
-        )
+        );
       }
-    }
+    },
   },
   components: {
     Indications,
@@ -863,20 +894,28 @@ export default {
     this.C11kBool = this.$store.state.childQuestionnaire.C11kBool || false;
     this.C11kText = this.$store.state.childQuestionnaire.C11kText || "";
     this.C11lText = this.$store.state.childQuestionnaire.C11lText || "";
-    this.C2HearingWith = this.$store.state.childQuestionnaire.C2HearingWith || 0;
-    this.C2HearingWithout = this.$store.state.childQuestionnaire.C2HearingWithout || 0;
+    this.C2HearingWith =
+      this.$store.state.childQuestionnaire.C2HearingWith || 0;
+    this.C2HearingWithout =
+      this.$store.state.childQuestionnaire.C2HearingWithout || 0;
     this.C2SightWith = this.$store.state.childQuestionnaire.C2SightWith || 0;
-    this.C2SightWithout = this.$store.state.childQuestionnaire.C2SightWithout || 0;
+    this.C2SightWithout =
+      this.$store.state.childQuestionnaire.C2SightWithout || 0;
     this.C2TasteWith = this.$store.state.childQuestionnaire.C2TasteWith || 0;
-    this.C2TasteWithout = this.$store.state.childQuestionnaire.C2TasteWithout || 0;
+    this.C2TasteWithout =
+      this.$store.state.childQuestionnaire.C2TasteWithout || 0;
     this.C2TouchWith = this.$store.state.childQuestionnaire.C2TouchWith || 0;
-    this.C2TouchWithout = this.$store.state.childQuestionnaire.C2TouchWithout || 0;
+    this.C2TouchWithout =
+      this.$store.state.childQuestionnaire.C2TouchWithout || 0;
     this.C2SmellWith = this.$store.state.childQuestionnaire.C2SmellWith || 0;
-    this.C2SmellWithout = this.$store.state.childQuestionnaire.C2SmellWithout || 0;
+    this.C2SmellWithout =
+      this.$store.state.childQuestionnaire.C2SmellWithout || 0;
     this.C2VestWith = this.$store.state.childQuestionnaire.C2VestWith || 0;
-    this.C2VestWithout = this.$store.state.childQuestionnaire.C2VestWithout || 0;
+    this.C2VestWithout =
+      this.$store.state.childQuestionnaire.C2VestWithout || 0;
     this.C2OtherWith = this.$store.state.childQuestionnaire.C2OtherWith || "";
-    this.C2OtherWithout = this.$store.state.childQuestionnaire.C2OtherWithout || "";
+    this.C2OtherWithout =
+      this.$store.state.childQuestionnaire.C2OtherWithout || "";
     this.C3 = this.$store.state.childQuestionnaire.C3 || "";
     this.C31a = this.$store.state.childQuestionnaire.C31a || "";
     this.C31b = this.$store.state.childQuestionnaire.C31b || "";
