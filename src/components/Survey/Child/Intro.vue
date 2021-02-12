@@ -6,7 +6,7 @@
           <h2>Important :</h2>
           <p>
             Ce questionnaire a pour principal objectif de recueillir votre
-            témoignage et votre perception de la fatigue mentale : il n’y a donc
+            témoignage et votre perception de la fatigue <span style="white-space: nowrap;">mentale :</span> il n’y a donc
             pas de bonnes ou de mauvaises réponses.
           </p>
           <p>

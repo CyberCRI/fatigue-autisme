@@ -24,7 +24,7 @@
       </v-row>
 
       <v-row class="ma-5" sm="12">
-        <h3>1. Comment décririez-vous votre emploi du temps :</h3>
+        <h3>1. Comment décririez-vous votre emploi du <span style="white-space: nowrap;">temps :</span></h3>
       </v-row>
 
       <Indications>
@@ -58,7 +58,7 @@
           2. Parmi ces 12 propositions, pouvez-vous classer les
           <strong :class="this.$store.state.settings.accentTextClass"
             >5 plus fatigantes</strong
-          >, de 1 (la plus fatigante de toute) à 5 :
+          >, de 1 (la plus fatigante de toute) <span style="white-space: nowrap;">à 5 :</span>
         </h3>
       </v-row>
 
@@ -138,7 +138,7 @@
 
       <section id="B31" v-if="relevantB31">
         <v-row class="ma-5" sm="12">
-          <h4>3.1 Pouvez-vous préciser :</h4>
+          <h4>3.1 Pouvez-vous <span style="white-space: nowrap;">préciser :</span></h4>
         </v-row>
         <TextArea v-model="B31" />
       </section>

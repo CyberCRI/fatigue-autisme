@@ -20,7 +20,7 @@
       <v-row class="ma-5" cols="12">
         <h3>
           1. Pouvez-vous estimer l’intensité de votre fatigue mentale dans les
-          situations suivantes :
+          situations <span style="white-space: nowrap;">suivantes :</span>
         </h3>
       </v-row>
 
@@ -69,7 +69,7 @@
         <v-row class="ma-8" sm="12" v-if="relevantA11">
           <h4>
             1.1 Pouvez-vous évaluer, à l’aide de la jauge, l’intensité de cette
-            fatigue mentale :
+            fatigue <span style="white-space: nowrap;">mentale :</span>
           </h4>
         </v-row>
 
@@ -198,7 +198,7 @@
 
       <section id="A41" v-if="relevantA41">
         <v-row class="ma-5" sm="12">
-          <h4>4.1 Si oui, souhaitez-vous préciser :</h4>
+          <h4>4.1 Si oui, souhaitez-vous <span style="white-space: nowrap;">préciser :</span></h4>
         </v-row>
         <TextArea v-model="A41" />
       </section>
@@ -301,9 +301,9 @@ export default {
           question: `Au cours du <strong class="${this.$store.state.settings.accentTextClass}">dernier</strong> week-end :`,
           model: "A1b",
         },
-        { question: `Lorsque vous êtes en vacances :`, model: "A1c" },
+        { question: `Lorsque vous êtes en <span style="white-space: nowrap;">vacances :</span>`, model: "A1c" },
         {
-          question: `Au moment précis où vous complétez ce questionnaire :`,
+          question: `Au moment précis où vous complétez ce <span style="white-space: nowrap;">questionnaire :</span>`,
           model: "A1d",
         },
       ],

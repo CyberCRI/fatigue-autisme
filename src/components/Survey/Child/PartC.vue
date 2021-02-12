@@ -25,7 +25,7 @@
       <v-row class="ma-5" cols="12" sm="12" >
         <h3>
           1. Lorsque vous vivez des périodes de fatigue mentale, diriez-vous que
-          cela a des répercussions sur votre état physique :
+          cela a des répercussions sur votre état <span style="white-space: nowrap;">physique :</span>
         </h3>
       </v-row>
 
@@ -42,16 +42,16 @@
         <v-row class="ma-5" sm="12">
           <h4>
             1.1 Pouvez-vous préciser de quelle(s) façon(s) la fatigue cognitive
-            impacte votre état physique :
+            impacte votre état <span style="white-space: nowrap;">physique :</span>
           </h4>
         </v-row>
 
         <v-row justify="center" class="mt-6">
           <v-col sm="10">
             <v-row>
-              <v-col cols="6" sm="8"><strong>Manifestations physiques :</strong></v-col>
+              <v-col cols="6" sm="8"><strong>Manifestations <span style="white-space: nowrap;">physiques :</span></strong></v-col>
               <v-col cols="6" sm="4" class="text-center"
-                ><strong>Cet aspect est-il impacté :</strong></v-col
+                ><strong>Cet aspect est-il <span style="white-space: nowrap;">impacté :</span></strong></v-col
               >
               <!-- <v-col sm="4" class="text-center"
                 ><strong>Précisez si vous le souhaitez</strong></v-col
@@ -105,7 +105,7 @@
           2. Pouvez-vous évaluer, à l’aide de la jauge, <strong :class="this.$store.state.settings.accentTextClass"
               >la gêne</strong> liée aux
           différents stimuli sensoriels, en temps normal et lors des périodes de
-          fatigue cognitive :
+          <span style="white-space: nowrap;">fatigue cognitive :</span>
         </h3>
       </v-row>
 
@@ -236,7 +236,7 @@
       <v-row class="ma-5" sm="12">
         <h3>
           3. Lors de périodes de fatigue mentale, avez-vous constaté des
-          changements au niveau du sommeil :
+          changements au niveau du <span style="white-space: nowrap;">sommeil :</span>
         </h3>
       </v-row>
 
@@ -325,7 +325,7 @@
           <strong :class="this.$store.state.settings.accentTextClass"
             >en fonction de l’heure</strong
           >
-          de la journée :
+          de la <span style="white-space: nowrap;">journée :</span>
         </h3>
       </v-row>
       <v-row justify="center">
@@ -340,9 +340,9 @@
       <section v-if="relevantC41">
         <v-row class="ma-5" sm="12">
           <h4>
-            4.1 À quel moment de la journée vous sentez-vous généralement <strong :class="this.$store.state.settings.accentTextClass"
+            4.1 À quel moment de la journée vous sentez-vous généralement <span style="white-space: nowrap;"><strong :class="this.$store.state.settings.accentTextClass"
               >le
-            plus en forme</strong> :
+            plus en forme</strong> :</span>
           </h4>
         </v-row>
         <v-row justify="center">
@@ -379,7 +379,7 @@
           <strong :class="this.$store.state.settings.accentTextClass"
             >Lors de périodes de fatigue cognitive importante</strong
           >, faire une sieste ou vous octroyer un temps de repos vous permet-il
-          de récupérer de l’énergie :
+          de récupérer de <span style="white-space: nowrap;">l’énergie :</span>
         </h3>
       </v-row>
 
@@ -412,7 +412,7 @@
         <h3>
           6. Vous arrive-t-il de consommer des aliments, des boissons ou des
           médicaments (sur ordonnance ou hors ordonnance) pour avoir davantage
-          d’énergie :
+          <span style="white-space: nowrap;">d’énergie :</span>
         </h3>
       </v-row>
       <v-row justify="center">
@@ -436,7 +436,7 @@
       <v-row class="ma-5" cols="6" sm="12">
         <h3>
           7. Identifier les signaux physiques et psychologiques de fatigue que
-          vous envoie votre corps, cela vous paraît :
+          vous envoie votre corps, cela vous <span style="white-space: nowrap;">paraît :</span>
         </h3>
       </v-row>
       <v-row justify="center">

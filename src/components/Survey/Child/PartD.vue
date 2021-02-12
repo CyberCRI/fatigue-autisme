@@ -24,7 +24,7 @@
           <strong :class="this.$store.state.settings.accentTextClass"
             >Lors de périodes de fatigue cognitive importante</strong
           >, avez-vous l’impression de « perdre » temporairement certaines de
-          vos capacités, compétences ou habiletés :
+          vos capacités, compétences ou <span style="white-space: nowrap;">habiletés :</span>
         </h3>
       </v-row>
 
@@ -52,7 +52,7 @@
           2.
           <strong :class="this.$store.state.settings.accentTextClass"
             >Lors de périodes de fatigue cognitive importante</strong
-          >, avez-vous constaté des changements au niveau de votre mémoire :
+          >, avez-vous constaté des changements au niveau de votre <span style="white-space: nowrap;">mémoire :</span>
         </h3>
       </v-row>
 
@@ -155,7 +155,7 @@
           <strong :class="this.$store.state.settings.accentTextClass"
             >Lors de périodes de fatigue importante</strong
           >, avez-vous l’impression d’être plus lent.e pour réaliser différentes
-          tâches du quotidien, qu’elles soient scolaires ou non :
+          tâches du quotidien, qu’elles soient scolaires <span style="white-space: nowrap;">ou non :</span>
         </h3>
       </v-row>
 
@@ -184,7 +184,7 @@
           <strong :class="this.$store.state.settings.accentTextClass"
             >Lors de périodes de fatigue importante</strong
           >, avez-vous constaté des changements au niveau de votre gestion des
-          émotions :
+          <span style="white-space: nowrap;">émotions :</span>
         </h3>
       </v-row>
 

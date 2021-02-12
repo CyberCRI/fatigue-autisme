@@ -25,7 +25,7 @@
       <v-row class="ma-5" sm="12">
         <h3>
           1. À l’heure actuelle, diriez-vous que la fatigue cognitive constitue
-          un motif d’inquiétude pour vous, concernant les aspects suivants :
+          un motif d’inquiétude pour vous, concernant les aspects <span style="white-space: nowrap;">suivants :</span>
         </h3>
       </v-row>
 
@@ -131,7 +131,7 @@
         <h3>
           2. Il y a-t-il des aides ou soutiens particuliers qui vous
           paraitraient utiles et dont vous aimeriez nous faire part (dont vous
-          avez déjà connaissance ou qui vous semblent manquer) ?
+          avez déjà connaissance ou qui vous semblent <span style="white-space: nowrap;">manquer) ?</span>
         </h3>
       </v-row>
       <TextArea v-model="E2" />
@@ -140,7 +140,7 @@
       <v-row class="ma-5" sm="12">
         <h3>
           3. Souhaiteriez-vous ajouter certains éléments concernant votre
-          expérience de la fatigue cognitive ?
+          expérience de la fatigue <span style="white-space: nowrap;">cognitive ?</span>
         </h3>
       </v-row>
       <TextArea v-model="E3" />

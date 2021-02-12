@@ -28,7 +28,7 @@
             </p>
             <p>
               Veuillez s’il vous plaît lire attentivement les points suivants
-              avant de signer :
+              avant de <span style="white-space: nowrap;">signer :</span>
             </p>
             <v-checkbox
               v-model="check1"
