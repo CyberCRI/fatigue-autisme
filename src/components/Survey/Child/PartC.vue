@@ -57,35 +57,41 @@
                 ><strong>Précisez si vous le souhaitez</strong></v-col
               > -->
             </v-row>
-            <v-divider class="ma-4"></v-divider>
+            <v-divider class="ma-1"></v-divider>
             <v-row
               align="center"
               justify="center"
               v-for="q in questionsC11"
               :key="q.question"
             >
-              <v-col cols="8" sm="8">{{ q.question }}</v-col>
-              <v-col cols="4" sm="4"
+              <v-col cols="8" sm="8" class="pa-0">{{ q.question }}</v-col>
+              <v-col cols="4" sm="4" class="pa-0"
                 >
               <v-layout row wrap justify-center>
-                <v-switch v-model="$data[q.modelB]">
+                <v-switch v-model="$data[q.modelB]" class="pt-1">
                   <template v-slot:label>{{
                     $data[q.modelB] ? " Oui" : " Non"
                   }}</template>
                 </v-switch>
               </v-layout>
                 </v-col>
-                <v-col cols="12" sm="12" v-if="$data[q.modelB]">
+                <v-col cols="12" sm="12" v-if="$data[q.modelB]" class="pa-0">
                   <section v-if="q.modelT === 'C11hText'">
                     <p><strong>La question 2 explore plus en détails les particularités sensorielles</strong></p>
                   </section>
                   <section v-else>
+                    <v-row justify="center">
+                    <v-col cols="12" sm="4" class="pa-0">
                     <strong>Précisez si vous le souhaitez:</strong>
+                    </v-col>
+                    <v-col cols="12" sm="6" class="pa-0">
                   <TextArea v-model="$data[q.modelT]"/>
+                    </v-col>
+                    </v-row>
                   </section>
                   
                 </v-col>
-            <v-divider class="ma-4"></v-divider>
+            <v-divider class="ma-1"></v-divider>
             </v-row>
             <v-row>
               <v-col cols="12" sm="4">Autres, précisez :</v-col>
