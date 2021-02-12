@@ -164,9 +164,9 @@
             >
           </v-row>
           <v-divider class="mt-4 mb-8"></v-divider>
-          <v-row v-for="q in questionsC2" :key="q.question" class="ma-4">
-            <v-col sm="4" v-html="q.question"></v-col>
-            <v-col sm="4"
+          <v-row v-for="q in questionsC2" :key="q.question" class="ma-4 mt-6">
+            <v-col cols="4" v-html="q.question"></v-col>
+            <v-col cols="4"
               ><v-slider
                 v-model="$data[q.modelW]"
                 thumb-label="always"
@@ -174,7 +174,7 @@
                 max="100"
               ></v-slider
             ></v-col>
-            <v-col sm="4"
+            <v-col cols="4"
               ><v-slider
                 v-model="$data[q.modelWo]"
                 thumb-label="always"
@@ -182,9 +182,10 @@
                 max="100"
               ></v-slider
             ></v-col>
+              <v-divider class="ma-1"></v-divider>
           </v-row>
-          <v-row class="ma-4" align="center">
-            <v-col sm="4"
+          <v-row class="ma-4 mt-6" align="center">
+            <v-col cols="4"
               >Système vestibulaire et proprioceptif<v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn icon v-bind="attrs" v-on="on">
@@ -197,7 +198,7 @@
                 >
               </v-tooltip></v-col
             >
-            <v-col sm="4"
+            <v-col cols="4"
               ><v-slider
                 v-model="C2VestWith"
                 thumb-label="always"
@@ -205,7 +206,7 @@
                 max="100"
               ></v-slider
             ></v-col>
-            <v-col sm="4"
+            <v-col cols="4"
               ><v-slider
                 v-model="C2VestWithout"
                 thumb-label="always"
@@ -213,9 +214,10 @@
                 max="100"
               ></v-slider
             ></v-col>
+              <v-divider class="ma-1"></v-divider>
           </v-row>
           <v-row class="ma-4" align="center">
-            <v-col sm="4"
+            <v-col cols="4"
               >Autre(s)<v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn icon v-bind="attrs" v-on="on">
