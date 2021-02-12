@@ -351,7 +351,7 @@ export default {
         { question: "Voir et échanger avec vos amis", model: "A3j" },
         {
           question:
-            "Vous repérer au niveau spatial (représentation mentale des lieux) et temporel (situer les événements les uns par rapport aux autres, avoir la notion du temps qui passe, etc.",
+            "Vous repérer au niveau spatial (représentation mentale des lieux) et temporel (situer les événements les uns par rapport aux autres, avoir la notion du temps qui passe, etc.)",
           model: "A3k",
         },
         {
