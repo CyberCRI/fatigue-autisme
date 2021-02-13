@@ -24,13 +24,17 @@
           <strong :class="this.$store.state.settings.accentTextClass"
             >Lors de périodes de fatigue cognitive importante</strong
           >, avez-vous l’impression de « perdre » temporairement certaines de
-          vos capacités, compétences ou <span style="white-space: nowrap;">habiletés :</span>
+          vos capacités, compétences ou
+          <span style="white-space: nowrap">habiletés :</span>
         </h3>
       </v-row>
 
       <v-row justify="center">
         <v-col cols="6" sm="10">
-          <v-radio-group v-model="D1" v-bind:class="{ 'error-borders': errors.includes('D1') }">
+          <v-radio-group
+            v-model="D1"
+            v-bind:class="{ 'error-borders': errors.includes('D1') }"
+          >
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
             <v-radio label="Oui, beaucoup" value="Oui, beaucoup"></v-radio>
@@ -52,13 +56,17 @@
           2.
           <strong :class="this.$store.state.settings.accentTextClass"
             >Lors de périodes de fatigue cognitive importante</strong
-          >, avez-vous constaté des changements au niveau de votre <span style="white-space: nowrap;">mémoire :</span>
+          >, avez-vous constaté des changements au niveau de votre
+          <span style="white-space: nowrap">mémoire :</span>
         </h3>
       </v-row>
 
       <v-row justify="center">
         <v-col cols="6" sm="10">
-          <v-radio-group v-model="D2" v-bind:class="{ 'error-borders': errors.includes('D2') }">
+          <v-radio-group
+            v-model="D2"
+            v-bind:class="{ 'error-borders': errors.includes('D2') }"
+          >
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
             <v-radio label="Oui, beaucoup" value="Oui, beaucoup"></v-radio>
@@ -98,7 +106,12 @@
 
       <v-row justify="center">
         <v-col sm="10">
-          <v-row align="center" v-for="q in questionsD3" :key="q.question" v-bind:class="{ 'error-borders': errors.includes(q.model) }">
+          <v-row
+            align="center"
+            v-for="q in questionsD3"
+            :key="q.question"
+            v-bind:class="{ 'error-borders': errors.includes(q.model) }"
+          >
             <v-col cols="12" sm="6"><span v-html="q.question"></span></v-col>
             <v-col cols="12" sm="6">
               <v-radio-group v-model="$data[q.model]" row>
@@ -132,7 +145,10 @@
 
       <v-row justify="center">
         <v-col cols="6" sm="10">
-          <v-radio-group v-model="D4" v-bind:class="{ 'error-borders': errors.includes('D4') }">
+          <v-radio-group
+            v-model="D4"
+            v-bind:class="{ 'error-borders': errors.includes('D4') }"
+          >
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
             <v-radio label="Oui, beaucoup" value="Oui, beaucoup"></v-radio>
@@ -155,13 +171,17 @@
           <strong :class="this.$store.state.settings.accentTextClass"
             >Lors de périodes de fatigue importante</strong
           >, avez-vous l’impression d’être plus lent.e pour réaliser différentes
-          tâches du quotidien, qu’elles soient scolaires <span style="white-space: nowrap;">ou non :</span>
+          tâches du quotidien, qu’elles soient scolaires
+          <span style="white-space: nowrap">ou non :</span>
         </h3>
       </v-row>
 
       <v-row justify="center">
         <v-col cols="6" sm="10">
-          <v-radio-group v-model="D5" v-bind:class="{ 'error-borders': errors.includes('D5') }">
+          <v-radio-group
+            v-model="D5"
+            v-bind:class="{ 'error-borders': errors.includes('D5') }"
+          >
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
             <v-radio label="Oui, beaucoup" value="Oui, beaucoup"></v-radio>
@@ -184,7 +204,7 @@
           <strong :class="this.$store.state.settings.accentTextClass"
             >Lors de périodes de fatigue importante</strong
           >, avez-vous constaté des changements au niveau de votre gestion des
-          <span style="white-space: nowrap;">émotions :</span>
+          <span style="white-space: nowrap">émotions :</span>
         </h3>
       </v-row>
 
@@ -192,15 +212,23 @@
         <v-col sm="10">
           <v-row align="center">
             <v-col cols="12" sm="5"><span v-html="q.question"></span></v-col>
-            <v-col cols="12" sm="7" v-bind:class="{ 'error-borders': errors.includes(q.model) }">
+            <v-col
+              cols="12"
+              sm="7"
+              v-bind:class="{ 'error-borders': errors.includes(q.model) }"
+            >
               <v-slider
                 v-model="$data[q.model]"
                 thumb-label="always"
                 min="0"
                 max="100"
-                :color="$data[q.model+'Touched'] ? 'primary' : 'grey darken-1'"
-                :track-color="$data[q.model+'Touched'] ? 'primary' : 'grey darken-1'"
-                @change="$data[q.model+'Touched'] = true"
+                :color="
+                  $data[q.model + 'Touched'] ? 'primary' : 'grey darken-1'
+                "
+                :track-color="
+                  $data[q.model + 'Touched'] ? 'primary' : 'grey darken-1'
+                "
+                @change="$data[q.model + 'Touched'] = true"
               >
                 <template v-slot:prepend>Pas de changement</template>
                 <template v-slot:append>Changement très important</template>
@@ -211,39 +239,23 @@
       </v-row>
 
       <v-row justify="center">
-        <v-btn
-          class="btn primary bouton ma-4"
-          @click="save"
-        >
+        <v-btn class="btn primary bouton ma-4" @click="save">
           Enregistrer et terminer plus tard
         </v-btn>
-        <v-btn
-          class="btn primary bouton ma-4"
-          @click="nextPart"
-        >
+        <v-btn class="btn primary bouton ma-4" @click="nextPart">
           Accéder à la partie E
         </v-btn>
       </v-row>
       <v-row justify="center">
         <v-col sm="6">
-          <v-alert
-            outlined
-            type="success"
-            text
-            v-if="showSuccess"
-          >
+          <v-alert outlined type="success" text v-if="showSuccess">
             Vos réponses ont bien été enregistrées.
           </v-alert>
         </v-col>
       </v-row>
       <v-row justify="center">
         <v-col sm="6">
-          <v-alert
-            outlined
-            type="error"
-            text
-            v-if="alertErrorMessage"
-          >
+          <v-alert outlined type="error" text v-if="alertErrorMessage">
             {{ alertErrorMessage }}
           </v-alert>
         </v-col>
@@ -263,7 +275,7 @@ export default {
     return {
       activeErrors: false,
       showSuccess: false,
-      alertErrorMessage: '',
+      alertErrorMessage: "",
       D1: "",
       D11: "",
       D2: "",
@@ -466,37 +478,42 @@ export default {
   methods: {
     ...mapActions(["saveChildQuestionnaire"]),
     save() {
-      this.alertErrorMessage = '';
+      this.alertErrorMessage = "";
       this.showSuccess = false;
 
       this.saveChildQuestionnaire(this.answers).then(
         () => {
           this.showSuccess = true;
         },
-        error => {
-          this.alertErrorMessage = 'Une erreur est survenue'
-          console.log(error)
+        (error) => {
+          this.alertErrorMessage = "Une erreur est survenue";
+          console.log(error);
         }
-      )
+      );
     },
     nextPart() {
       this.activeErrors = true;
-      this.alertErrorMessage = '';
+      this.alertErrorMessage = "";
 
       if (this.errors.length > 0) {
         window.scrollTo(0, 0);
       } else {
-        this.saveChildQuestionnaire(this.answers).then(
-          () => {
-            this.$router.push('/enfants/questionnaire/partE');
-          },
-          error => {
-            this.alertErrorMessage = 'Une erreur est survenue'
-            console.log(error)
-          }
-        )
+        //TODO REMOVE THIS
+        if (this.$store.state.auth.fakeLoggedIn) {
+          this.$router.push("/enfants/questionnaire/partE");
+        } else {
+          this.saveChildQuestionnaire(this.answers).then(
+            () => {
+              this.$router.push("/enfants/questionnaire/partE");
+            },
+            (error) => {
+              this.alertErrorMessage = "Une erreur est survenue";
+              console.log(error);
+            }
+          );
+        }
       }
-    }
+    },
   },
   components: {
     Indications,
@@ -505,7 +522,7 @@ export default {
   },
   mounted() {
     console.log("part D mounted");
-    window.scrollTo(0, 0, 'smooth');
+    window.scrollTo(0, 0, "smooth");
     this.D1 = this.$store.state.childQuestionnaire.D1 || "";
     this.D11 = this.$store.state.childQuestionnaire.D11 || "";
     this.D2 = this.$store.state.childQuestionnaire.D2 || "";

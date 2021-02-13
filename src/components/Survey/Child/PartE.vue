@@ -1,9 +1,6 @@
 <template>
   <section>
-    <Header
-      :title="`Partie E`"
-      :valueProgress="percentageCompletion"
-    />
+    <Header :title="`Partie E`" :valueProgress="percentageCompletion" />
 
     <br />
     <br />
@@ -11,21 +8,21 @@
     <br />
     <v-card class="pa-md-4 mb-4">
       <v-row sm="12" justify="center">
-        <h1>
-          Questions finales
-        </h1>
+        <h1>Questions finales</h1>
       </v-row>
 
       <v-row justify="center" class="ma-10" v-if="errors.length > 0">
         <v-col sm="9" class="error-borders pa-4">
-          Certaines questions ci-dessous nécessitent une réponse afin de valider cette partie.
+          Certaines questions ci-dessous nécessitent une réponse afin de valider
+          cette partie.
         </v-col>
       </v-row>
 
       <v-row class="ma-5" sm="12">
         <h3>
           1. À l’heure actuelle, diriez-vous que la fatigue cognitive constitue
-          un motif d’inquiétude pour vous, concernant les aspects <span style="white-space: nowrap;">suivants :</span>
+          un motif d’inquiétude pour vous, concernant les aspects
+          <span style="white-space: nowrap">suivants :</span>
         </h3>
       </v-row>
 
@@ -37,92 +34,110 @@
 
       <v-row justify="center">
         <v-col sm="10">
-      <v-row justify="center" align="center" v-bind:class="{ 'error-borders': errors.includes('E1a') }">
-        <v-col cols="12" sm="7">
-          Votre motivation à poursuivre vos études, une formation
-          professionnelle ou à vous projeter dans le monde du travail
-        </v-col>
-        <v-col cols="12" sm="4">
-          <v-radio-group v-model="E1a" row>
-            <v-radio
-              v-for="i in valuesE1"
-              :key="i"
-              :label="i"
-              :value="i"
-            ></v-radio>
-          </v-radio-group>
-          <!-- <v-slider :tick-labels="['1', '2', '3', '4']" :max="3" step="1">
+          <v-row
+            justify="center"
+            align="center"
+            v-bind:class="{ 'error-borders': errors.includes('E1a') }"
+          >
+            <v-col cols="12" sm="7">
+              Votre motivation à poursuivre vos études, une formation
+              professionnelle ou à vous projeter dans le monde du travail
+            </v-col>
+            <v-col cols="12" sm="4">
+              <v-radio-group v-model="E1a" row>
+                <v-radio
+                  v-for="i in valuesE1"
+                  :key="i"
+                  :label="i"
+                  :value="i"
+                ></v-radio>
+              </v-radio-group>
+              <!-- <v-slider :tick-labels="['1', '2', '3', '4']" :max="3" step="1">
           </v-slider> -->
-        </v-col>
-      </v-row>
-      <v-row justify="center" align="center" v-bind:class="{ 'error-borders': errors.includes('E1b') }">
-        <v-col cols="12" sm="7">
-          Votre confiance en vos capacités<v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn icon v-bind="attrs" v-on="on">
-                <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
-              </v-btn>
-            </template>
-            <span
-              >Confiance en soi: Évaluation réaliste et ponctuelle des ressources
-              nécessaires pour affronter une situation particulière</span
-            >
-          </v-tooltip>
-        </v-col>
-        <v-col cols="12" sm="4">
-          <v-radio-group v-model="E1b" row>
-            <v-radio
-              v-for="i in valuesE1"
-              :key="i"
-              :label="i"
-              :value="i"
-            ></v-radio>
-          </v-radio-group>
-        </v-col>
-      </v-row>
-      <v-row justify="center" align="center" v-bind:class="{ 'error-borders': errors.includes('E1c') }">
-        <v-col cols="12" sm="7">
-          Votre estime de vous<v-tooltip bottom>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn icon v-bind="attrs" v-on="on">
-                <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
-              </v-btn>
-            </template>
-            <span
-              >Estime de soi: Perception et auto-évaluation de ses points
-              forts et de ses points faibles quand on les compare à nos
-              valeur</span
-            >
-          </v-tooltip>
-        </v-col>
+            </v-col>
+          </v-row>
+          <v-row
+            justify="center"
+            align="center"
+            v-bind:class="{ 'error-borders': errors.includes('E1b') }"
+          >
+            <v-col cols="12" sm="7">
+              Votre confiance en vos capacités<v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn icon v-bind="attrs" v-on="on">
+                    <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
+                  </v-btn>
+                </template>
+                <span
+                  >Confiance en soi: Évaluation réaliste et ponctuelle des
+                  ressources nécessaires pour affronter une situation
+                  particulière</span
+                >
+              </v-tooltip>
+            </v-col>
+            <v-col cols="12" sm="4">
+              <v-radio-group v-model="E1b" row>
+                <v-radio
+                  v-for="i in valuesE1"
+                  :key="i"
+                  :label="i"
+                  :value="i"
+                ></v-radio>
+              </v-radio-group>
+            </v-col>
+          </v-row>
+          <v-row
+            justify="center"
+            align="center"
+            v-bind:class="{ 'error-borders': errors.includes('E1c') }"
+          >
+            <v-col cols="12" sm="7">
+              Votre estime de vous<v-tooltip bottom>
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn icon v-bind="attrs" v-on="on">
+                    <v-icon color="grey lighten-1">mdi-help-circle</v-icon>
+                  </v-btn>
+                </template>
+                <span
+                  >Estime de soi: Perception et auto-évaluation de ses points
+                  forts et de ses points faibles quand on les compare à nos
+                  valeur</span
+                >
+              </v-tooltip>
+            </v-col>
 
-        <v-col cols="12" sm="4">
-          <v-radio-group v-model="E1c" row>
-            <v-radio
-              v-for="i in valuesE1"
-              :key="i"
-              :label="i"
-              :value="i"
-            ></v-radio>
-          </v-radio-group>
-        </v-col>
-      </v-row>
-      <v-row justify="center" align="center" class="mb-8" v-bind:class="{ 'error-borders': errors.includes('E1d') }">
-        <v-col cols="12" sm="7">
-          Votre indépendance à venir (logement, gestion du quotidien,
-          transports, etc.)
-        </v-col>
-        <v-col cols="12" sm="4">
-          <v-radio-group v-model="E1d" row>
-            <v-radio
-              v-for="i in valuesE1"
-              :key="i"
-              :label="i"
-              :value="i"
-            ></v-radio>
-          </v-radio-group>
-        </v-col>
-      </v-row>
+            <v-col cols="12" sm="4">
+              <v-radio-group v-model="E1c" row>
+                <v-radio
+                  v-for="i in valuesE1"
+                  :key="i"
+                  :label="i"
+                  :value="i"
+                ></v-radio>
+              </v-radio-group>
+            </v-col>
+          </v-row>
+          <v-row
+            justify="center"
+            align="center"
+            class="mb-8"
+            v-bind:class="{ 'error-borders': errors.includes('E1d') }"
+          >
+            <v-col cols="12" sm="7">
+              Votre indépendance à venir (logement, gestion du quotidien,
+              transports, etc.)
+            </v-col>
+            <v-col cols="12" sm="4">
+              <v-radio-group v-model="E1d" row>
+                <v-radio
+                  v-for="i in valuesE1"
+                  :key="i"
+                  :label="i"
+                  :value="i"
+                ></v-radio>
+              </v-radio-group>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
 
@@ -131,7 +146,8 @@
         <h3>
           2. Il y a-t-il des aides ou soutiens particuliers qui vous
           paraitraient utiles et dont vous aimeriez nous faire part (dont vous
-          avez déjà connaissance ou qui vous semblent <span style="white-space: nowrap;">manquer) ?</span>
+          avez déjà connaissance ou qui vous semblent
+          <span style="white-space: nowrap">manquer) ?</span>
         </h3>
       </v-row>
       <TextArea v-model="E2" />
@@ -140,7 +156,8 @@
       <v-row class="ma-5" sm="12">
         <h3>
           3. Souhaiteriez-vous ajouter certains éléments concernant votre
-          expérience de la fatigue <span style="white-space: nowrap;">cognitive ?</span>
+          expérience de la fatigue
+          <span style="white-space: nowrap">cognitive ?</span>
         </h3>
       </v-row>
       <TextArea v-model="E3" />
@@ -149,33 +166,20 @@
         <v-btn class="btn primary bouton ma-4" @click="save">
           Enregistrer et terminer plus tard
         </v-btn>
-        <v-btn
-          class="btn primary bouton ma-4"
-          @click="nextPart"
-        >
+        <v-btn class="btn primary bouton ma-4" @click="nextPart">
           Valider le questionnaire
         </v-btn>
       </v-row>
       <v-row justify="center">
         <v-col sm="6">
-          <v-alert
-            outlined
-            type="success"
-            text
-            v-if="showSuccess"
-          >
+          <v-alert outlined type="success" text v-if="showSuccess">
             Vos réponses ont bien été enregistrées.
           </v-alert>
         </v-col>
       </v-row>
       <v-row justify="center">
         <v-col sm="6">
-          <v-alert
-            outlined
-            type="error"
-            text
-            v-if="alertErrorMessage"
-          >
+          <v-alert outlined type="error" text v-if="alertErrorMessage">
             {{ alertErrorMessage }}
           </v-alert>
         </v-col>
@@ -195,7 +199,7 @@ export default {
     return {
       activeErrors: false,
       showSuccess: false,
-      alertErrorMessage: '',
+      alertErrorMessage: "",
       E1a: "",
       E1b: "",
       E1c: "",
@@ -206,9 +210,9 @@ export default {
         "1- Non, ce n’est pas une source d’inquiétude",
         "2- C’est une source d’inquiétude peu importante",
         "3- C’est une source d’inquiétude importante",
-        "4- Je n’y réfléchis pas "
+        "4- Je n’y réfléchis pas ",
       ],
-      valuesE1: ["1", "2", "3", "4"]
+      valuesE1: ["1", "2", "3", "4"],
     };
   },
   computed: {
@@ -236,7 +240,7 @@ export default {
     },
     percentageCompletion() {
       const size = Object.keys(this.completions).length;
-      const areOk = Object.values(this.completions).filter(a => a);
+      const areOk = Object.values(this.completions).filter((a) => a);
       console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
@@ -248,49 +252,54 @@ export default {
         E1c: this.E1c,
         E1d: this.E1d,
         E2: this.E2,
-        E3: this.E3
+        E3: this.E3,
       };
-    }
+    },
   },
   methods: {
     ...mapActions(["saveChildQuestionnaire"]),
     save() {
-      this.alertErrorMessage = '';
+      this.alertErrorMessage = "";
       this.showSuccess = false;
 
       this.saveChildQuestionnaire(this.answers).then(
         () => {
           this.showSuccess = true;
         },
-        error => {
-          this.alertErrorMessage = 'Une erreur est survenue'
-          console.log(error)
+        (error) => {
+          this.alertErrorMessage = "Une erreur est survenue";
+          console.log(error);
         }
-      )
+      );
     },
     nextPart() {
       this.activeErrors = true;
-      this.alertErrorMessage = '';
+      this.alertErrorMessage = "";
 
       if (this.errors.length > 0) {
         window.scrollTo(0, 0);
       } else {
-        this.saveChildQuestionnaire(this.answers).then(
-          () => {
-            this.$router.push('/enfants/questionnaire/outro');
-          },
-          error => {
-            this.alertErrorMessage = 'Une erreur est survenue'
-            console.log(error)
-          }
-        )
+        //TODO REMOVE THIS
+        if (this.$store.state.auth.fakeLoggedIn) {
+          this.$router.push("/enfants/questionnaire/outro");
+        } else {
+          this.saveChildQuestionnaire(this.answers).then(
+            () => {
+              this.$router.push("/enfants/questionnaire/outro");
+            },
+            (error) => {
+              this.alertErrorMessage = "Une erreur est survenue";
+              console.log(error);
+            }
+          );
+        }
       }
-    }
+    },
   },
   components: {
     Indications,
     Header,
-    TextArea
+    TextArea,
   },
   mounted() {
     console.log("part E mounted");
@@ -301,6 +310,6 @@ export default {
     this.E1d = this.$store.state.childQuestionnaire.E1d || "";
     this.E2 = this.$store.state.childQuestionnaire.E2 || "";
     this.E3 = this.$store.state.childQuestionnaire.E3 || "";
-  }
+  },
 };
 </script>

@@ -492,15 +492,20 @@ export default {
       if (this.errors.length > 0) {
         window.scrollTo(0, 0);
       } else {
-        this.saveChildQuestionnaire(this.answers).then(
-          () => {
-            this.$router.push("/enfants/questionnaire/partB");
-          },
-          (error) => {
-            this.alertErrorMessage = "Une erreur est survenue";
-            console.log(error);
-          }
-        );
+        //TODO REMOVE THIS
+        if (this.$store.state.auth.fakeLoggedIn) {
+          this.$router.push("/enfants/questionnaire/partB");
+        } else {
+          this.saveChildQuestionnaire(this.answers).then(
+            () => {
+              this.$router.push("/enfants/questionnaire/partB");
+            },
+            (error) => {
+              this.alertErrorMessage = "Une erreur est survenue";
+              console.log(error);
+            }
+          );
+        }
       }
     },
   },

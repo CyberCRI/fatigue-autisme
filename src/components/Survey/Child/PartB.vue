@@ -1,30 +1,28 @@
 <template>
   <section>
-    <Header
-      :title="`Partie B`"
-      :valueProgress="percentageCompletion"
-    />
+    <Header :title="`Partie B`" :valueProgress="percentageCompletion" />
 
     <br />
     <br />
     <br />
     <br />
     <v-card class="pa-md-4 mb-4">
-      
       <v-row cols="10" sm="10" justify="center">
-        <h1>
-          Répercussions dans la vie quotidienne
-        </h1>
+        <h1>Répercussions dans la vie quotidienne</h1>
       </v-row>
 
       <v-row justify="center" class="ma-10" v-if="errors.length > 0">
         <v-col sm="9" class="error-borders pa-4">
-          Certaines questions ci-dessous nécessitent une réponse afin de valider cette partie.
+          Certaines questions ci-dessous nécessitent une réponse afin de valider
+          cette partie.
         </v-col>
       </v-row>
 
       <v-row class="ma-5" sm="12">
-        <h3>1. Comment décririez-vous votre emploi du <span style="white-space: nowrap;">temps :</span></h3>
+        <h3>
+          1. Comment décririez-vous votre emploi du
+          <span style="white-space: nowrap">temps :</span>
+        </h3>
       </v-row>
 
       <Indications>
@@ -35,7 +33,12 @@
 
       <v-row justify="center">
         <v-col sm="10">
-          <v-row align="center" v-for="q in questionsB1" :key="q.question" v-bind:class="{ 'error-borders': errors.includes(q.model) }">
+          <v-row
+            align="center"
+            v-for="q in questionsB1"
+            :key="q.question"
+            v-bind:class="{ 'error-borders': errors.includes(q.model) }"
+          >
             <v-col cols="12" sm="7"><span v-html="q.question"></span></v-col>
             <v-col cols="12" sm="5">
               <v-radio-group v-model="$data[q.model]" row>
@@ -58,7 +61,8 @@
           2. Parmi ces 12 propositions, pouvez-vous classer les
           <strong :class="this.$store.state.settings.accentTextClass"
             >5 plus fatigantes</strong
-          >, de 1 (la plus fatigante de toute) <span style="white-space: nowrap;">à 5 :</span>
+          >, de 1 (la plus fatigante de toute)
+          <span style="white-space: nowrap">à 5 :</span>
         </h3>
       </v-row>
 
@@ -68,7 +72,9 @@
         </v-col>
       </v-row>
 
-      <Indications>Vous pouvez annuler une réponse en cliquant sur le numéro</Indications>
+      <Indications
+        >Vous pouvez annuler une réponse en cliquant sur le numéro</Indications
+      >
 
       <v-row justify="center">
         <v-col sm="10">
@@ -129,7 +135,10 @@
 
       <v-row justify="center">
         <v-col sm="10" cols="6">
-          <v-radio-group v-model="B3" v-bind:class="{ 'error-borders': errors.includes('B3') }">
+          <v-radio-group
+            v-model="B3"
+            v-bind:class="{ 'error-borders': errors.includes('B3') }"
+          >
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
           </v-radio-group>
@@ -138,45 +147,31 @@
 
       <section id="B31" v-if="relevantB31">
         <v-row class="ma-5" sm="12">
-          <h4>3.1 Pouvez-vous <span style="white-space: nowrap;">préciser :</span></h4>
+          <h4>
+            3.1 Pouvez-vous <span style="white-space: nowrap">préciser :</span>
+          </h4>
         </v-row>
         <TextArea v-model="B31" />
       </section>
 
       <v-row justify="center">
-        <v-btn
-          class="btn primary bouton ma-4"
-          @click="save"
-        >
+        <v-btn class="btn primary bouton ma-4" @click="save">
           Enregistrer et terminer plus tard
         </v-btn>
-        <v-btn
-          class="btn primary bouton ma-4"
-          @click="nextPart"
-        >
+        <v-btn class="btn primary bouton ma-4" @click="nextPart">
           Accéder à la partie C
         </v-btn>
       </v-row>
       <v-row justify="center">
         <v-col sm="6">
-          <v-alert
-            outlined
-            type="success"
-            text
-            v-if="showSuccess"
-          >
+          <v-alert outlined type="success" text v-if="showSuccess">
             Vos réponses ont bien été enregistrées.
           </v-alert>
         </v-col>
       </v-row>
       <v-row justify="center">
         <v-col sm="6">
-          <v-alert
-            outlined
-            type="error"
-            text
-            v-if="alertErrorMessage"
-          >
+          <v-alert outlined type="error" text v-if="alertErrorMessage">
             {{ alertErrorMessage }}
           </v-alert>
         </v-col>
@@ -196,7 +191,7 @@ export default {
     return {
       activeErrors: false,
       showSuccess: false,
-      alertErrorMessage: '',
+      alertErrorMessage: "",
       B1a: "",
       B1b: "",
       B1c: "",
@@ -208,7 +203,7 @@ export default {
         "2- Bien équilibré (ni trop chargé, ni trop peu chargé)",
         "3- Un peu trop chargé",
         "4- Trop chargé",
-        "5- Beaucoup trop chargé"
+        "5- Beaucoup trop chargé",
       ],
       valuesB1: ["1", "2", "3", "4", "5"],
       questionsB1: [
@@ -216,12 +211,12 @@ export default {
         {
           question:
             "Après le lycée (impératifs divers, accompagnements, devoirs, etc.)",
-          model: "B1b"
+          model: "B1b",
         },
         { question: "Durant le week-end", model: "B1c" },
         {
           question: "De façon générale (du lundi matin au dimanche soir)",
-          model: "B1d"
+          model: "B1d",
         },
       ],
       optionsB2: [
@@ -230,63 +225,63 @@ export default {
           id: "b",
           question:
             "La répartition des cours (dans la journée, dans la semaine)",
-          rank: ""
+          rank: "",
         },
         {
           id: "c",
           question:
             "Le rythme des enseignements dispensés en classe (trop rapides, trop lents, etc.)",
-          rank: ""
+          rank: "",
         },
         {
           id: "d",
           question:
             "Les interactions avec les élèves (comprendre le fonctionnement du groupe, les normes sociales implicites entre les adolescents, etc.)",
-          rank: ""
+          rank: "",
         },
         {
           id: "e",
           question:
             "Les interactions avec les enseignants et les adultes de l’établissement",
-          rank: ""
+          rank: "",
         },
         {
           id: "f",
           question: "La gestion de l’environnement sensoriel",
-          rank: ""
+          rank: "",
         },
         {
           id: "g",
           question: "La charge de travail scolaire (au lycée et à la maison)",
-          rank: ""
+          rank: "",
         },
         {
           id: "h",
           question:
             "Les activités après le lycée (loisirs, accompagnements divers, etc.)",
-          rank: ""
+          rank: "",
         },
         {
           id: "i",
           question:
             "Le fait de devoir s’adapter aux autres, faire le caméléon, porter un masque",
-          rank: ""
+          rank: "",
         },
         {
           id: "j",
           question: "Les attentes et exigences de votre entourage",
-          rank: ""
+          rank: "",
         },
         {
           id: "k",
           question: "La pression que vous vous mettez pour réussir",
-          rank: ""
+          rank: "",
         },
         {
           id: "l",
           question:
             "Le manque de sommeil / la mauvaise qualité de votre sommeil",
-          rank: ""
+          rank: "",
         },
       ],
     };
@@ -305,18 +300,20 @@ export default {
       return errors;
     },
     errorRanking() {
-      return this.errors.includes('B2_1') ||
-              this.errors.includes('B2_2') ||
-              this.errors.includes('B2_3') ||
-              this.errors.includes('B2_4') ||
-              this.errors.includes('B2_5'); 
+      return (
+        this.errors.includes("B2_1") ||
+        this.errors.includes("B2_2") ||
+        this.errors.includes("B2_3") ||
+        this.errors.includes("B2_4") ||
+        this.errors.includes("B2_5")
+      );
     },
     relevantB31() {
-      return this.B3 === 'Oui';
+      return this.B3 === "Oui";
     },
     availableRanksB2() {
-      const rankTaken = this.optionsB2.map(o => o.rank);
-      return ["1", "2", "3", "4", "5"].filter(i => !rankTaken.includes(i));
+      const rankTaken = this.optionsB2.map((o) => o.rank);
+      return ["1", "2", "3", "4", "5"].filter((i) => !rankTaken.includes(i));
     },
     completions() {
       return {
@@ -325,18 +322,18 @@ export default {
         B1c: this.B1c != "",
         B1d: this.B1d != "",
         B2_1: this.getRankB2("1") != "",
-        B2_2: this.getRankB2("2")!= "",
-        B2_3: this.getRankB2("3")!= "",
-        B2_4: this.getRankB2("4")!= "",
-        B2_5: this.getRankB2("5")!= "",
+        B2_2: this.getRankB2("2") != "",
+        B2_3: this.getRankB2("3") != "",
+        B2_4: this.getRankB2("4") != "",
+        B2_5: this.getRankB2("5") != "",
 
-        B3: this.B3 != ""
+        B3: this.B3 != "",
       };
     },
     percentageCompletion() {
       const size = Object.keys(this.completions).length + 5;
       const areOk =
-        Object.values(this.completions).filter(a => a).length +
+        Object.values(this.completions).filter((a) => a).length +
         (5 - this.availableRanksB2.length);
       return parseInt((areOk / size) * 100.0);
     },
@@ -351,69 +348,74 @@ export default {
         B2_3: this.getRankB2("3"),
         B2_4: this.getRankB2("4"),
         B2_5: this.getRankB2("5"),
-        B3: this.B3
+        B3: this.B3,
       };
     },
   },
   methods: {
     ...mapActions(["saveChildQuestionnaire"]),
     getRankB2(rank) {
-      const res = this.optionsB2.filter(it => it.rank === rank);
+      const res = this.optionsB2.filter((it) => it.rank === rank);
       if (res.length === 1) {
         return res[0].id;
       }
       return "";
     },
     chooseRank(rank, itemId) {
-      this.optionsB2.filter(it => it.id === itemId)[0].rank = rank;
+      this.optionsB2.filter((it) => it.id === itemId)[0].rank = rank;
     },
     removeRank(itemId) {
-      this.optionsB2.filter(it => it.id === itemId)[0].rank = "";
+      this.optionsB2.filter((it) => it.id === itemId)[0].rank = "";
     },
     getRank(rank) {
-      const res = this.optionsB2.filter(it => it.rank === rank);
+      const res = this.optionsB2.filter((it) => it.rank === rank);
       if (res) {
         return res.id;
       }
       return "";
     },
     save() {
-      this.alertErrorMessage = '';
+      this.alertErrorMessage = "";
       this.showSuccess = false;
 
       this.saveChildQuestionnaire(this.answers).then(
         () => {
           this.showSuccess = true;
         },
-        error => {
-          this.alertErrorMessage = 'Une erreur est survenue'
-          console.log(error)
+        (error) => {
+          this.alertErrorMessage = "Une erreur est survenue";
+          console.log(error);
         }
-      )
+      );
     },
     nextPart() {
       this.activeErrors = true;
-      this.alertErrorMessage = '';
+      this.alertErrorMessage = "";
 
       if (this.errors.length > 0) {
         window.scrollTo(0, 0);
       } else {
-        this.saveChildQuestionnaire(this.answers).then(
-          () => {
-            this.$router.push('/enfants/questionnaire/partC');
-          },
-          error => {
-            this.alertErrorMessage = 'Une erreur est survenue'
-            console.log(error)
-          }
-        )
+        //TODO REMOVE THIS
+        if (this.$store.state.auth.fakeLoggedIn) {
+          this.$router.push("/enfants/questionnaire/partC");
+        } else {
+          this.saveChildQuestionnaire(this.answers).then(
+            () => {
+              this.$router.push("/enfants/questionnaire/partC");
+            },
+            (error) => {
+              this.alertErrorMessage = "Une erreur est survenue";
+              console.log(error);
+            }
+          );
+        }
       }
-    }
+    },
   },
   components: {
     Indications,
     Header,
-    TextArea
+    TextArea,
   },
   mounted() {
     console.log("part B mounted");
@@ -440,6 +442,6 @@ export default {
     }
 
     this.B3 = this.$store.state.childQuestionnaire.B3 || "";
-  }
+  },
 };
 </script>

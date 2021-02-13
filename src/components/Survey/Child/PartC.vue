@@ -88,7 +88,10 @@
                   <v-row justify="center">
                     <v-col cols="10" sm="8">
                       <div class="rounded-lg text-center green lighten-4 pa-4">
-                        La question 2 explore plus en détails les particularités <span style="white-space: nowrap">sensorielles : </span>vous pourrez détailler ces aspects si vous le souhaitez.
+                        La question 2 explore plus en détails les particularités
+                        <span style="white-space: nowrap">sensorielles : </span
+                        >vous pourrez détailler ces aspects si vous le
+                        souhaitez.
                       </div>
                     </v-col>
                   </v-row>
@@ -166,29 +169,41 @@
           <v-divider class="mt-4 mb-8"></v-divider>
           <v-row v-for="q in questionsC2" :key="q.question" class="ma-4 mt-6">
             <v-col cols="4" v-html="q.question"></v-col>
-            <v-col cols="4" v-bind:class="{ 'error-borders': errors.includes(q.modelW) }"
+            <v-col
+              cols="4"
+              v-bind:class="{ 'error-borders': errors.includes(q.modelW) }"
               ><v-slider
                 v-model="$data[q.modelW]"
                 thumb-label="always"
                 min="0"
                 max="100"
-                :color="$data[q.modelW+'Touched'] ? 'primary' : 'grey darken-1'"
-                :track-color="$data[q.modelW+'Touched'] ? 'primary' : 'grey darken-1'"
-                @change="$data[q.modelW+'Touched'] = true"
+                :color="
+                  $data[q.modelW + 'Touched'] ? 'primary' : 'grey darken-1'
+                "
+                :track-color="
+                  $data[q.modelW + 'Touched'] ? 'primary' : 'grey darken-1'
+                "
+                @change="$data[q.modelW + 'Touched'] = true"
               ></v-slider
             ></v-col>
-            <v-col cols="4" v-bind:class="{ 'error-borders': errors.includes(q.modelWo) }"
+            <v-col
+              cols="4"
+              v-bind:class="{ 'error-borders': errors.includes(q.modelWo) }"
               ><v-slider
                 v-model="$data[q.modelWo]"
                 thumb-label="always"
                 min="0"
                 max="100"
-                :color="$data[q.modelWo+'Touched'] ? 'primary' : 'grey darken-1'"
-                :track-color="$data[q.modelWo+'Touched'] ? 'primary' : 'grey darken-1'"
-                @change="$data[q.modelWo+'Touched'] = true"
+                :color="
+                  $data[q.modelWo + 'Touched'] ? 'primary' : 'grey darken-1'
+                "
+                :track-color="
+                  $data[q.modelWo + 'Touched'] ? 'primary' : 'grey darken-1'
+                "
+                @change="$data[q.modelWo + 'Touched'] = true"
               ></v-slider
             ></v-col>
-              <v-divider class="ma-1"></v-divider>
+            <v-divider class="ma-1"></v-divider>
           </v-row>
           <v-row class="ma-4 mt-6" align="center">
             <v-col cols="4"
@@ -210,7 +225,9 @@
                 thumb-label="always"
                 min="0"
                 max="100"
-                v-bind:class="{ 'error-borders': errors.includes('C2VestWith') }"
+                v-bind:class="{
+                  'error-borders': errors.includes('C2VestWith'),
+                }"
                 :color="C2VestWithTouched ? 'primary' : 'grey darken-1'"
                 :track-color="C2VestWithTouched ? 'primary' : 'grey darken-1'"
                 @change="C2VestWithTouched = true"
@@ -222,13 +239,17 @@
                 thumb-label="always"
                 min="0"
                 max="100"
-                v-bind:class="{ 'error-borders': errors.includes('C2VestWithout') }"
+                v-bind:class="{
+                  'error-borders': errors.includes('C2VestWithout'),
+                }"
                 :color="C2VestWithoutTouched ? 'primary' : 'grey darken-1'"
-                :track-color="C2VestWithoutTouched ? 'primary' : 'grey darken-1'"
+                :track-color="
+                  C2VestWithoutTouched ? 'primary' : 'grey darken-1'
+                "
                 @change="C2VestWithoutTouched = true"
               ></v-slider
             ></v-col>
-              <v-divider class="ma-1"></v-divider>
+            <v-divider class="ma-1"></v-divider>
           </v-row>
           <v-row class="ma-4" align="center">
             <v-col cols="4"
@@ -902,15 +923,20 @@ export default {
       if (this.errors.length > 0) {
         window.scrollTo(0, 0);
       } else {
-        this.saveChildQuestionnaire(this.answers).then(
-          () => {
-            this.$router.push("/enfants/questionnaire/partD");
-          },
-          (error) => {
-            this.alertErrorMessage = "Une erreur est survenue";
-            console.log(error);
-          }
-        );
+        //TODO REMOVE THIS
+        if (this.$store.state.auth.fakeLoggedIn) {
+          this.$router.push("/enfants/questionnaire/partD");
+        } else {
+          this.saveChildQuestionnaire(this.answers).then(
+            () => {
+              this.$router.push("/enfants/questionnaire/partD");
+            },
+            (error) => {
+              this.alertErrorMessage = "Une erreur est survenue";
+              console.log(error);
+            }
+          );
+        }
       }
     },
   },
@@ -955,31 +981,36 @@ export default {
     this.C2HearingWithoutTouched =
       this.$store.state.childQuestionnaire.C2HearingWithoutTouched || false;
     this.C2SightWith = this.$store.state.childQuestionnaire.C2SightWith || 0;
-    this.C2SightWithTouched = this.$store.state.childQuestionnaire.C2SightWithTouched || false;
+    this.C2SightWithTouched =
+      this.$store.state.childQuestionnaire.C2SightWithTouched || false;
     this.C2SightWithout =
       this.$store.state.childQuestionnaire.C2SightWithout || 0;
     this.C2SightWithoutTouched =
       this.$store.state.childQuestionnaire.C2SightWithoutTouched || false;
     this.C2TasteWith = this.$store.state.childQuestionnaire.C2TasteWith || 0;
-    this.C2TasteWithTouched = this.$store.state.childQuestionnaire.C2TasteWithTouched || false;
+    this.C2TasteWithTouched =
+      this.$store.state.childQuestionnaire.C2TasteWithTouched || false;
     this.C2TasteWithout =
       this.$store.state.childQuestionnaire.C2TasteWithout || 0;
     this.C2TasteWithoutTouched =
       this.$store.state.childQuestionnaire.C2TasteWithoutTouched || false;
     this.C2TouchWith = this.$store.state.childQuestionnaire.C2TouchWith || 0;
-    this.C2TouchWithTouched = this.$store.state.childQuestionnaire.C2TouchWithTouched || false;
+    this.C2TouchWithTouched =
+      this.$store.state.childQuestionnaire.C2TouchWithTouched || false;
     this.C2TouchWithout =
       this.$store.state.childQuestionnaire.C2TouchWithout || 0;
     this.C2TouchWithoutTouched =
       this.$store.state.childQuestionnaire.C2TouchWithoutTouched || false;
     this.C2SmellWith = this.$store.state.childQuestionnaire.C2SmellWith || 0;
-    this.C2SmellWithTouched = this.$store.state.childQuestionnaire.C2SmellWithTouched || false;
+    this.C2SmellWithTouched =
+      this.$store.state.childQuestionnaire.C2SmellWithTouched || false;
     this.C2SmellWithout =
       this.$store.state.childQuestionnaire.C2SmellWithout || 0;
     this.C2SmellWithoutTouched =
       this.$store.state.childQuestionnaire.C2SmellWithoutTouched || false;
     this.C2VestWith = this.$store.state.childQuestionnaire.C2VestWith || 0;
-    this.C2VestWithTouched = this.$store.state.childQuestionnaire.C2VestWithTouched || false;
+    this.C2VestWithTouched =
+      this.$store.state.childQuestionnaire.C2VestWithTouched || false;
     this.C2VestWithout =
       this.$store.state.childQuestionnaire.C2VestWithout || 0;
     this.C2VestWithoutTouched =
