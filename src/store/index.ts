@@ -59,6 +59,9 @@ export default new Vuex.Store({
     logout(state) {
       state.auth.loggedIn = false;
       state.auth.user = null;
+      state.childQuestionnaire = {};
+      localStorage.setItem('childQuestionnaire', JSON.stringify(state.childQuestionnaire));
+      localStorage.removeItem('user');
     },
     questionnaire(state, answers) {
       for (const key in answers) {
@@ -195,7 +198,7 @@ export default new Vuex.Store({
     },
     logout({ commit }) {
       console.log('store action logout');
-      AuthService.logout();
+      // AuthService.logout();
       commit('logout');
     },
     saveChildQuestionnaire({ state, commit }, answers) {
