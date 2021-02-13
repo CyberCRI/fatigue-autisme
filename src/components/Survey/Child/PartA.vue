@@ -10,17 +10,18 @@
       <v-row xs="12" justify="center">
         <h1>La fatigue mentale au quotidien</h1>
       </v-row>
-      
+
       <v-row justify="center" class="ma-10" v-if="errors.length > 0">
         <v-col sm="9" class="error-borders pa-4">
-          Certaines questions ci-dessous nécessitent une réponse afin de valider cette partie.
+          Certaines questions ci-dessous nécessitent une réponse afin de valider
+          cette partie.
         </v-col>
       </v-row>
 
       <v-row class="ma-5" cols="12">
         <h3>
           1. Pouvez-vous estimer l’intensité de votre fatigue mentale dans les
-          situations <span style="white-space: nowrap;">suivantes :</span>
+          situations <span style="white-space: nowrap">suivantes :</span>
         </h3>
       </v-row>
 
@@ -39,7 +40,9 @@
             :key="q.question"
             v-bind:class="{ 'error-borders': errors.includes(q.model) }"
           >
-            <v-col sm="12" md="6" cols="12"><span v-html="q.question"></span></v-col>
+            <v-col sm="12" md="6" cols="12"
+              ><span v-html="q.question"></span
+            ></v-col>
             <v-col sm="12" md="6" cols="12">
               <v-radio-group v-model="$data[q.model]" row>
                 <v-radio
@@ -69,7 +72,7 @@
         <v-row class="ma-8" sm="12" v-if="relevantA11">
           <h4>
             1.1 Pouvez-vous évaluer, à l’aide de la jauge, l’intensité de cette
-            fatigue <span style="white-space: nowrap;">mentale :</span>
+            fatigue <span style="white-space: nowrap">mentale :</span>
           </h4>
         </v-row>
 
@@ -85,11 +88,19 @@
             >
           </v-col>
           <v-col sm="6" cols="12">
-            <v-slider v-model="A11a" thumb-label="always" min="-1" max="100">
-              <template v-slot:prepend> Aucune fatigue </template>
+            <v-slider
+              v-model="A11a"
+              thumb-label="always"
+              min="0"
+              max="100"
+              :color="A11aTouched ? 'primary' : 'grey darken-1'"
+              :track-color="A11aTouched ? 'primary' : 'grey darken-1'"
+              @change="A11aTouched = true"
+            >
+              <template v-slot:prepend>Aucune fatigue</template>
               <template v-slot:append>
-                Aussi fatigué.e qu’il est possible de l’être
-              </template>
+                Aussi fatigué.e qu’il est possible de l’être</template
+              >
             </v-slider>
           </v-col>
         </v-row>
@@ -105,7 +116,15 @@
             >
           </v-col>
           <v-col sm="6" cols="12">
-            <v-slider v-model="A11b" thumb-label="always" min="-1" max="100">
+            <v-slider
+              v-model="A11b"
+              thumb-label="always"
+              min="0"
+              max="100"
+              :color="A11bTouched ? 'primary' : 'grey darken-1'"
+              :track-color="A11bTouched ? 'primary' : 'grey darken-1'"
+              @change="A11bTouched = true"
+            >
               <template v-slot:prepend> Aucune fatigue </template>
               <template v-slot:append>
                 Aussi fatigué.e qu’il est possible de l’être
@@ -124,7 +143,11 @@
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col sm="10" cols="6"  v-bind:class="{ 'error-borders': errors.includes('A2') }">
+        <v-col
+          sm="10"
+          cols="6"
+          v-bind:class="{ 'error-borders': errors.includes('A2') }"
+        >
           <v-radio-group v-model="A2">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
@@ -158,7 +181,12 @@
       <!-- RADIO BUTTONS -->
       <v-row justify="center">
         <v-col cols="10">
-          <v-row align="center" v-for="q in questionsA3" :key="q.question" v-bind:class="{ 'error-borders': errors.includes(q.model) }">
+          <v-row
+            align="center"
+            v-for="q in questionsA3"
+            :key="q.question"
+            v-bind:class="{ 'error-borders': errors.includes(q.model) }"
+          >
             <v-col sm="7" cols="12">{{ q.question }}</v-col>
             <v-col sm="5" cols="12">
               <v-radio-group v-model="$data[q.model]" row>
@@ -187,7 +215,11 @@
         </h3>
       </v-row>
       <v-row justify="center">
-        <v-col cols="6" sm="10" v-bind:class="{ 'error-borders': errors.includes('A4') }">
+        <v-col
+          cols="6"
+          sm="10"
+          v-bind:class="{ 'error-borders': errors.includes('A4') }"
+        >
           <v-radio-group v-model="A4">
             <v-radio label="Non" value="Non"></v-radio>
             <v-radio label="Oui" value="Oui"></v-radio>
@@ -198,7 +230,10 @@
 
       <section id="A41" v-if="relevantA41">
         <v-row class="ma-5" sm="12">
-          <h4>4.1 Si oui, souhaitez-vous <span style="white-space: nowrap;">préciser :</span></h4>
+          <h4>
+            4.1 Si oui, souhaitez-vous
+            <span style="white-space: nowrap">préciser :</span>
+          </h4>
         </v-row>
         <TextArea v-model="A41" />
       </section>
@@ -207,38 +242,24 @@
         <v-btn class="btn primary bouton ma-4" @click="save">
           Enregistrer et terminer plus tard
         </v-btn>
-        <v-btn
-          class="btn primary bouton ma-4"
-          @click="nextPart"
-        >
+        <v-btn class="btn primary bouton ma-4" @click="nextPart">
           Accéder à la partie B
         </v-btn>
       </v-row>
       <v-row justify="center">
         <v-col sm="6">
-          <v-alert
-            outlined
-            type="success"
-            text
-            v-if="showSuccess"
-          >
+          <v-alert outlined type="success" text v-if="showSuccess">
             Vos réponses ont bien été enregistrées.
           </v-alert>
         </v-col>
       </v-row>
       <v-row justify="center">
         <v-col sm="6">
-          <v-alert
-            outlined
-            type="error"
-            text
-            v-if="alertErrorMessage"
-          >
+          <v-alert outlined type="error" text v-if="alertErrorMessage">
             {{ alertErrorMessage }}
           </v-alert>
         </v-col>
       </v-row>
-    
     </v-card>
     <!-- </v-expansion-panel-content> -->
   </section>
@@ -255,13 +276,15 @@ export default {
     return {
       activeErrors: false,
       showSuccess: false,
-      alertErrorMessage: '',
+      alertErrorMessage: "",
       A1a: "",
       A1b: "",
       A1c: "",
       A1d: "",
       A11a: 0,
+      A11aTouched: false,
       A11b: 0,
+      A11bTouched: false,
       A2: "",
       A3a: "",
       A3b: "",
@@ -301,7 +324,10 @@ export default {
           question: `Au cours du <strong class="${this.$store.state.settings.accentTextClass}">dernier</strong> week-end :`,
           model: "A1b",
         },
-        { question: `Lorsque vous êtes en <span style="white-space: nowrap;">vacances :</span>`, model: "A1c" },
+        {
+          question: `Lorsque vous êtes en <span style="white-space: nowrap;">vacances :</span>`,
+          model: "A1c",
+        },
         {
           question: `Au moment précis où vous complétez ce <span style="white-space: nowrap;">questionnaire :</span>`,
           model: "A1d",
@@ -420,7 +446,9 @@ export default {
         A1d: this.A1d,
 
         A11a: this.A11a,
+        A11aTouched: this.A11aTouched,
         A11b: this.A11b,
+        A11bTouched: this.A11bTouched,
 
         A2: this.A2,
         A3a: this.A3a,
@@ -444,37 +472,37 @@ export default {
   methods: {
     ...mapActions(["saveChildQuestionnaire"]),
     save() {
-      this.alertErrorMessage = '';
+      this.alertErrorMessage = "";
       this.showSuccess = false;
 
       this.saveChildQuestionnaire(this.answers).then(
         () => {
           this.showSuccess = true;
         },
-        error => {
-          this.alertErrorMessage = 'Une erreur est survenue'
-          console.log(error)
+        (error) => {
+          this.alertErrorMessage = "Une erreur est survenue";
+          console.log(error);
         }
-      )
+      );
     },
     nextPart() {
       this.activeErrors = true;
-      this.alertErrorMessage = '';
+      this.alertErrorMessage = "";
 
       if (this.errors.length > 0) {
         window.scrollTo(0, 0);
       } else {
         this.saveChildQuestionnaire(this.answers).then(
           () => {
-            this.$router.push('/enfants/questionnaire/partB');
+            this.$router.push("/enfants/questionnaire/partB");
           },
-          error => {
-            this.alertErrorMessage = 'Une erreur est survenue'
-            console.log(error)
+          (error) => {
+            this.alertErrorMessage = "Une erreur est survenue";
+            console.log(error);
           }
-        )
+        );
       }
-    }
+    },
   },
   components: {
     Indications,
@@ -483,15 +511,19 @@ export default {
   },
   mounted() {
     console.log("part A mounted");
-    console.log('childQuestionnaire in state:')
-    console.log(this.$store.state.childQuestionnaire)
+    console.log("childQuestionnaire in state:");
+    console.log(this.$store.state.childQuestionnaire);
     window.scrollTo(0, 0);
     this.A1a = this.$store.state.childQuestionnaire.A1a || "";
     this.A1b = this.$store.state.childQuestionnaire.A1b || "";
     this.A1c = this.$store.state.childQuestionnaire.A1c || "";
     this.A1d = this.$store.state.childQuestionnaire.A1d || "";
-    this.A11a = this.$store.state.childQuestionnaire.A11a || -1;
-    this.A11b = this.$store.state.childQuestionnaire.A11b || -1;
+    this.A11a = this.$store.state.childQuestionnaire.A11a || 0;
+    this.A11aTouched =
+      this.$store.state.childQuestionnaire.A11aTouched || false;
+    this.A11b = this.$store.state.childQuestionnaire.A11b || 0;
+    this.A11bTouched =
+      this.$store.state.childQuestionnaire.A11bTouched || false;
     this.A2 = this.$store.state.childQuestionnaire.A2 || "";
     this.A3a = this.$store.state.childQuestionnaire.A3a || "";
     this.A3b = this.$store.state.childQuestionnaire.A3b || "";

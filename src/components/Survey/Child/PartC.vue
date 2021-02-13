@@ -170,16 +170,22 @@
               ><v-slider
                 v-model="$data[q.modelW]"
                 thumb-label="always"
-                min="-1"
+                min="0"
                 max="100"
+                :color="$data[q.modelW+'Touched'] ? 'primary' : 'grey darken-1'"
+                :track-color="$data[q.modelW+'Touched'] ? 'primary' : 'grey darken-1'"
+                @change="$data[q.modelW+'Touched'] = true"
               ></v-slider
             ></v-col>
             <v-col cols="4" v-bind:class="{ 'error-borders': errors.includes(q.modelWo) }"
               ><v-slider
                 v-model="$data[q.modelWo]"
                 thumb-label="always"
-                min="-1"
+                min="0"
                 max="100"
+                :color="$data[q.modelWo+'Touched'] ? 'primary' : 'grey darken-1'"
+                :track-color="$data[q.modelWo+'Touched'] ? 'primary' : 'grey darken-1'"
+                @change="$data[q.modelWo+'Touched'] = true"
               ></v-slider
             ></v-col>
               <v-divider class="ma-1"></v-divider>
@@ -202,18 +208,24 @@
               ><v-slider
                 v-model="C2VestWith"
                 thumb-label="always"
-                min="-1"
+                min="0"
                 max="100"
                 v-bind:class="{ 'error-borders': errors.includes('C2VestWith') }"
+                :color="C2VestWithTouched ? 'primary' : 'grey darken-1'"
+                :track-color="C2VestWithTouched ? 'primary' : 'grey darken-1'"
+                @change="C2VestWithTouched = true"
               ></v-slider
             ></v-col>
             <v-col cols="4"
               ><v-slider
                 v-model="C2VestWithout"
                 thumb-label="always"
-                min="-1"
+                min="0"
                 max="100"
                 v-bind:class="{ 'error-borders': errors.includes('C2VestWithout') }"
+                :color="C2VestWithoutTouched ? 'primary' : 'grey darken-1'"
+                :track-color="C2VestWithoutTouched ? 'primary' : 'grey darken-1'"
+                @change="C2VestWithoutTouched = true"
               ></v-slider
             ></v-col>
               <v-divider class="ma-1"></v-divider>
@@ -583,17 +595,29 @@ export default {
       C11kText: "",
       C11lText: "",
       C2HearingWith: "",
+      C2HearingWithTouched: false,
       C2HearingWithout: "",
+      C2HearingWithoutTouched: false,
       C2SightWith: "",
+      C2SightWithTouched: false,
       C2SightWithout: "",
+      C2SightWithoutTouched: false,
       C2TasteWith: "",
+      C2TasteWithTouched: false,
       C2TasteWithout: "",
+      C2TasteWithoutTouched: false,
       C2TouchWith: "",
+      C2TouchWithTouched: false,
       C2TouchWithout: "",
+      C2TouchWithoutTouched: false,
       C2SmellWith: "",
+      C2SmellWithTouched: false,
       C2SmellWithout: "",
+      C2SmellWithoutTouched: false,
       C2VestWith: "",
+      C2VestWithTouched: false,
       C2VestWithout: "",
+      C2VestWithoutTouched: false,
       C2OtherWith: "",
       C2OtherWithout: "",
       C3: "",
@@ -762,18 +786,18 @@ export default {
     completions() {
       return {
         C1: this.C1 != "",
-        C2HearingWith: this.C2HearingWith > -1,
-        C2HearingWithout: this.C2HearingWithout > -1,
-        C2SightWith: this.C2SightWith > -1,
-        C2SightWithout: this.C2SightWithout > -1,
-        C2TasteWith: this.C2TasteWith > -1,
-        C2TasteWithout: this.C2TasteWithout > -1,
-        C2TouchWith: this.C2TouchWith > -1,
-        C2TouchWithout: this.C2TouchWithout > -1,
-        C2SmellWith: this.C2SmellWith > -1,
-        C2SmellWithout: this.C2SmellWithout > -1,
-        C2VestWith: this.C2VestWith > -1,
-        C2VestWithout: this.C2VestWithout > -1,
+        C2HearingWith: this.C2HearingWithTouched,
+        C2HearingWithout: this.C2HearingWithoutTouched,
+        C2SightWith: this.C2SightWithTouched,
+        C2SightWithout: this.C2SightWithoutTouched,
+        C2TasteWith: this.C2TasteWithTouched,
+        C2TasteWithout: this.C2TasteWithoutTouched,
+        C2TouchWith: this.C2TouchWithTouched,
+        C2TouchWithout: this.C2TouchWithoutTouched,
+        C2SmellWith: this.C2SmellWithTouched,
+        C2SmellWithout: this.C2SmellWithoutTouched,
+        C2VestWith: this.C2VestWithTouched,
+        C2VestWithout: this.C2VestWithoutTouched,
         C3: this.C3 != "",
         C4: this.C4 != "",
         C5: this.C5 != "",
@@ -814,17 +838,29 @@ export default {
         C11kText: this.C11kText,
         C11lText: this.C11lText,
         C2HearingWith: this.C2HearingWith,
+        C2HearingWithTouched: this.C2HearingWithTouched,
         C2HearingWithout: this.C2HearingWithout,
+        C2HearingWithoutTouched: this.C2HearingWithoutTouched,
         C2SightWith: this.C2SightWith,
+        C2SightWithTouched: this.C2SightWithTouched,
         C2SightWithout: this.C2SightWithout,
+        C2SightWithoutTouched: this.C2SightWithoutTouched,
         C2TasteWith: this.C2TasteWith,
+        C2TasteWithTouched: this.C2TasteWithTouched,
         C2TasteWithout: this.C2TasteWithout,
+        C2TasteWithoutTouched: this.C2TasteWithoutTouched,
         C2TouchWith: this.C2TouchWith,
+        C2TouchWithTouched: this.C2TouchWithTouched,
         C2TouchWithout: this.C2TouchWithout,
+        C2TouchWithoutTouched: this.C2TouchWithoutTouched,
         C2SmellWith: this.C2SmellWith,
+        C2SmellWithTouched: this.C2SmellWithTouched,
         C2SmellWithout: this.C2SmellWithout,
+        C2SmellWithoutTouched: this.C2SmellWithoutTouched,
         C2VestWith: this.C2VestWith,
+        C2VestWithTouched: this.C2VestWithTouched,
         C2VestWithout: this.C2VestWithout,
+        C2VestWithoutTouched: this.C2VestWithoutTouched,
         C2OtherWith: this.C2OtherWith,
         C2OtherWithout: this.C2OtherWithout,
         C3: this.C3,
@@ -911,24 +947,43 @@ export default {
     this.C11kText = this.$store.state.childQuestionnaire.C11kText || "";
     this.C11lText = this.$store.state.childQuestionnaire.C11lText || "";
     this.C2HearingWith =
-      this.$store.state.childQuestionnaire.C2HearingWith || -1;
+      this.$store.state.childQuestionnaire.C2HearingWith || 0;
+    this.C2HearingWithTouched =
+      this.$store.state.childQuestionnaire.C2HearingWithTouched || false;
     this.C2HearingWithout =
-      this.$store.state.childQuestionnaire.C2HearingWithout || -1;
-    this.C2SightWith = this.$store.state.childQuestionnaire.C2SightWith || -1;
+      this.$store.state.childQuestionnaire.C2HearingWithout || 0;
+    this.C2HearingWithoutTouched =
+      this.$store.state.childQuestionnaire.C2HearingWithoutTouched || false;
+    this.C2SightWith = this.$store.state.childQuestionnaire.C2SightWith || 0;
+    this.C2SightWithTouched = this.$store.state.childQuestionnaire.C2SightWithTouched || false;
     this.C2SightWithout =
-      this.$store.state.childQuestionnaire.C2SightWithout || -1;
-    this.C2TasteWith = this.$store.state.childQuestionnaire.C2TasteWith || -1;
+      this.$store.state.childQuestionnaire.C2SightWithout || 0;
+    this.C2SightWithoutTouched =
+      this.$store.state.childQuestionnaire.C2SightWithoutTouched || false;
+    this.C2TasteWith = this.$store.state.childQuestionnaire.C2TasteWith || 0;
+    this.C2TasteWithTouched = this.$store.state.childQuestionnaire.C2TasteWithTouched || false;
     this.C2TasteWithout =
-      this.$store.state.childQuestionnaire.C2TasteWithout || -1;
-    this.C2TouchWith = this.$store.state.childQuestionnaire.C2TouchWith || -1;
+      this.$store.state.childQuestionnaire.C2TasteWithout || 0;
+    this.C2TasteWithoutTouched =
+      this.$store.state.childQuestionnaire.C2TasteWithoutTouched || false;
+    this.C2TouchWith = this.$store.state.childQuestionnaire.C2TouchWith || 0;
+    this.C2TouchWithTouched = this.$store.state.childQuestionnaire.C2TouchWithTouched || false;
     this.C2TouchWithout =
-      this.$store.state.childQuestionnaire.C2TouchWithout || -1;
-    this.C2SmellWith = this.$store.state.childQuestionnaire.C2SmellWith || -1;
+      this.$store.state.childQuestionnaire.C2TouchWithout || 0;
+    this.C2TouchWithoutTouched =
+      this.$store.state.childQuestionnaire.C2TouchWithoutTouched || false;
+    this.C2SmellWith = this.$store.state.childQuestionnaire.C2SmellWith || 0;
+    this.C2SmellWithTouched = this.$store.state.childQuestionnaire.C2SmellWithTouched || false;
     this.C2SmellWithout =
-      this.$store.state.childQuestionnaire.C2SmellWithout || -1;
-    this.C2VestWith = this.$store.state.childQuestionnaire.C2VestWith || -1;
+      this.$store.state.childQuestionnaire.C2SmellWithout || 0;
+    this.C2SmellWithoutTouched =
+      this.$store.state.childQuestionnaire.C2SmellWithoutTouched || false;
+    this.C2VestWith = this.$store.state.childQuestionnaire.C2VestWith || 0;
+    this.C2VestWithTouched = this.$store.state.childQuestionnaire.C2VestWithTouched || false;
     this.C2VestWithout =
-      this.$store.state.childQuestionnaire.C2VestWithout || -1;
+      this.$store.state.childQuestionnaire.C2VestWithout || 0;
+    this.C2VestWithoutTouched =
+      this.$store.state.childQuestionnaire.C2VestWithoutTouched || false;
     this.C2OtherWith = this.$store.state.childQuestionnaire.C2OtherWith || "";
     this.C2OtherWithout =
       this.$store.state.childQuestionnaire.C2OtherWithout || "";

@@ -196,8 +196,11 @@
               <v-slider
                 v-model="$data[q.model]"
                 thumb-label="always"
-                min="-1"
+                min="0"
                 max="100"
+                :color="$data[q.model+'Touched'] ? 'primary' : 'grey darken-1'"
+                :track-color="$data[q.model+'Touched'] ? 'primary' : 'grey darken-1'"
+                @change="$data[q.model+'Touched'] = true"
               >
                 <template v-slot:prepend>Pas de changement</template>
                 <template v-slot:append>Changement très important</template>
@@ -282,11 +285,17 @@ export default {
       D5: "",
       D51: "",
       D6a: "",
-      D6b: "",
-      D6c: "",
-      D6d: "",
-      D6e: "",
-      D6f: "",
+      D6aTouched: false,
+      D6b: 0,
+      D6bTouched: false,
+      D6c: 0,
+      D6cTouched: false,
+      D6d: 0,
+      D6dTouched: false,
+      D6e: 0,
+      D6eTouched: false,
+      D6f: 0,
+      D6fTouched: false,
       ratingLabelsD3: [
         "1- Cela ne me demande pas plus d’efforts que d’habitude",
         "2- Cela me demande plus d’efforts que d’habitude",
@@ -403,12 +412,12 @@ export default {
         D4: this.D4 != "",
         // D41: this.D41 != "",
         D5: this.D5 != "",
-        D6a: this.D6a > -1,
-        D6b: this.D6b> -1,
-        D6c: this.D6c> -1,
-        D6d: this.D6d> -1,
-        D6e: this.D6e> -1,
-        D6f: this.D6f> -1,
+        D6a: this.D6aTouched,
+        D6b: this.D6bTouched,
+        D6c: this.D6cTouched,
+        D6d: this.D6dTouched,
+        D6e: this.D6eTouched,
+        D6f: this.D6fTouched,
       };
     },
     percentageCompletion() {
@@ -440,11 +449,17 @@ export default {
         D41: this.D41,
         D5: this.D5,
         D6a: this.D6a,
+        D6aTouched: this.D6aTouched,
         D6b: this.D6b,
+        D6bTouched: this.D6bTouched,
         D6c: this.D6c,
+        D6cTouched: this.D6cTouched,
         D6d: this.D6d,
+        D6dTouched: this.D6dTouched,
         D6e: this.D6e,
+        D6eTouched: this.D6eTouched,
         D6f: this.D6f,
+        D6fTouched: this.D6fTouched,
       };
     },
   },
@@ -510,12 +525,18 @@ export default {
     this.D4 = this.$store.state.childQuestionnaire.D4 || "";
     this.D41 = this.$store.state.childQuestionnaire.D41 || "";
     this.D5 = this.$store.state.childQuestionnaire.D5 || "";
-    this.D6a = this.$store.state.childQuestionnaire.D6a || -1;
-    this.D6b = this.$store.state.childQuestionnaire.D6b || -1;
-    this.D6c = this.$store.state.childQuestionnaire.D6c || -1;
-    this.D6d = this.$store.state.childQuestionnaire.D6d || -1;
-    this.D6e = this.$store.state.childQuestionnaire.D6e || -1;
-    this.D6f = this.$store.state.childQuestionnaire.D6f || -1;
+    this.D6a = this.$store.state.childQuestionnaire.D6a || 0;
+    this.D6aTouched = this.$store.state.childQuestionnaire.D6aTouched || false;
+    this.D6b = this.$store.state.childQuestionnaire.D6b || 0;
+    this.D6bTouched = this.$store.state.childQuestionnaire.D6bTouched || false;
+    this.D6c = this.$store.state.childQuestionnaire.D6c || 0;
+    this.D6cTouched = this.$store.state.childQuestionnaire.D6cTouched || false;
+    this.D6d = this.$store.state.childQuestionnaire.D6d || 0;
+    this.D6dTouched = this.$store.state.childQuestionnaire.D6dTouched || false;
+    this.D6e = this.$store.state.childQuestionnaire.D6e || 0;
+    this.D6eTouched = this.$store.state.childQuestionnaire.D6eTouched || false;
+    this.D6f = this.$store.state.childQuestionnaire.D6f || 0;
+    this.D6fTouched = this.$store.state.childQuestionnaire.D6fTouched || false;
   },
 };
 </script>
