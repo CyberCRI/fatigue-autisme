@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-row justify="center">
-      <v-col sm="10">
+      <v-col cols="11" sm="10">
         <p>Cher lycéen, chère lycéenne,</p>
         <p>
           Vous avez accepté de participer à cette étude en complétant ce
@@ -16,7 +16,7 @@
     </v-row>
 
     <v-row justify="center">
-      <v-col md="10">
+      <v-col cols="11" sm="10">
         <v-container mb-8>
           <v-row justify="center">
             <v-card color="blue lighten-5" class="py-6 px-6">

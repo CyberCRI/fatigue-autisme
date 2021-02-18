@@ -1,7 +1,7 @@
 <template>
   <v-card class="pa-md-4 mb-4">
     <v-row justify="center">
-      <v-col sm="10">
+      <v-col cols="11" sm="10">
         <v-card color="blue lighten-5" class="py-6 px-6 mb-4">
           <h2>Important :</h2>
           <p>

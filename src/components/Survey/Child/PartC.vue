@@ -7,8 +7,10 @@
     <br />
     <br />
     <v-card class="pa-md-4 mb-4">
-      <v-row sm="12" justify="center">
-        <h1>Répercussions sur le fonctionnement physique</h1>
+      <v-row  justify="center">
+        <v-col cols="10" sm="10">
+        <h1 class="text-center">Répercussions sur le fonctionnement physique</h1>
+        </v-col>
       </v-row>
 
       <v-row justify="center" class="ma-10" v-if="errors.length > 0">

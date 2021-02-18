@@ -7,8 +7,10 @@
     <br />
     <br />
     <v-card class="pa-md-4 mb-4">
-      <v-row xs="12" justify="center">
-        <h1>La fatigue mentale au quotidien</h1>
+      <v-row  justify="center">
+        <v-col cols="11" sm="10">
+        <h1 class="text-center">La fatigue mentale au quotidien</h1>
+        </v-col>  
       </v-row>
 
       <v-row justify="center" class="ma-10" v-if="errors.length > 0">
@@ -187,8 +189,8 @@
             :key="q.question"
             v-bind:class="{ 'error-borders': errors.includes(q.model) }"
           >
-            <v-col sm="7" cols="12">{{ q.question }}</v-col>
-            <v-col sm="5" cols="12">
+            <v-col md="7" cols="12">{{ q.question }}</v-col>
+            <v-col md="5" cols="12">
               <v-radio-group v-model="$data[q.model]" row>
                 <v-radio
                   v-for="i in valuesA3"

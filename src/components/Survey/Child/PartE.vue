@@ -33,17 +33,17 @@
       </Indications>
 
       <v-row justify="center">
-        <v-col sm="10">
+        <v-col cols="11" sm="10">
           <v-row
             justify="center"
             align="center"
             v-bind:class="{ 'error-borders': errors.includes('E1a') }"
           >
-            <v-col cols="12" sm="7">
+            <v-col cols="12" md="7">
               Votre motivation à poursuivre vos études, une formation
               professionnelle ou à vous projeter dans le monde du travail
             </v-col>
-            <v-col cols="12" sm="4">
+            <v-col cols="12" md="4">
               <v-radio-group v-model="E1a" row>
                 <v-radio
                   v-for="i in valuesE1"
@@ -61,7 +61,7 @@
             align="center"
             v-bind:class="{ 'error-borders': errors.includes('E1b') }"
           >
-            <v-col cols="12" sm="7">
+            <v-col cols="12" md="7">
               Votre confiance en vos capacités<v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn icon v-bind="attrs" v-on="on">
@@ -75,7 +75,7 @@
                 >
               </v-tooltip>
             </v-col>
-            <v-col cols="12" sm="4">
+            <v-col cols="12" md="4">
               <v-radio-group v-model="E1b" row>
                 <v-radio
                   v-for="i in valuesE1"
@@ -91,7 +91,7 @@
             align="center"
             v-bind:class="{ 'error-borders': errors.includes('E1c') }"
           >
-            <v-col cols="12" sm="7">
+            <v-col cols="12" md="7">
               Votre estime de vous<v-tooltip bottom>
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn icon v-bind="attrs" v-on="on">
@@ -106,7 +106,7 @@
               </v-tooltip>
             </v-col>
 
-            <v-col cols="12" sm="4">
+            <v-col cols="12" md="4">
               <v-radio-group v-model="E1c" row>
                 <v-radio
                   v-for="i in valuesE1"
@@ -123,11 +123,11 @@
             class="mb-8"
             v-bind:class="{ 'error-borders': errors.includes('E1d') }"
           >
-            <v-col cols="12" sm="7">
+            <v-col cols="12" md="7">
               Votre indépendance à venir (logement, gestion du quotidien,
               transports, etc.)
             </v-col>
-            <v-col cols="12" sm="4">
+            <v-col cols="12" md="4">
               <v-radio-group v-model="E1d" row>
                 <v-radio
                   v-for="i in valuesE1"

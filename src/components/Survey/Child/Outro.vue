@@ -1,7 +1,7 @@
 <template>
   <v-card class="pa-md-4 mb-4">
     <v-row justify="center">
-      <v-col sm="10">
+      <v-col cols="11" sm="10">
         <h3>Merci pour votre participation!</h3>
         <p>Vos réponses ont bien été enregistrées.</p>
 
