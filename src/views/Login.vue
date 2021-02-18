@@ -10,19 +10,23 @@
             </v-alert>
             <br />
             <v-card class="elevation-12">
-              <v-row style="text-align: center">
+              <v-row align="center" justify="center">
                 <img :src="logoInserm" class="logo-inserm" />
                 <img :src="logoCri" class="logo-cri" />
-                <img :src="logoUdp" class="logo-udp" />
+                <img :src="logoUdp" class="logo-udp" v-if="this.$vuetify.breakpoint.smAndUp" />
               </v-row>
               <v-row class="center">
+                <v-col cols="12">
                 <h1>Étude sur la fatigabilité cognitive dans l’autisme</h1>
+                </v-col>
               </v-row>
               <v-row class="center">
                 <h2 class="titre">Se connecter</h2>
               </v-row>
               <v-card-text>
                 <v-form>
+                  <v-row align="center" justify="center">
+                    <v-col cols="11" sm="10">
                   <v-text-field
                     label="Adresse e-mail"
                     name="email"
@@ -45,6 +49,8 @@
                     @input="$v.password.$touch()"
                     @blur="$v.password.$touch()"
                   />
+                    </v-col>
+                  </v-row>
                 </v-form>
                 <br />
                 <span
@@ -81,12 +87,9 @@
                       <v-card-title class="headline">
                         Code d'accès?
                       </v-card-title>
-                      <!-- <v-row class="center"> -->
                         <v-col sm="3" align="center">
                           <v-text-field v-model="accessCode"></v-text-field>
                         </v-col>
-                      <!-- </v-row> -->
-
                       <v-card-actions>
                         <v-btn
                           color="green darken-1"
@@ -184,36 +187,6 @@ export default {
               this.isLoading = false;
             }
           );
-
-        // axios
-        //   .post(
-        //     process.env.VUE_APP_ROOT_API + "/users/login",
-        //     {
-        //       email: this.email,
-        //       password: this.password,
-        //     },
-        //     {
-        //       headers: {
-        //         "content-type": "application/json",
-        //       },
-        //     }
-        //   )
-        //   .then((response) => {
-        //     this.isLoading = false;
-        //     // const data = {
-        //     //   token: response.data.token,
-        //     //   email: response.data.user.email,
-        //     //   userId: response.data.user._id,
-        //     //   consent: response.data.user.consent,
-        //     // };
-        //     this.$store.commit("LOGIN_SUCCESS", response.data);
-        //     this.setLayout("app-layout");
-        //     this.$router.push({ path: "/accueil" });
-        //   })
-        //   .catch((error) => {
-        //     this.isLoading = false;
-        //     this.error = error.response.data;
-        //   });
       }
     },
   },
@@ -267,7 +240,7 @@ export default {
 }
 .titre {
   text-align: center;
-  margin: 50px auto;
+  margin: 20px auto;
   font-size: 30px;
 }
 .center {

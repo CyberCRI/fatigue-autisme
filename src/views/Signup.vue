@@ -16,20 +16,22 @@
               <v-row style="text-align: center">
                 <img :src="logoInserm" class="logo-inserm" />
                 <img :src="logoCri" class="logo-cri" />
-                <img :src="logoUdp" class="logo-udp" />
+                <img :src="logoUdp" class="logo-udp" v-if="this.$vuetify.breakpoint.smAndUp" />
               </v-row>
-              <v-row class="center">
+              <v-row class="center" cols="12">
                 <h2 class="titre">Créer un compte</h2>
               </v-row>
               <v-row align="center" justify="center">
-                <v-col sm="3">Je suis: </v-col>
-                <v-col sm="6"><v-select
+                <v-col cols="3" sm="2">Je suis: </v-col>
+                <v-col cols="5" sm="4"><v-select
                   :items="['Un parent', 'Un.e lycéen.ne']"
                   v-model="whoAmI"
                 ></v-select></v-col>
               </v-row>
-              <v-card-text>
+              <v-card-text class="pa-0">
                 <v-form>
+                  <v-row align="center" justify="center">
+                    <v-col cols="11" sm="10">
                   <v-text-field
                     label="Adresse e-mail"
                     name="email"
@@ -76,14 +78,21 @@
                     @input="$v.parentId.$touch()"
                     @blur="$v.parentId.$touch()"
                   />
+                    </v-col>
+                  </v-row>
                 </v-form>
               </v-card-text>
               <v-card-actions>
+                <v-row class="center">
+                  <v-col cols="12" sm="6">
                 <v-btn @click.prevent="login" color="primary">Retour</v-btn>
-                <v-spacer />
+                  </v-col>
+                  <v-col cols="12" sm="6">
                 <v-btn @click.prevent="signUp" color="success"
                   >Créer un compte</v-btn
                 >
+                  </v-col>
+                </v-row>
               </v-card-actions>
             </v-card>
           </v-col>
