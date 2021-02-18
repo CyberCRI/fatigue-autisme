@@ -139,13 +139,64 @@ router.beforeEach((to, from, next) => {
   }
   const publicPages = ['/login', '/signup', '/forgot'];
   const authRequired = !publicPages.includes(to.path);
-  // const isLoggedIn = store.getters.isLoggedIn;
   const isAuthenticated = store.getters.isAuthenticated;
-  // const LoggedIn = localStorage.getItem('loggedIn');
 
   if (authRequired && !isAuthenticated) {
     next('/login');
   } else {
+
+    const isParent = store.getters.isParent;
+    const parentPages = ['/questionnaire', '/ficherenseignement', '/consentement'];
+    const childPages = ['/consentementEnfant', 
+                        '/enfants/questionnaire/intro',
+                        '/enfants/questionnaire/partA',
+                        '/enfants/questionnaire/partB',
+                        '/enfants/questionnaire/partC',
+                        '/enfants/questionnaire/partD',
+                        '/enfants/questionnaire/partE',
+                        '/enfants/questionnaire/outro'];
+
+    if (isParent && childPages.includes(to.path)) {
+      next('/accueil')
+    }
+
+    if (!isParent && parentPages.includes(to.path)) {
+      next('/accueil')
+    }
+
+    if (!isParent && to.name.includes(`Questionnaire-Enfants-Part`)) {
+
+      const shouldBe = function (state) {
+        const doneA = state.childQuestionnaire.finishedA || false;
+        const doneB = state.childQuestionnaire.finishedB || false;
+        const doneC = state.childQuestionnaire.finishedC || false;
+        const doneD = state.childQuestionnaire.finishedD || false;
+        const doneE = state.childQuestionnaire.finishedE || false;
+        if (!doneA) {
+          return '/enfants/questionnaire/partA';
+        }
+        if (!doneB) {
+          return '/enfants/questionnaire/partB';
+        }
+        if (!doneC) {
+          return '/enfants/questionnaire/partC';
+        }
+        if (!doneD) {
+          return '/enfants/questionnaire/partD';
+        }
+        if (!doneE) {
+          return '/enfants/questionnaire/partE';
+        }
+        return '/enfants/questionnaire/outro'
+      } (store.state);
+      const actuallyIs = to.path;
+      if (shouldBe != actuallyIs) {
+        next(shouldBe)
+      } else {
+        next();
+      }
+    }
+
     next();
   }
   

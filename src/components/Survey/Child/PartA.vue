@@ -437,7 +437,6 @@ export default {
     percentageCompletion() {
       const size = Object.keys(this.completions).length;
       const areOk = Object.values(this.completions).filter((a) => a);
-      console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
     answers() {
@@ -498,7 +497,9 @@ export default {
         if (this.$store.state.auth.fakeLoggedIn) {
           this.$router.push("/enfants/questionnaire/partB");
         } else {
-          this.saveChildQuestionnaire(this.answers).then(
+          const returnAnswers = this.answers
+          returnAnswers.finishedA = true
+          this.saveChildQuestionnaire(returnAnswers).then(
             () => {
               this.$router.push("/enfants/questionnaire/partB");
             },
@@ -517,9 +518,6 @@ export default {
     TextArea,
   },
   mounted() {
-    console.log("part A mounted");
-    console.log("childQuestionnaire in state:");
-    console.log(this.$store.state.childQuestionnaire);
     window.scrollTo(0, 0);
     this.A1a = this.$store.state.childQuestionnaire.A1a || "";
     this.A1b = this.$store.state.childQuestionnaire.A1b || "";

@@ -65,7 +65,7 @@ export default new Vuex.Store({
     },
     questionnaire(state, answers) {
       for (const key in answers) {
-        state.childQuestionnaire[key] = answers[key];
+        Vue.set(state.childQuestionnaire, key, answers[key])
       }
       localStorage.setItem('childQuestionnaire', JSON.stringify(state.childQuestionnaire));
     },
@@ -160,7 +160,6 @@ export default new Vuex.Store({
   },
   actions: {
     authorize({ commit }, authorizationCode) {
-      console.log('store action authorize')
       if (authorizationCode === '3189') {
         commit('authorize');
         return Promise.resolve();
@@ -170,7 +169,6 @@ export default new Vuex.Store({
     },
     //TODO: remove this
     fakeLogin({ commit }) {
-      console.log('store action fake login')
       const fakeUser = {
         consent: true,
         isParent: false,
@@ -183,7 +181,6 @@ export default new Vuex.Store({
 
     },
     login({ commit }, user) {
-      console.log('store action login')
       return AuthService.login(user).then(
         data => {
           commit('loginSuccess', data.user);
@@ -197,16 +194,9 @@ export default new Vuex.Store({
       );
     },
     logout({ commit }) {
-      console.log('store action logout');
-      // AuthService.logout();
       commit('logout');
     },
     saveChildQuestionnaire({ state, commit }, answers) {
-      console.log('store action saveChildQuestionnaire');
-      console.log('current child questionnaire:');
-      console.log(state.childQuestionnaire)
-      console.log('to add:')
-      console.log(answers)
       const newAnswers = Object.assign(state.childQuestionnaire, answers);
       return UserService.saveChildQuestionnaire(state.auth.user.userId, newAnswers).then(
         () => {
@@ -219,7 +209,6 @@ export default new Vuex.Store({
       )
     },
     sendConsent({ commit }) {
-      console.log('store action send consent');
       return UserService.sendConsent(this.state.auth.user.userId).then(
         () => {
           commit('consent', true);

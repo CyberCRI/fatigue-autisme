@@ -405,7 +405,6 @@ export default {
       return this.D5.includes("Oui");
     },
     completions() {
-      console.log(this.A3a);
       return {
         D1: this.D1 != "",
         // D11: this.D11 != "",
@@ -437,11 +436,9 @@ export default {
     percentageCompletion() {
       const size = Object.keys(this.completions).length;
       const areOk = Object.values(this.completions).filter((a) => a);
-      console.log(areOk);
       return parseInt((areOk.length / size) * 100.0);
     },
     answers() {
-      console.log("TODO");
       return {
         D1: this.D1,
         D11: this.D11,
@@ -504,7 +501,9 @@ export default {
         if (this.$store.state.auth.fakeLoggedIn) {
           this.$router.push("/enfants/questionnaire/partE");
         } else {
-          this.saveChildQuestionnaire(this.answers).then(
+          const returnAnswers = this.answers
+          returnAnswers.finishedD = true
+          this.saveChildQuestionnaire(returnAnswers).then(
             () => {
               this.$router.push("/enfants/questionnaire/partE");
             },
@@ -523,7 +522,6 @@ export default {
     TextArea,
   },
   mounted() {
-    console.log("part D mounted");
     window.scrollTo(0, 0, "smooth");
     this.D1 = this.$store.state.childQuestionnaire.D1 || "";
     this.D11 = this.$store.state.childQuestionnaire.D11 || "";

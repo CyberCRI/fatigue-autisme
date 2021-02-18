@@ -9,8 +9,6 @@ class AuthService {
             })
             .then(response => {
                 if (response.data.token) {
-                    console.log('response data')
-                    console.log(response.data)
                     const storageUser = {
                         token: response.data.token,
                         consent: response.data.user.consent,
@@ -20,28 +18,18 @@ class AuthService {
                         userId: response.data.user._id
                     };
                     let questionnaire = response.data.questionnaire;
-                    // localStorage.setItem('user', JSON.stringify(storageUser));
-                    // console.log('storageUser:')
-                    // console.log(storageUser)
                     
                     if (!storageUser.isParent && response.data.questionnaire) {
                         questionnaire = questionnaire.child;
-                        // console.log
-                        // localStorage.setItem('childQuestionnaire', JSON.stringify(response.data.questionnaire));
                     }
                     return {
                         user: storageUser,
                         questionnaire: questionnaire
                     }
-                    // return storageUser;
                 }
                 return response.data;
             })
     }
-
-    // logout() {
-    //     localStorage.removeItem('user');
-    // }
 
     signup(user) {
         return axios

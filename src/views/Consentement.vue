@@ -143,11 +143,9 @@ export default {
   },
   methods: {
     save() {
-      console.log('send consentement')
       this.$v.$touch();
       if (!this.$v.$anyError) {
         this.isLoading = true;
-        console.log('validate ok')
         this.$store.dispatch('sendConsent')
           .then(
             () => {

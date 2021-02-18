@@ -401,7 +401,9 @@ export default {
         if (this.$store.state.auth.fakeLoggedIn) {
           this.$router.push("/enfants/questionnaire/partC");
         } else {
-          this.saveChildQuestionnaire(this.answers).then(
+          const returnAnswers = this.answers
+          returnAnswers.finishedB = true
+          this.saveChildQuestionnaire(returnAnswers).then(
             () => {
               this.$router.push("/enfants/questionnaire/partC");
             },
@@ -420,7 +422,6 @@ export default {
     TextArea,
   },
   mounted() {
-    console.log("part B mounted");
     window.scrollTo(0, 0);
     this.B1a = this.$store.state.childQuestionnaire.B1a || "";
     this.B1b = this.$store.state.childQuestionnaire.B1b || "";

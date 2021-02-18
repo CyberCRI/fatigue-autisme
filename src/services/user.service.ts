@@ -40,10 +40,6 @@ class UserService {
                 content: content
             },{
                 headers: authHeader()
-            })
-            .then(response => {
-                console.log('response');
-                console.log(response);
             });
 
     }

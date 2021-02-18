@@ -702,11 +702,9 @@ export default {
       this.$router.push({ path: "/" });
     },
     sendForm() {
-      console.log('hi');
       this.$v.$touch();
       if (!this.$v.$anyError) {
         this.isLoading = true;
-        console.log('sending questionnaire');
         axios
           .put(
             process.env.VUE_APP_ROOT_API + "/questionnaire",

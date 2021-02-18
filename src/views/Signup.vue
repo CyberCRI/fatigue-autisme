@@ -152,10 +152,8 @@ export default {
       
       this.errorMessage = '';
       this.$v.$touch();
-      console.log(this.$v);
       if (!this.$v.$anyError) {
         this.isLoading = true;
-        console.log(process.env);
         axios
           .put(
             process.env.VUE_APP_ROOT_API + "/users",
