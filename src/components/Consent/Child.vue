@@ -145,7 +145,7 @@ export default {
   },
   methods: {
     sendConsent() {
-      this.error = true;
+      this.error = false;
       this.$v.$touch();
 
       if (!this.$v.$anyError) {

@@ -165,7 +165,10 @@ router.beforeEach((to, from, next) => {
     }
 
     if (!isParent && to.name.includes(`Questionnaire-Enfants-Part`)) {
-
+      if (store.state.auth.fakeLoggedIn) {
+        next();
+      } else {
+        
       const shouldBe = function (state) {
         const doneA = state.childQuestionnaire.finishedA || false;
         const doneB = state.childQuestionnaire.finishedB || false;
@@ -195,6 +198,9 @@ router.beforeEach((to, from, next) => {
       } else {
         next();
       }
+
+      }
+
     }
 
     next();
