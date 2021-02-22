@@ -7,7 +7,9 @@
           <p>
             Ce questionnaire a pour principal objectif de recueillir votre
             témoignage et votre perception de la fatigue <span style="white-space: nowrap;">mentale :</span> il n’y a donc
-            pas de bonnes ou de mauvaises réponses.
+            pas de bonnes ou de mauvaises réponses. 
+            Il n'est pas nécessaire de vivre actuellement des épisodes de fatigue importante pour pouvoir compléter ce questionnaire. 
+            Les réponses des élèves qui ne souffrent pas ou peu de la fatigue sont tout aussi importantes pour la recherche que celles des élèves très fatigué.e.s.
           </p>
           <p>
             Lorsque la réponse est une zone de texte libre, sentez-vous libre de
