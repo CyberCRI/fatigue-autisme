@@ -207,7 +207,7 @@
         <v-row>
           <v-col class="col-12">
             <p>
-              Dans la famille nucléaire, d’autres personnes ont-elles une
+              Parmi les parents et la fratrie (s’il y a lieu), d’autres personnes ont-elles une
               condition du spectre autistique ?
             </p>
             <v-radio-group
