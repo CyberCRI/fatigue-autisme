@@ -1,6 +1,6 @@
 <template>
   <section>
-    <Header :title="`Partie C`" :valueProgress="percentageCompletion" />
+    <Header :id="2" :valueProgress="percentageCompletion" />
 
     <br />
     <br />
