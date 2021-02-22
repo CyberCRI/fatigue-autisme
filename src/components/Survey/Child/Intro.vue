@@ -17,6 +17,24 @@
           </p>
           <p>Voici un exemple de zone de texte libre que vous rencontrerez au cours de ce questionnaire:</p>
           <TextArea></TextArea>
+          <p>Certaines questions présentent une jauge pour permettre d'entrer la réponse.
+            Tant que vous n'avez pas cliqué dessus, nous considérerons que vous n'avez pas encore répondu à la question et son aspect sera grisé.
+            Elle devient bleu par la suite. Il est possible d'entrer n'importe quelle valeur entre 0 et 100.</p><p>Voici un exemple de jauge:
+          </p>
+          <v-row justify="center">
+          <v-col sm="6" cols="12">
+            <v-slider
+              v-model="sliderValue"
+              thumb-label="always"
+              min="0"
+              max="100"
+              :color="sliderTouched ? 'primary' : 'grey darken-1'"
+              :track-color="sliderTouched ? 'primary' : 'grey darken-1'"
+              @change="sliderTouched = true"
+            >
+            </v-slider>
+          </v-col>
+        </v-row>
           <p>
             Compléter ce questionnaire prend
             <span class="blue--text"
@@ -46,6 +64,12 @@
 <script>
 import TextArea from '../TextArea.vue';
 export default {
+  data() {
+    return {
+      sliderTouched: false,
+      sliderValue: 0
+    }
+  },
   components: {
     TextArea
   },
