@@ -140,8 +140,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          2. Diriez-vous que la fatigue cognitive est plus importante depuis que
-          vous êtes entré.e au lycée ?
+          2. Depuis que vous être entré.e <span style="white-space: nowrap">au lycée :</span>
         </h3>
       </v-row>
       <v-row justify="center">
@@ -151,9 +150,9 @@
           v-bind:class="{ 'error-borders': errors.includes('A2') }"
         >
           <v-radio-group v-model="A2">
-            <v-radio label="Non" value="Non"></v-radio>
-            <v-radio label="Oui, un peu" value="Oui, un peu"></v-radio>
-            <v-radio label="Oui, beaucoup" value="Oui, beaucoup"></v-radio>
+            <v-radio label="Je suis moins fatigué.e qu’avant" value="Je suis moins fatigué.e qu’avant"></v-radio>
+            <v-radio label="Je ne suis ni plus, ni moins fatigué.e qu’avant" value="Je ne suis ni plus, ni moins fatigué.e qu’avant"></v-radio>
+            <v-radio label="Je suis plus fatigué.e qu’avant" value="Je suis plus fatigué.e qu’avant"></v-radio>
             <v-radio label="Je ne sais pas" value="Je ne sais pas"></v-radio>
           </v-radio-group>
         </v-col>
