@@ -35,17 +35,23 @@
             </v-slider>
           </v-col>
         </v-row>
-          <p>
-            Compléter ce questionnaire prend
-            <span class="blue--text"
-              >en moyenne de 20 à 30 minutes. N’hésitez pas à faire une pause,
-              ou à y répondre en plusieurs fois si le souhaitez.</span
-            >
-            Pour cela, il vous suffit de cliquer sur «Enregistrer et terminer plus tard» au bas de la page sur laquelle vous vous trouvez. Vos réponses
-            seront enregistrées et vous pourrez reprendre là où vous vous étiez
-            arrêté la prochaine fois que vous vous connecterez sur le site.
-          </p>
         </v-card>
+        <p>
+          Ce questionnaire sur la fatigue comprend <span style="white-space: nowrap">5 parties :</span>
+          <ul class="mt-3 mb-4 ml-8">
+            <li>A. La fatigue mentale au quotidien</li>
+            <li>B. Les répercussions sur la vie quotidienne</li>
+            <li>C. Les répercussions sur le fonctionnement physique</li>
+            <li>D. Les répercussions sur le fonctionnement cognitif et émotionnel</li>
+            <li>E. Questions finales</li>
+          </ul>
+          Chaque partie est présentée sur une page séparée.</p>
+          <p>
+          Il faut compter <span class="blue--text">en moyenne 20 à 30 minutes pour compléter l'ensemble du questionnaire. 
+          N’hésitez pas à faire une pause, ou à y répondre en plusieurs fois si le souhaitez</span>. 
+          Pour cela, il vous suffit de cliquer sur «Enregistrer et terminer plus tard» au bas de la page sur laquelle vous vous trouvez. 
+          Vos réponses seront enregistrées et vous pourrez reprendre là où vous vous étiez arrêté la prochaine fois que vous vous connecterez sur le site.
+        </p>
         <p>Vous trouverez dans le <a href="https://fatigue-autisme.org/guide-du-participant.pdf" target="_blank">guide du
               participant</a> toutes les informations nécessaires relatives à ce questionnaire.</p>
         <v-row justify="center">
