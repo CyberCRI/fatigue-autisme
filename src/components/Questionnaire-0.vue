@@ -30,8 +30,7 @@
     <h3>Important :</h3>
     Vous pouvez vous arrêter à tout moment : en cliquant sur le bouton «
     enregistrer » en bas de page, vos données seront conservées et vous pourrez
-    terminer plus tard. N’hésitez pas à consulter le guide du participant (cf.
-    Section XX p. XX) pour connaître la marche à suivre lorsque vous voudrez
+    terminer plus tard. N’hésitez pas à consulter le guide du participant pour connaître la marche à suivre lorsque vous voudrez
     vous reconnecter.
     <p>
       En cas de question, n’hésitez pas à nous contacter à l’adresse suivante :
