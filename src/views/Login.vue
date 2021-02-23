@@ -75,7 +75,7 @@
               </v-card-actions>
               
               <!-- TODO: remove this -->
-              <v-row class="center">
+              <!-- <v-row class="center">
                 <v-col md="12">
                   <v-dialog v-model="dialog" persistent max-width="290">
                     <template v-slot:activator="{ on, attrs }">
@@ -102,7 +102,7 @@
                     </v-card>
                   </v-dialog>
                 </v-col>
-              </v-row>
+              </v-row> -->
             </v-card>
           </v-col>
         </v-row>
@@ -139,26 +139,26 @@ export default {
   },
   methods: {
     //TODO: remove this
-    fakeLogin() {
-      const tentativeCode = this.accessCode;
+    // fakeLogin() {
+    //   const tentativeCode = this.accessCode;
 
-      this.accessCode = '';
-      this.dialog = false;
+    //   this.accessCode = '';
+    //   this.dialog = false;
 
-      if (tentativeCode === '8520') {
-        this.$store
-          .dispatch("fakeLogin")
-          .then(
-            () => {
-              this.setLayout("app-layout");
-              this.$router.push("/accueil");
-            },
-            error => {
-              console.log('error')
-            }
-          )
-      }
-    },
+    //   if (tentativeCode === '8520') {
+    //     this.$store
+    //       .dispatch("fakeLogin")
+    //       .then(
+    //         () => {
+    //           this.setLayout("app-layout");
+    //           this.$router.push("/accueil");
+    //         },
+    //         error => {
+    //           console.log('error')
+    //         }
+    //       )
+    //   }
+    // },
     setLayout(layout) {
       this.$store.commit("SET_LAYOUT", layout);
     },
