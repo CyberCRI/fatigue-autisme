@@ -1,7 +1,7 @@
 <template>
 <section>
   <v-card class="pa-md-4 mb-4">
-    <h1 class="text-center">Bienvenue sur l'espace adolescents</h1>
+    <h1 class="text-center">Bienvenue sur l'espace lycéen.ne.s</h1>
   <br>
     <!-- Text accueil enfant -->
     <Intro />
