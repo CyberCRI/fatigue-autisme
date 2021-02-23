@@ -351,6 +351,7 @@ export default {
         B2_4: this.getRankB2("4"),
         B2_5: this.getRankB2("5"),
         B3: this.B3,
+        B31: this.B31,
       };
     },
   },
@@ -445,6 +446,7 @@ export default {
     }
 
     this.B3 = this.$store.state.childQuestionnaire.B3 || "";
+    this.B31 = this.$store.state.childQuestionnaire.B31 || "";
   },
 };
 </script>

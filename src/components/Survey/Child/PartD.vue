@@ -459,6 +459,7 @@ export default {
         D4: this.D4,
         D41: this.D41,
         D5: this.D5,
+        D51: this.D51,
         D6a: this.D6a,
         D6aTouched: this.D6aTouched,
         D6b: this.D6b,
@@ -542,6 +543,7 @@ export default {
     this.D4 = this.$store.state.childQuestionnaire.D4 || "";
     this.D41 = this.$store.state.childQuestionnaire.D41 || "";
     this.D5 = this.$store.state.childQuestionnaire.D5 || "";
+    this.D51 = this.$store.state.childQuestionnaire.D51 || "";
     this.D6a = this.$store.state.childQuestionnaire.D6a || 0;
     this.D6aTouched = this.$store.state.childQuestionnaire.D6aTouched || false;
     this.D6b = this.$store.state.childQuestionnaire.D6b || 0;
