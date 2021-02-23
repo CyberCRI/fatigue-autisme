@@ -7,7 +7,7 @@ import Authorization from "../views/Authorization.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
 import Logout from "../views/Logout.vue";
-import Forgot from "../views/Forgot.vue";
+// import Forgot from "../views/Forgot.vue";
 import FicheRenseignement from "../views/FicheRenseignement.vue";
 import Questionnaire from "../views/Questionnaire.vue";
 
@@ -64,11 +64,11 @@ const routes: Array<RouteConfig> = [
     name: "Logout",
     component: Logout,
   },
-  {
-    path: "/forgot",
-    name: "Forgot",
-    component: Forgot,
-  },
+  // {
+  //   path: "/forgot",
+  //   name: "Forgot",
+  //   component: Forgot,
+  // },
   {
     path: "/ficherenseignement",
     name: "ficherenseignement",
@@ -137,7 +137,8 @@ router.beforeEach((to, from, next) => {
       next('/authorization');
     }
   }
-  const publicPages = ['/login', '/signup', '/forgot'];
+  // const publicPages = ['/login', '/signup', '/forgot'];
+  const publicPages = ['/login', '/signup'];
   const authRequired = !publicPages.includes(to.path);
   const isAuthenticated = store.getters.isAuthenticated;
 

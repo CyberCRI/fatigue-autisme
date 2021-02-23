@@ -52,12 +52,12 @@
                     </v-col>
                   </v-row>
                 </v-form>
-                <br />
-                <span
+                <!-- <br /> -->
+                <!-- <span
                   ><a @click="$router.push({ path: '/forgot' })"
                     >Mot de passe oublié?</a
                   ></span
-                >
+                > -->
               </v-card-text>
               <v-card-actions>
                 <v-row class="center">
