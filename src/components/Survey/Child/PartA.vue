@@ -140,7 +140,7 @@
 
       <v-row class="ma-5" sm="12">
         <h3>
-          2. Depuis que vous être entré.e <span style="white-space: nowrap">au lycée :</span>
+          2. Depuis que vous êtes entré.e <span style="white-space: nowrap">au lycée :</span>
         </h3>
       </v-row>
       <v-row justify="center">
