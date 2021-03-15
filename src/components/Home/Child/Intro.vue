@@ -12,6 +12,8 @@
           mettre au point des outils permettant de la gérer au mieux et de la
           prévenir.
         </p>
+        <p>Toutes les informations relatives à cette étude sont disponibles dans la <a href="https://fatigue-autisme.org/notice-information-students.pdf" target="_blank">notice d’information.</a>
+        </p>
       </v-col>
     </v-row>
 
