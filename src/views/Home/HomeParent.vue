@@ -47,7 +47,7 @@
               Toutes ces données sont strictement confidentielles, elles seront
               stockées sur un serveur sécurisé, anonymisées et intégralement
               chiffrées. Votre anonymat et celui de votre enfant sont donc
-              garantis en tout temps. Ces informations sont détaillées dans la <a href="https://fatigue-autisme.org/notice-information.pdf" target="_blank">notice d’information.</a>
+              garantis en tout temps. Ces informations sont détaillées dans la <a href="https://fatigue-autisme.org/notice-information-parents.pdf" target="_blank">notice d’information.</a>
             </p>
             <p>
               Avant de commencer, prenez le temps de bien lire le <a href="https://fatigue-autisme.org/guide-du-participant.pdf" target="_blank">guide du
