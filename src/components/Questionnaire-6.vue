@@ -96,8 +96,8 @@
       </p>
       <p>
         Plus d’informations sur l’étude :
-        <a href="https://cutt.ly/etude_fatigue" target="_blank"
-          >https://cutt.ly/etude_fatigue</a
+        <a href="https://www.autistic-brain-fatigue.com/" target="_blank"
+          >https://www.autistic-brain-fatigue.com/</a
         >
       </p>
       <v-btn class="btn primary boutons" @click="saveForm()"

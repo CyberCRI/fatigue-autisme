@@ -61,6 +61,10 @@
                 >etude.autisme@protonmail.com</a
               >
             </p>
+            <p>
+              Site d'information consacré à l'étude : <a href="https://www.autistic-brain-fatigue.com/" target="_blank"
+          >https://www.autistic-brain-fatigue.com/</a>
+            </p>
           </v-col>
         </v-row>
         <v-row>
