@@ -17,8 +17,10 @@
         approximativement :
       </p>
       <h3>A. Trajet scolaire</h3>
-      <br>
-      La durée moyenne <span class="text-decoration-underline">quotidienne</span> du trajet pour se rendre de l’école à la maison (aller-retour compris)
+      <br />
+      La durée moyenne
+      <span class="text-decoration-underline">quotidienne</span> du trajet pour
+      se rendre de l’école à la maison (aller-retour compris)
       <v-text-field
         v-model="questionnaire2.Q2A1"
         :error-messages="Q2A1Errors"
@@ -46,8 +48,12 @@
         </v-col>
       </v-row>
       <h3>B. Devoirs scolaires</h3>
-      <br>
-      <p>La durée moyenne <span class="text-decoration-underline">quotidienne</span> que votre enfant consacre à ses devoirs scolaires ?</p>
+      <br />
+      <p>
+        La durée moyenne
+        <span class="text-decoration-underline">quotidienne</span> que votre
+        enfant consacre à ses devoirs scolaires ?
+      </p>
       <v-text-field
         v-model="questionnaire2.Q2B"
         :error-messages="Q2BErrors"
@@ -56,8 +62,11 @@
       >
       </v-text-field>
       <h3>C. Accompagnements</h3>
-      <br>
-      La durée moyenne <span class="text-decoration-underline">hebdomadaire</span> consacrée aux accompagnements (hors scolaire) dont bénéficie votre enfant, temps de trajet aller-retour inclus
+      <br />
+      La durée moyenne
+      <span class="text-decoration-underline">hebdomadaire</span> consacrée aux
+      accompagnements (hors scolaire) dont bénéficie votre enfant, temps de
+      trajet aller-retour inclus
       <v-text-field
         v-model="questionnaire2.Q2C"
         :error-messages="Q2CErrors"
@@ -66,8 +75,11 @@
       >
       </v-text-field>
       <h3>D. Activités extrascolaires</h3>
-      <br>
-      La durée moyenne <span class="text-decoration-underline">hebdomadaire</span> que votre enfant consacre aux activités extrascolaires (club de sport, école de musique, théâtre, scoutisme, association, etc.), temps de trajet inclus :
+      <br />
+      La durée moyenne
+      <span class="text-decoration-underline">hebdomadaire</span> que votre
+      enfant consacre aux activités extrascolaires (club de sport, école de
+      musique, théâtre, scoutisme, association, etc.), temps de trajet inclus :
       <v-text-field
         v-model="questionnaire2.Q2D"
         :error-messages="Q2DErrors"
@@ -76,9 +88,17 @@
       >
       </v-text-field>
       <h3>E. Temps libre</h3>
-      <br>
-      La durée moyenne de « temps libre » <span class="text-decoration-underline">quotidienne</span> dont votre enfant dispose en période scolaire, <span class="text-decoration-underline">en semaine</span><br>
-      <span class="font-italic">Par « temps libre », nous entendons ici une période durant laquelle le jeune n’a aucun impératif (devoirs, sorties, participation à la vie famiale, etc.) et peut se retrouver seul (ou avec d’autres personnes, s’il l’a décidé, et en dehors des activités planifiées)"</span>
+      <br />
+      La durée moyenne de « temps libre »
+      <span class="text-decoration-underline">quotidienne</span> dont votre
+      enfant dispose en période scolaire,
+      <span class="text-decoration-underline">en semaine</span><br />
+      <span class="font-italic"
+        >Par « temps libre », nous entendons ici une période durant laquelle le
+        jeune n’a aucun impératif (devoirs, sorties, participation à la vie
+        famiale, etc.) et peut se retrouver seul (ou avec d’autres personnes,
+        s’il l’a décidé, et en dehors des activités planifiées)"</span
+      >
       <v-text-field
         v-model="questionnaire2.Q2E1"
         persistent-hint
@@ -86,8 +106,11 @@
         @input="$v.questionnaire2.Q2E1.$touch()"
         @blur="$v.questionnaire2.Q2E1.$touch()"
       >
-      </v-text-field><br>
-      La durée moyenne de « temps libre » <span class="text-decoration-underline">quotidienne</span> dont votre enfant dispose le week-end ou en période de vacances
+      </v-text-field
+      ><br />
+      La durée moyenne de « temps libre »
+      <span class="text-decoration-underline">quotidienne</span> dont votre
+      enfant dispose le week-end ou en période de vacances
       <v-text-field
         v-model="questionnaire2.Q2E2"
         :error-messages="Q2E2Errors"
@@ -167,7 +190,7 @@
             row
           >
             <v-col class="col-3">
-              <v-radio label="Satisfaisante" value="1"></v-radio>
+              <v-radio label="Satisfaisante" value="Satisfaisante"></v-radio>
             </v-col>
             <v-col class="col-3">
               <v-radio
@@ -199,9 +222,7 @@
           ></v-textarea>
         </v-col>
       </v-row>
-      <v-btn
-        class="btn primary boutons"
-        @click="saveForm()"
+      <v-btn class="btn primary boutons" @click="saveForm()"
         >Enregistrer et terminer plus tard</v-btn
       >
       <v-btn class="btn primary" @click="sendForm()">Suivant</v-btn>
@@ -223,18 +244,18 @@ export default {
       transportList: [
         {
           text: "À pieds, à vélo ou à trotinette",
-          value: "À pieds, à vélo ou à trotinette"
+          value: "À pieds, à vélo ou à trotinette",
         },
         { text: "En voiture", value: "En voiture" },
         { text: "En taxi", value: "En taxi" },
         { text: "En transports en commun", value: "En transports en commun" },
-        { text: "Autre", value: "Autre" }
+        { text: "Autre", value: "Autre" },
       ],
       questionnaire2: {
         Q2A1: this.$store.state.questionnaire2.Q2A1 || "",
         Q2A2: this.$store.state.questionnaire2.Q2A2 || {
           reponse: "",
-          autre: ""
+          autre: "",
         },
         Q2B: this.$store.state.questionnaire2.Q2B || "",
         Q2C: this.$store.state.questionnaire2.Q2C || "",
@@ -245,9 +266,9 @@ export default {
         Q2G: this.$store.state.questionnaire2.Q2G || "",
         Q2H: this.$store.state.questionnaire2.Q2H || {
           reponse: "",
-          precision: ""
-        }
-      }
+          precision: "",
+        },
+      },
     };
   },
   mixins: [validationMixin],
@@ -256,7 +277,7 @@ export default {
       Q2A1: { required },
       Q2A2: {
         reponse: { required },
-        autre: ""
+        autre: "",
       },
       Q2B: { required },
       Q2C: { required },
@@ -267,9 +288,9 @@ export default {
       Q2G: { required },
       Q2H: {
         reponse: { required },
-        precision: ""
-      }
-    }
+        precision: "",
+      },
+    },
   },
   methods: {
     saveForm() {
@@ -286,25 +307,25 @@ export default {
             {
               id: 2,
               content: this.questionnaire2,
-              userId: this.$store.state.auth.user.userId
+              userId: this.$store.state.auth.user.userId,
             },
             {
               headers: {
                 "content-type": "application/json",
-                Authorization: "Bearer " + this.$store.state.auth.user.token
-              }
+                Authorization: "Bearer " + this.$store.state.auth.user.token,
+              },
             }
           )
-          .then(response => {
+          .then((response) => {
             this.isLoading = false;
             this.$emit("next", 3);
           })
-          .catch(error => {
+          .catch((error) => {
             this.isLoading = false;
             console.log(error);
           });
       }
-    }
+    },
   },
   computed: {
     Q2A1Errors() {
@@ -381,7 +402,7 @@ export default {
         this.questionnaire2.Q2E2,
         this.questionnaire2.Q2F,
         this.questionnaire2.Q2G,
-        this.questionnaire2.Q2H.reponse
+        this.questionnaire2.Q2H.reponse,
       ];
       for (let i = 0; i < fields.length; i++) {
         if (fields[i] !== "") {
@@ -389,11 +410,11 @@ export default {
         }
       }
       return Math.round(progression);
-    }
+    },
   },
-  mounted () {
+  mounted() {
     window.scrollTo(0, 0);
-  }
+  },
 };
 </script>
 
